@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesor Público Digital | Leones, Córdoba</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #004d40; /* Color que evoca seriedad */
+        }
+        .category-section {
+            margin-bottom: 25px;
+            border-left: 5px solid #ff9800; /* Naranja para destacar */
+            padding-left: 15px;
+        }
+        .category-section h2 {
+            margin-top: 0;
+            color: #388e3c; /* Verde para destacar */
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-style: italic;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #777;
+        }
+        /* Estilos de botones y suscripción (BETA simple) */
+        .subscribe-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦁 Asesor Público Digital - Leones, Cba. 📰</h1>
+            <p>Informe automático del día: <span id="last-updated">Cargando...</span></p>
+        </header>
+
+        <main id="content-container">
+            <div class="loading">Cargando la inteligencia artificial...</div>
+            </main>
+
+        <div class="subscribe-box">
+            <h3>¡No te pierdas el informe de mañana!</h3>
+            <p>Activa la notificación diaria y sé el primero en enterarte.</p>
+            <button onclick="alert('¡Próximamente! En la V1.0 podrás suscribirte aquí.')" 
+                    style="padding: 10px 20px; background-color: #ff9800; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Suscribirme (BETA)
+            </button>
+        </div>
+
+        <footer>
+            <p>Desarrollado por el Equipo BETA - Leones, 2025. | Tráfico: <span id="analytics-placeholder">Activando GA...</span></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('noticias.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se encontró el archivo noticias.json. (Aún no se ha ejecutado la IA).');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('content-container');
+                    const lastUpdated = new Date(data.last_updated).toLocaleString('es-AR', { dateStyle: 'full', timeStyle: 'short' });
+                    
+                    document.getElementById('last-updated').textContent = lastUpdated;
+                    container.innerHTML = ''; // Limpiar el mensaje de carga
+
+                    // Iterar sobre las categorías y mostrar el contenido
+                    data.categorias.forEach(cat => {
+                        const section = document.createElement('section');
+                        section.className = 'category-section';
+                        
+                        // El contenido viene del motor IA ya en formato Markdown (HTML compatible)
+                        section.innerHTML = `
+                            <h2>${cat.nombre}</h2>
+                            ${cat.contenido} 
+                            <hr>
+                        `;
+                        container.appendChild(section);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error al cargar contenido:', error);
+                    document.getElementById('content-container').innerHTML = `<div class="loading">
+                        <h3>Error al cargar el contenido de Leones:</h3>
+                        <p>${error.message}. Por favor, ejecute el script 'generator.py'.</p>
+                    </div>`;
+                });
+
+            // Placeholder para Google Analytics (V1.0)
+            document.getElementById('analytics-placeholder').textContent = 'Midiendo tráfico...';
+        });
+    </script>
+</body>
+</html>
