@@ -1,0 +1,46 @@
+name: Publicación Diaria Autónoma de Leones
+
+on:
+  # 1. Ejecución programada (Todos los días a las 10:00 UTC = 7:00 AM Argentina)
+  schedule:
+    - cron: '0 10 * * *'
+  # 2. Permite ejecución manual (Para probar la BETA inmediatamente)
+  workflow_dispatch:
+  # 3. Permite ejecución cuando haya commits al código (para depuración)
+  push:
+    branches:
+      - principal
+
+jobs:
+  generate_and_commit:
+    runs-on: ubuntu-latest
+    
+    # Permisos necesarios para escribir de vuelta al repositorio
+    permissions: 
+      contents: write
+
+    steps:
+      - name: Checkout del Código
+        uses: actions/checkout@v4
+        
+      - name: Configurar Entorno Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+
+      - name: Instalar Dependencias (requirements.txt)
+        run: pip install -r requirements.txt
+        
+      # ⚠️ Ejecuta el Motor de la IA (Usa el Secreto que acabas de guardar)
+      - name: Ejecutar generator.py y Crear JSON
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generator.py
+
+      # ➡️ Confirma el Archivo JSON generado (noticias.json) al repositorio
+      - name: Confirmar y Subir los Archivos Generados
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          # Solo se actualiza el archivo JSON
+          commit_message: 'robot: Actualización Autónoma del Asesor Diario [IA]'
+          files: noticias.json
