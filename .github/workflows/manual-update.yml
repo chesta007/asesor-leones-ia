@@ -2,6 +2,7 @@
 name: Actualización Manual de Localidad (Gemini Robot)
 
 on:
+  # Dispara la ejecución desde el Dashboard de forma manual
   repository_dispatch:
     types: [manual-update-city] 
 
@@ -9,11 +10,12 @@ jobs:
   run_generator_for_city:
     runs-on: ubuntu-latest
     
-    # 🟢 PERMISO CLAVE: Otorga permiso al bot para commitear el nuevo JSON
+    # 🟢 PERMISO CLAVE: Otorga permiso al bot para commitear el nuevo JSON (Corrige Error 403)
     permissions:
       contents: write 
       
     env:
+      # Captura la ID de la localidad enviada desde el Dashboard
       TARGET_LOCALITY_ID: ${{ github.event.client_payload.locality_id }}
 
     steps:
@@ -25,8 +27,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Instalar dependencias (requests y google-genai)
-      run: pip install requests google-genai
+    - name: Instalar dependencias (requests, google-genai y pytz)
+      # 🟢 AGREGAR PYTZ para la corrección de la Zona Horaria de Argentina
+      run: pip install requests google-genai pytz
 
     - name: Ejecutar Robot (Generator.py)
       run: |
@@ -40,6 +43,7 @@ jobs:
         
     - name: Commit de los archivos generados y actualizados
       run: |
+        # Configurar Git con el bot de Actions
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         
