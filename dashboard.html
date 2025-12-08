@@ -146,7 +146,12 @@
                     <h1 id="welcome-message">Dashboard de Gestión</h1>
                     <p id="current-time">Cargando hora...</p>
                 </div>
-                <button id="logout-btn" class="btn btn-google" style="background-color: var(--color-error);">Cerrar Sesión</button>
+                <div style="display:flex; gap:10px;">
+                    <button id="clear-pat-btn" class="btn btn-google" style="background-color: #fca311;" title="Borrar Token de GitHub Guardado">
+                        <i class="fas fa-key"></i> Borrar PAT
+                    </button>
+                    <button id="logout-btn" class="btn btn-google" style="background-color: var(--color-error);">Cerrar Sesión</button>
+                </div>
             </div>
 
             <div class="nav-tabs">
@@ -457,36 +462,35 @@
 
         // --- FUNCIONES DE ACCIÓN (ROBOT) ---
         
-        function generatePublicLink(id) {
-            const baseUrl = window.location.origin + window.location.pathname.replace('dashboard.html', 'index.html');
-            return `${baseUrl}?localidad=${id}`;
-        }
+        // ⚠️ CONSTANTE PARA ALMACENAMIENTO DEL TOKEN
+        const GITHUB_PAT_STORAGE_KEY = 'dashboard_github_pat'; 
 
-        function openPublicPage(id) {
-            const link = generatePublicLink(id);
-            window.open(link, '_blank');
-        }
-
-        function shareLocalidad(id) {
-            const link = generatePublicLink(id);
-            if (navigator.share) {
-                navigator.share({
-                    title: `Página Pública de ${id}`,
-                    url: link,
-                }).catch(error => console.log('Error compartiendo:', error));
-            } else {
-                navigator.clipboard.writeText(link).then(() => {
-                    alert(`Enlace de ${id} copiado al portapapeles: ${link}`);
-                });
+        // 🟢 FUNCIÓN PARA BORRAR EL TOKEN GUARDADO
+        function clearGitHubToken() {
+            if (confirm("¿Estás seguro de que quieres borrar el Token de Acceso Personal (PAT) de GitHub guardado? Deberás ingresarlo de nuevo la próxima vez que ejecutes el Robot.")) {
+                localStorage.removeItem(GITHUB_PAT_STORAGE_KEY);
+                alert("Token de GitHub borrado correctamente.");
             }
         }
+        document.getElementById('clear-pat-btn').addEventListener('click', clearGitHubToken);
 
+
+        // 🟢 FUNCIÓN DE EJECUCIÓN DEL ROBOT MODIFICADA PARA USAR localStorage
         async function executeRobotUpdate(id) {
-            const GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización. Este Token es SECRETO:"); 
+            let GITHUB_TOKEN = localStorage.getItem(GITHUB_PAT_STORAGE_KEY);
             
             if (!GITHUB_TOKEN) {
-                alert("Actualización cancelada. Se requiere el Token de Acceso Personal de GitHub (PAT).");
-                return;
+                // Si no se encuentra en el almacenamiento local, se solicita.
+                GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización. Este Token es SECRETO:"); 
+            
+                if (GITHUB_TOKEN) {
+                    // Almacenar el token para usos futuros
+                    localStorage.setItem(GITHUB_PAT_STORAGE_KEY, GITHUB_TOKEN);
+                    alert("Token de GitHub guardado con éxito. No se te pedirá de nuevo hasta que borres los datos del navegador (o uses el botón 'Borrar PAT').");
+                } else {
+                    alert("Actualización cancelada. Se requiere el Token de Acceso Personal de GitHub (PAT).");
+                    return;
+                }
             }
 
             alert(`Activando el flujo de trabajo de GitHub Actions para ${id}. Esto ejecutará el script Python.`);
@@ -520,6 +524,30 @@
             } catch (error) {
                 console.error("Error al conectar con GitHub:", error);
                 alert(`❌ Error de red al intentar conectar con GitHub. Revisa tu conexión.`);
+            }
+        }
+        
+        function generatePublicLink(id) {
+            const baseUrl = window.location.origin + window.location.pathname.replace('dashboard.html', 'index.html');
+            return `${baseUrl}?localidad=${id}`;
+        }
+
+        function openPublicPage(id) {
+            const link = generatePublicLink(id);
+            window.open(link, '_blank');
+        }
+
+        function shareLocalidad(id) {
+            const link = generatePublicLink(id);
+            if (navigator.share) {
+                navigator.share({
+                    title: `Página Pública de ${id}`,
+                    url: link,
+                }).catch(error => console.log('Error compartiendo:', error));
+            } else {
+                navigator.clipboard.writeText(link).then(() => {
+                    alert(`Enlace de ${id} copiado al portapapeles: ${link}`);
+                });
             }
         }
         
