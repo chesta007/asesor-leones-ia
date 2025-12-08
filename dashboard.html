@@ -12,9 +12,9 @@
     <style>
         /* CSS Base para Estilo GitHub/n8n */
         :root {
-            --color-primary: #10b981; /* Verde Esmeralda */
+            --color-primary: #10b981;
             --color-error: #ef4444; 
-            --color-bg-body: #0d1117; /* Fondo Oscuro GitHub */
+            --color-bg-body: #0d1117; 
             --color-bg-card: #161b22;
             --color-text-main: #c9d1d9;
             --color-border: #30363d;
@@ -30,7 +30,6 @@
         }
         .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Estilos de Botones */
         .btn {
             padding: 10px 20px;
             border: none;
@@ -43,10 +42,8 @@
         .btn-google { background-color: #4285f4; color: white; }
         .btn-classic { background-color: var(--color-primary); color: white; width: 100%; }
 
-        /* Dashboard y Navegación (Estilo GitHub) */
         .header { border-bottom: 2px solid var(--color-border); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         
-        /* Contenedor del Título y Hora */
         .header-left {
             display: flex;
             flex-direction: column;
@@ -62,7 +59,6 @@
         .nav-tab.active { color: white; border-bottom: 2px solid var(--color-primary); }
         .content-card { background-color: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 6px; padding: 20px; margin-bottom: 20px; }
         
-        /* Login Screen */
         #login-screen { text-align: center; max-width: 400px; margin: 100px auto; }
         #login-form input, .form-control {
             width: 100%;
@@ -76,17 +72,14 @@
         }
         .divider { margin: 20px 0; font-size: 0.9em; color: var(--color-text-secondary); }
         
-        /* Contenido Oculto */
         #dashboard-content > div { display: none; }
         #dashboard-content > div.active { display: block; }
         
-        /* Tarjetas de Estadísticas */
         .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .stat-box { padding: 15px; border-left: 5px solid var(--color-primary); background-color: #1a1f26; border-radius: 4px; }
         .stat-box h3 { margin-top: 0; font-size: 1em; color: var(--color-primary); }
         .stat-box p { font-size: 1.8em; font-weight: 900; margin: 5px 0 0; }
 
-        /* Estilos de Tabla de Sponsors */
         .sponsors-table { 
             width: 100%; 
             border-collapse: collapse; 
@@ -103,14 +96,12 @@
         
         #loading { text-align: center; padding: 50px; }
 
-        /* Estilos específicos para el Formulario de Creación */
         .form-group label {
             display: block;
             margin-top: 15px;
             margin-bottom: 5px;
             font-weight: 600;
         }
-        /* Estilos específicos para los botones dentro de la tabla */
         .action-cell {
             display: flex;
             gap: 5px;
@@ -145,7 +136,7 @@
                 <div class="divider">— O —</div>
                 
                 <p>Usa Google para acceso rápido:</p>
-                <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+                <button id="google-login-btn" class="btn btn-google"><i class="fas fa-google"></i> Iniciar Sesión con Google</button>
             </div>
         </div>
 
@@ -287,8 +278,8 @@
             projectId: "proyecto-asesor-publico", 
         };
         // ⚠️ RUTA DE ROLES CRÍTICA (MAYÚSCULAS)
-        const ADMIN_ROLES_PATH = 'ROLES/'; 
-
+        const ADMIN_ROLES_PATH = 'ROLES/'; // CORRECCIÓN CRÍTICA
+ 
         // ⚠️ CONSTANTES DE RUTA ESCALABLE 
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
@@ -366,6 +357,7 @@
 
             const userEmailKey = user.email.toLowerCase().replace(/\./g, ','); 
             
+            // ⚠️ CORRECCIÓN CLAVE: Usa ADMIN_ROLES_PATH = 'ROLES/'
             db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
                 .then(snapshot => {
                     const adminData = snapshot.val();
@@ -436,6 +428,7 @@
         // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
+            // ⚠️ RUTA CORREGIDA: Usa MONETIZACION/ (Mayúsculas)
             const sponsorsRef = db.ref('MONETIZACION/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
@@ -495,7 +488,6 @@
 
         async function executeRobotUpdate(id) {
             // ⚠️ ADVERTENCIA DE SEGURIDAD: ESTA LLAMADA REQUIERE UN TOKEN SECRETO (PAT)
-            // Para entornos públicos, este token DEBE SER MANEJADO POR UN SERVIDOR PROXY.
             
             // 1. Pedir Token al Usuario (Inseguro, solo para pruebas manuales)
             const GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización. Este Token es SECRETO:"); 
@@ -514,13 +506,13 @@
                     method: 'POST',
                     headers: {
                         'Accept': 'application/vnd.github.v3+json',
-                        'Authorization': `token ${GITHUB_TOKEN}`, // ⚠️ MUY INSEGURO EN EL CLIENTE
+                        'Authorization': `token ${GITHUB_TOKEN}`, 
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         event_type: WORKFLOW_EVENT_TYPE,
                         client_payload: {
-                            locality_id: id, // Pasamos la ID de la localidad
+                            locality_id: id, 
                             updated_by: auth.currentUser ? auth.currentUser.email : 'dashboard_user'
                         }
                     })
