@@ -277,10 +277,10 @@
             databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
             projectId: "proyecto-asesor-publico", 
         };
-        // ⚠️ RUTA DE ROLES CRÍTICA (CORRECCIÓN DE MAYÚSCULAS)
+        // ⚠️ RUTA DE ROLES CRÍTICA (MAYÚSCULAS)
         const ADMIN_ROLES_PATH = 'ROLES/'; 
  
-        // ⚠️ CONSTANTES DE RUTA ESCALABLE (CORRECCIÓN DE RUTAS)
+        // ⚠️ CONSTANTES DE RUTA ESCALABLE 
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
         
@@ -353,6 +353,7 @@
 
             const userEmailKey = user.email.toLowerCase().replace(/\./g, ','); 
             
+            // ⚠️ CORRECCIÓN CLAVE: Usa ADMIN_ROLES_PATH = 'ROLES/'
             db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
                 .then(snapshot => {
                     const adminData = snapshot.val();
@@ -407,7 +408,6 @@
              document.getElementById('stat-likes').textContent = '+150';
 
              loadSponsorsTable(); 
-             loadLocalidadesTable(); // Asegura la carga de la tabla
              
              // Lógica de Pestañas
              document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -594,9 +594,8 @@
                 loadDashboardMetrics(selector.value); 
                 
             }).catch(error => {
-                // Si el error es "Permission denied", la regla de Firebase es el problema.
                 console.error("Error cargando localidades:", error);
-                tableBody.innerHTML = `<tr><td colspan="5" style="color: var(--color-error); text-align:center;">Error al conectar con el nodo de ciudades. Asegúrate de que las reglas de Firebase permitan la lectura del nodo PAISES.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="5" style="color: var(--color-error); text-align:center;">Error al conectar con el nodo de ciudades. Asegúrate de que las reglas de Firebase permitan la lectura.</td></tr>`;
             });
         }
 
@@ -627,7 +626,7 @@
 
             try {
                 // 1. Obtener la estructura completa de la localidad 'leones' 
-                const leonesSnapshot = await db.ref(PATH_LEONES).once('value'); // ⚠️ RUTA CORREGIDA
+                const leonesSnapshot = await db.ref(PATH_LEONES).once('value'); 
                 const leonesData = leonesSnapshot.val();
 
                 if (!leonesData) {
