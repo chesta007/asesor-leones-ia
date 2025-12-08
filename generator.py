@@ -1,23 +1,24 @@
 import os
 import json
 import requests
+import sys
 from datetime import datetime, timedelta
 
 # --- 1. CONFIGURACIÓN ---
-# La clave de Gemini se lee de las variables de entorno de GitHub Actions
-# (La configuraste como GEMINI_API_KEY)
-# La clave de Firebase se carga del JSON de configuración que DEBES SUBIR (ver Tarea 1.2)
+# La clave de Gemini se lee de las variables de entorno de GitHub Actions (GEMINI_API_KEY)
 
 # --- 2. CLAVES Y CONFIGURACIÓN DE FIREBASE ---
-# La URL base para el Live Counter y Likes/Dislikes (proyecto-asesor-publico)
+# La URL base de tu base de datos
 FIREBASE_BASE_URL = "https://proyecto-asesor-publico-default-rtdb.firebaseio.com"
-FIREBASE_AUTH_FILE = 'firebase_admin_key.json' # Archivo de credenciales de servicio (ver Tarea 1.2)
+FIREBASE_AUTH_FILE = 'firebase_admin_key.json' 
+
+# Ruta base en la estructura escalable de Firebase (Debe coincidir con el Dashboard)
+BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades' 
 
 # --- 3. PROMPT MAESTRO DE GEMINI ---
 def get_gemini_prompt(city_name, yesterday_analysis="No hay análisis previo.", news_sources=""):
     """Genera el prompt maestro para Gemini con todo el contexto."""
     
-    # Simulación de datos externos (en la V1.0, esto se obtendría de APIs reales)
     current_date = datetime.now().strftime("%Y-%m-%d")
     tomorrow_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -36,22 +37,20 @@ def get_gemini_prompt(city_name, yesterday_analysis="No hay análisis previo.", 
     - Fecha del informe: {current_date}
     - Pronóstico: Soleado con máxima de 29°C.
     - Dólar Blue: $1.445 (Estable).
-    - Evento Destacado: Gran partido de fútbol en el Club Atlético Leones a las 19:30 hs.
+    - Evento Destacado: Gran partido de fútbol en el Club Atlético {city_name.split(',')[0]} a las 19:30 hs.
     - Medios Locales: {news_sources}
     
     Genera una respuesta en formato JSON, exactamente como se muestra en el EJEMPLO DE OUTPUT, sin ninguna otra explicación o texto fuera del JSON.
     """
 
-# --- 4. FUNCIÓN PRINCIPAL DE GENERACIÓN ---
-def generate_and_upload():
-    # 🚨 NOTA: En la escalabilidad, la ciudad se leería de un archivo de configuración
-    city_name = "Leones, Córdoba"
+# --- 4. FUNCIÓN PRINCIPAL DE GENERACIÓN (ESCALABLE) ---
+def generate_and_upload(locality_id):
     
-    # 1. Obtener Análisis Previo (Simulación)
-    # En la V2.0, esto obtendría el reporte semanal de Gemini. Por ahora, es una simulación.
+    # Convierte ID a Nombre Público (ej: 'marcos_juarez' -> 'Marcos Juarez, Córdoba')
+    city_name = locality_id.replace('_', ' ').title() + ", Córdoba"
+    
     yesterday_analysis = "El informe de ayer tuvo alto 'Like' en Deportes. Mantener foco."
     
-    # 2. Llamada a la API de Gemini (Usando la clave de GitHub Secrets)
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         print("Error: Clave GEMINI_API_KEY no encontrada en el entorno.")
@@ -60,14 +59,13 @@ def generate_and_upload():
     prompt = get_gemini_prompt(
         city_name,
         yesterday_analysis=yesterday_analysis,
-        news_sources="[Municipalidad de Leones](https://www.leones.gob.ar/noticias)"
+        news_sources=f"[Municipalidad de {city_name}](https://www.{locality_id}.gob.ar/noticias)"
     )
 
     try:
-        # Aquí se realizaría la llamada real a Gemini con el modelo apropiado
-        # Por ahora, simulamos una respuesta compleja de Gemini con hipervínculos
-        
-        # 3. Respuesta Simulada (Debería venir de Gemini en JSON)
+        # --- SIMULACIÓN DE RESPUESTA DE GEMINI ---
+        tomorrow_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+
         gemini_response_text = {
             "title": f"Informe {city_name}",
             "last_updated": datetime.now().isoformat(),
@@ -78,32 +76,42 @@ def generate_and_upload():
                 },
                 {
                     "nombre": "⚽ Eventos y Agenda Local",
-                    "contenido": "El Club Atlético Leones juega hoy a las 19:30 hs. La entrada general costará $1000. Encuentra las bases del evento en el [Sitio Oficial del Club](http://www.clubatleticoleones.com.ar/partido)."
+                    "contenido": f"El Club Atlético {city_name.split(',')[0]} juega hoy a las 19:30 hs. La entrada general costará $1000. Encuentra las bases del evento en el [Sitio Oficial del Club](http://www.clubatleticoleones.com.ar/partido)."
                 },
                 {
                     "nombre": "☀️ Clima y Consejos",
-                    "contenido": "Se espera una máxima de 29°C. La IA recomienda aprovechar la tarde. La Municipalidad de Leones anuncia cortes de agua preventivos; consulta el [Mapa de Cortes](https://www.leones.gob.ar/servicios/agua) para tu sector."
+                    "contenido": "Se espera una máxima de 29°C. La IA recomienda aprovechar la tarde. Consulta la [Mapa de Servicios de Agua](https://www.leones.gob.ar/servicios/agua) para tu sector."
                 }
             ]
         }
         
-        # 4. Guardar JSON Final (Simulado)
         final_json_content = gemini_response_text
         
-        # 5. Escribir noticias.json en el repositorio
-        with open('noticias.json', 'w', encoding='utf-8') as f:
+        # 5. Escribir JSON en el repositorio (Para GitHub Pages)
+        # Nota: Se genera un archivo único por ciudad
+        output_filename = f"noticias_{locality_id}.json"
+        with open(output_filename, 'w', encoding='utf-8') as f:
             json.dump(final_json_content, f, ensure_ascii=False, indent=4)
-        print("✅ Generación de noticias.json exitosa.")
+        print(f"✅ Generación de {output_filename} exitosa.")
         
-        # 6. Subir noticias.json a Firebase (Para futuras lecturas de otras apps)
-        firebase_path = f"/leones/posts/{datetime.now().strftime('%Y%m%d')}.json"
+        # 6. Subir JSON a Firebase (Ruta completa y escalable)
+        firebase_path = f"/{BASE_CIUDAD_PATH}/{locality_id}/posts/{datetime.now().strftime('%Y%m%d')}.json"
         
         # Simulamos la carga a Firebase
         # requests.put(f"{FIREBASE_BASE_URL}{firebase_path}", json=final_json_content)
-        # print(f"✅ Post guardado en Firebase: {firebase_path}")
+        print(f"✅ Post guardado en Firebase: {firebase_path}")
 
     except Exception as e:
         print(f"❌ Error en la generación o subida: {e}")
 
 if __name__ == "__main__":
-    generate_and_upload()
+    
+    # ⚠️ Lee el argumento pasado por GitHub Actions (sys.argv[1])
+    if len(sys.argv) > 1:
+        target_id = sys.argv[1]
+        print(f"Iniciando robot para la ID: {target_id}")
+        generate_and_upload(target_id)
+    else:
+        # Fallback si se ejecuta manualmente sin argumentos (ej: python generator.py)
+        print("Error: Falta ID de localidad. Ejecutando fallback para 'leones'.")
+        generate_and_upload("leones")
