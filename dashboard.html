@@ -94,9 +94,9 @@
         .status-al-dia { color: var(--color-primary); font-weight: 700; }
         .status-pendiente { color: var(--color-error); font-weight: 700; }
         
-        /* 🟢 NUEVOS ESTILOS DE ESTADO DE CONTENIDO */
-        .status-loading { color: #fca311; font-weight: 700; } /* Naranja */
-        .status-error { color: var(--color-error); font-weight: 700; } /* Rojo */
+        /* Estilos de Estado de Contenido */
+        .status-loading { color: #fca311; font-weight: 700; } 
+        .status-error { color: var(--color-error); font-weight: 700; } 
         
         #loading { text-align: center; padding: 50px; }
 
@@ -187,8 +187,7 @@
                         <h2 id="metricas-titulo">Métricas de la Plataforma Seleccionada</h2> 
                         <div class="stat-grid">
                             <div class="stat-box"><h3>Vistas de Hoy</h3><p id="stat-views">...</p></div>
-                            <div class="stat-box"><h3>Likes Netos (Semana)</h3><p id="stat-likes">...</p></div>
-                            <div class="stat-box"><h3>Sugerencias Pendientes</h3><p id="stat-sugs">...</p></div>
+                            <div class="stat-box"><h3>Likes Netos (Hoy)</h3><p id="stat-likes">...</p></div> <div class="stat-box"><h3>Sugerencias Pendientes</h3><p id="stat-sugs">...</p></div>
                             <button class="btn btn-classic" style="width: 100%; margin-top: 25px;" onclick="loadDashboardMetrics(document.getElementById('localidad-selector').value)">
                                 <i class="fas fa-sync-alt"></i> Actualizar Métricas
                             </button>
@@ -212,11 +211,13 @@
                                     <th>ID de Firebase</th>
                                     <th>País/Provincia</th>
                                     <th>Fecha de Creación</th>
-                                    <th>Estado del Contenido</th> <th>Acciones</th>
+                                    <th>Estado del Contenido</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="localidades-table-body">
-                                <tr><td colspan="6" style="text-align:center;">Cargando localidades...</td></tr> </tbody>
+                                <tr><td colspan="6" style="text-align:center;">Cargando localidades...</td></tr>
+                            </tbody>
                         </table>
                     </div>
                     
@@ -386,10 +387,9 @@
                 });
         }
         
-        // --- 6. CARGAR MÉTRICAS Y SPONSORS (RUTAS CORREGIDAS Y DINÁMICAS) ---
+        // --- 6. CARGAR MÉTRICAS Y SPONSORS (Métricas Dinámicas) ---
         function loadDashboardMetrics(idLocalidad = 'leones') { 
              const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-             
              const metricasPath = BASE_CIUDAD_PATH + idLocalidad;
              
              // Cargar el título
@@ -404,14 +404,36 @@
                  document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
              });
 
-             // 6.2. Sugerencias Pendientes 
-             db.ref(metricasPath + '/sugerencias/').once('value').then(snapshot => {
-                 const count = snapshot.numChildren();
-                 document.getElementById('stat-sugs').textContent = count;
+             // 🟢 6.2. Sugerencias Pendientes (Cálculo de Feedback)
+             db.ref(metricasPath + '/feedback/').once('value').then(snapshot => {
+                 const todayFeedback = snapshot.val() && snapshot.val()[today] ? Object.keys(snapshot.val()[today]).length : 0;
+                 document.getElementById('stat-sugs').textContent = todayFeedback;
              });
 
-             // 6.3. Likes Netos (Simulación)
-             document.getElementById('stat-likes').textContent = '+150';
+             // 🟢 6.3. Likes Netos (Calculando desde votos por categoría del día)
+             const votesPath = metricasPath + '/votes/' + today;
+             db.ref(votesPath).once('value').then(snapshot => {
+                 let netLikes = 0;
+                 const votesByCat = snapshot.val(); // Votes is an object: { categoryId: { timestamp: { type: 'like' } } }
+                 
+                 if (votesByCat) {
+                     Object.values(votesByCat).forEach(categoryVotes => {
+                         // Sumar votos dentro de cada categoría
+                         Object.values(categoryVotes).forEach(vote => {
+                             if (vote.type === 'like') {
+                                 netLikes++;
+                             } else if (vote.type === 'dislike') {
+                                 netLikes--;
+                             }
+                         });
+                     });
+                 }
+                 
+                 // Formatear el resultado
+                 const likesText = netLikes > 0 ? `+${netLikes.toLocaleString()}` : netLikes.toLocaleString();
+                 document.getElementById('stat-likes').textContent = likesText;
+             });
+
 
              loadSponsorsTable(); 
              
@@ -457,7 +479,7 @@
                 });
             }).catch(error => {
                 console.error("Error cargando sponsors:", error);
-                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></td>';
+                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></tr>';
             });
         }
 
