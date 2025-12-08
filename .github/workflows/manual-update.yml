@@ -25,9 +25,8 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Instalar dependencias
-      run: pip install requests
-      # Nota: Si activas la llamada real a Gemini, necesitarás también 'pip install google-genai'
+    - name: Instalar dependencias (requests y google-genai)
+      run: pip install requests google-genai
 
     - name: Ejecutar Robot (Generator.py)
       run: |
