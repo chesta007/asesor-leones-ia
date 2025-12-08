@@ -232,6 +232,10 @@
         };
         const ADMIN_ROLES_PATH = 'roles/'; 
 
+        // ⚠️ CONSTANTES DE RUTA ESCALABLE (NUEVAS)
+        const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
+        const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
+
         // Inicialización de Firebase
         firebase.initializeApp(FIREBASE_CONFIG);
         const auth = firebase.auth();
@@ -293,6 +297,8 @@
             db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
                 .then(snapshot => {
                     const adminData = snapshot.val();
+                    
+                    // Si el rol es encontrado, continúa. 
                     if (adminData && adminData.rol) {
                         currentUserRole = adminData.rol;
                         
@@ -317,17 +323,17 @@
                 });
         }
         
-        // --- 6. CARGAR MÉTRICAS Y SPONSORS ---
+        // --- 6. CARGAR MÉTRICAS Y SPONSORS (RUTAS CORREGIDAS) ---
         function loadDashboardMetrics() {
              const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
              
-             // 6.1. Vistas de Hoy
-             db.ref('leones/views/' + today + '/total').on('value', snap => {
+             // 6.1. Vistas de Hoy ⬅️ RUTA CORREGIDA
+             db.ref(PATH_LEONES + '/views/' + today + '/total').on('value', snap => {
                  document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
              });
 
-             // 6.2. Sugerencias Pendientes
-             db.ref('leones/sugerencias/').once('value').then(snapshot => {
+             // 6.2. Sugerencias Pendientes ⬅️ RUTA CORREGIDA
+             db.ref(PATH_LEONES + '/sugerencias/').once('value').then(snapshot => {
                  const count = snapshot.numChildren();
                  document.getElementById('stat-sugs').textContent = count;
              });
@@ -353,7 +359,7 @@
         // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
-            // Nota: La ruta coincide con la estructura que acabas de importar en Firebase
+            // Nota: La ruta de monetización debe estar fuera de la jerarquía de PAISES/
             const sponsorsRef = db.ref('monetizacion/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
@@ -385,7 +391,7 @@
         }
 
         // ------------------------------------------------------------------
-        // 💥 8. LÓGICA DE CREACIÓN Y DUPLICACIÓN DE LOCALIDAD (NUEVA FUNCIÓN)
+        // 💥 8. LÓGICA DE CREACIÓN Y DUPLICACIÓN DE LOCALIDAD (RUTAS CORREGIDAS)
         // ------------------------------------------------------------------
         document.getElementById('form-crear-localidad').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -400,32 +406,35 @@
                 return;
             }
 
-            if (!confirm(`¿Estás seguro de crear la nueva localidad '${nombrePublico}' (ID: ${id}) duplicando la estructura de la plataforma 'leones'?`)) {
+            if (!confirm(`¿Estás seguro de crear la nueva localidad '${nombrePublico}' (ID: ${id}) duplicando la estructura de 'leones'?`)) {
                 return;
             }
 
             try {
-                // 1. Obtener la estructura completa de la localidad 'leones'
-                const leonesSnapshot = await db.ref('leones').once('value');
+                // 1. Obtener la estructura completa de la localidad 'leones' ⬅️ RUTA CORREGIDA
+                const leonesSnapshot = await db.ref(PATH_LEONES).once('value');
                 const leonesData = leonesSnapshot.val();
 
                 if (!leonesData) {
-                    alert("Error: No se pudo encontrar la estructura base de 'leones' para duplicar.");
+                    alert(`Error: No se pudo encontrar la estructura base de 'leones' para duplicar en la ruta ${PATH_LEONES}. Debe existir la ruta: ${PATH_LEONES}`);
                     return;
                 }
 
-                // 2. Comprobar si la nueva ruta ya existe
-                const newLocalidadCheck = await db.ref(id).once('value');
+                // 2. Definir la ruta de destino (Usando la nueva estructura base)
+                const newLocalidadPath = BASE_CIUDAD_PATH + id;
+
+                // 3. Comprobar si la nueva ruta ya existe ⬅️ RUTA CORREGIDA
+                const newLocalidadCheck = await db.ref(newLocalidadPath).once('value');
                 if (newLocalidadCheck.exists()) {
-                    alert(`Error: La ruta de la base de datos /${id} ya existe. Por favor, elige un ID único.`);
+                    alert(`Error: La ruta de la base de datos /${newLocalidadPath} ya existe. Por favor, elige un ID único.`);
                     return;
                 }
 
-                // 3. Escribir la estructura de 'leones' en la nueva ruta (copia)
-                await db.ref(id).set(leonesData);
+                // 4. Escribir la estructura de 'leones' en la nueva ruta (copia) ⬅️ RUTA CORREGIDA
+                await db.ref(newLocalidadPath).set(leonesData);
 
-                // 4. Actualizar los metadatos de la nueva estructura creada
-                await db.ref(id + '/metadata').set({
+                // 5. Actualizar los metadatos de la nueva estructura creada ⬅️ RUTA CORREGIDA
+                await db.ref(newLocalidadPath + '/metadata').set({
                     id: id,
                     nombre_publico: nombrePublico,
                     pais: pais,
@@ -433,8 +442,8 @@
                     fecha_creacion: new Date().toISOString()
                 });
                 
-                alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada. La estructura de base de datos se duplicó de 'leones' a la ruta /${id}.`);
-                document.getElementById('form-crear-localidad').reset(); // Limpiar formulario
+                alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada. Estructura duplicada en la ruta /${newLocalidadPath}.`);
+                document.getElementById('form-crear-localidad').reset(); 
 
             } catch (error) {
                 console.error("Error crítico al duplicar la estructura de la BD:", error);
