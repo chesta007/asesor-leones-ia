@@ -1,0 +1,39 @@
+name: Tarea Diaria de IA (Generación de Contenido)
+
+on:
+  # Ejecuta el flujo de trabajo a las 07:00 AM (UTC) todos los días
+  # 07:00 UTC es una hora de la madrugada en Argentina (ejemplo: 04:00 AM ART, dependiendo de DST)
+  schedule:
+    - cron: '0 7 * * *'
+  
+  # También permite ejecutarlo manualmente desde GitHub (útil para pruebas)
+  workflow_dispatch:
+
+jobs:
+  generate_content:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' 
+      
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar Robot de Generación de IA
+        # Aquí inyectamos tu clave secreta de Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python generator.py
+      
+      - name: Commit y Push del archivo noticias.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "robot: Actualización Autónoma del Asesor Diario [IA]"
+          # Solo hacemos commit del archivo de noticias que la IA generó
+          files: noticias.json
