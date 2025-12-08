@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Asesor Público Digital V2.0</title>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        /* CSS Base para Estilo GitHub/n8n */
+        :root {
+            --color-primary: #10b981; /* Verde Esmeralda */
+            --color-bg-body: #0d1117; /* Fondo Oscuro GitHub */
+            --color-bg-card: #161b22;
+            --color-text-main: #c9d1d9;
+            --color-border: #30363d;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg-body);
+            color: var(--color-text-main);
+            padding: 20px;
+            margin: 0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* Estilos de Botones */
+        .btn-google {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Dashboard y Navegación (Estilo GitHub) */
+        .header { border-bottom: 2px solid var(--color-border); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-tabs { display: flex; border-bottom: 1px solid var(--color-border); margin-bottom: 20px; }
+        .nav-tab { padding: 10px 15px; cursor: pointer; color: var(--color-text-secondary); transition: color 0.2s, border-bottom 0.2s; }
+        .nav-tab.active { color: white; border-bottom: 2px solid var(--color-primary); }
+        .content-card { background-color: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 6px; padding: 20px; margin-bottom: 20px; }
+        
+        /* Contenido Oculto */
+        #dashboard-content > div { display: none; }
+        #dashboard-content > div.active { display: block; }
+
+        /* Tarjetas de Estadísticas */
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .stat-box { padding: 15px; border-left: 5px solid var(--color-primary); background-color: #1a1f26; border-radius: 4px; }
+        .stat-box h3 { margin-top: 0; font-size: 1em; color: var(--color-primary); }
+        .stat-box p { font-size: 1.8em; font-weight: 900; margin: 5px 0 0; }
+        
+        /* Logística */
+        #loading { text-align: center; padding: 50px; }
+        #login-screen { text-align: center; padding: 100px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="loading">Cargando Dashboard...</div>
+        <div id="login-screen" style="display:none;">
+            <h2>Acceso de Gestión</h2>
+            <p>Inicia sesión con tu cuenta de Google para acceder a las métricas de la V2.0.</p>
+            <button id="google-login-btn" class="btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+        </div>
+
+        <div id="main-dashboard" style="display:none;">
+            <div class="header">
+                <h1 id="welcome-message">Dashboard de Gestión</h1>
+                <button id="logout-btn" class="btn-google" style="background-color: var(--color-error);">Cerrar Sesión</button>
+            </div>
+
+            <div class="nav-tabs">
+                <div class="nav-tab active" data-tab="stats"><i class="fas fa-chart-line"></i> Estadísticas</div>
+                <div class="nav-tab" data-tab="localidades"><i class="fas fa-globe-americas"></i> Localidades</div>
+                <div class="nav-tab admin-only" data-tab="creacion" style="display:none;"><i class="fas fa-plus-circle"></i> Crear Localidad</div>
+            </div>
+
+            <div id="dashboard-content">
+                
+                <div id="stats" class="active">
+                    <div class="content-card">
+                        <h2>Métricas de Leones, Cba.</h2>
+                        <div class="stat-grid">
+                            <div class="stat-box"><h3>Vistas de Hoy</h3><p id="stat-views">...</p></div>
+                            <div class="stat-box"><h3>Likes Netos (Semana)</h3><p id="stat-likes">...</p></div>
+                            <div class="stat-box"><h3>Sugerencias Pendientes</h3><p id="stat-sugs">...</p></div>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2>Reporte Semanal de la IA</h2>
+                        <div id="ia-reporte">
+                            <p>El reporte de análisis de Gemini (Votos y Sugerencias) se cargará aquí cada lunes a las 9 AM.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="localidades">
+                    <div class="content-card">
+                        <h2>Gestión de Sponsors y Contratos (Leones)</h2>
+                        <p>Aquí se cargará la tabla de los 3 sponsors, estado de pago y fechas de vencimiento.</p>
+                    </div>
+                </div>
+
+                <div id="creacion">
+                    <div class="content-card">
+                        <h2>Panel de Escalabilidad Global</h2>
+                        <p>Solo visible para el rol **ADMIN** (Pablo, Ema y Román).</p>
+                        <p>Aquí se añadirán los campos para seleccionar País/Provincia/Ciudad y el botón para **Duplicar la Plataforma**.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONSTANTES DE CONFIGURACIÓN (TUS CLAVES) ---
+        const FIREBASE_CONFIG = { 
+            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", // <-- Tu clave
+            authDomain: "proyecto-asesor-publico.firebaseapp.com",
+            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
+            projectId: "proyecto-asesor-publico", 
+        };
+        const ADMIN_ROLES_PATH = 'roles/'; 
+
+        // Inicialización de Firebase (Necesitamos Authentication)
+        firebase.initializeApp(FIREBASE_CONFIG);
+        const auth = firebase.auth();
+        const db = firebase.database();
+
+        let currentUserRole = 'VISUALIZADOR'; 
+
+        // --- LÓGICA DE AUTENTICACIÓN (LOGIN/LOGOUT) ---
+        
+        // 1. Iniciar Login con Google
+        document.getElementById('google-login-btn').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .catch(error => alert(`Error de Login: ${error.message}`));
+        });
+
+        // 2. Cerrar Sesión
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut().then(() => console.log("Sesión cerrada."));
+        });
+        
+        // 3. Listener de Estado de Autenticación
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // Usuario autenticado
+                handleSuccessfulLogin(user);
+            } else {
+                // Usuario deslogueado
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('main-dashboard').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'block';
+            }
+        });
+
+        // --- 4. GESTIÓN DE ROLES Y BIENVENIDA (AQUÍ USAMOS LAS COMAS) ---
+        function handleSuccessfulLogin(user) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+
+            // CLAVE CRÍTICA: Reemplazar el punto por coma para que coincida con la BD
+            const userEmailKey = user.email.toLowerCase().replace(/\./g, ','); 
+            
+            db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
+                .then(snapshot => {
+                    const adminData = snapshot.val();
+                    if (adminData && adminData.rol) {
+                        // Usuario es un administrador/editor/visualizador
+                        currentUserRole = adminData.rol;
+                        
+                        document.getElementById('welcome-message').textContent = `Hola, ${adminData.nombre} (${currentUserRole})`;
+                        
+                        // Mostrar pestaña de Creación si es ADMIN
+                        if (currentUserRole === 'ADMIN') {
+                            document.querySelector('.admin-only').style.display = 'block';
+                        }
+                        
+                        // Cargar Contenido y Métricas
+                        loadDashboardMetrics(); 
+                        
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('main-dashboard').style.display = 'block';
+                    } else {
+                        // Acceso denegado (El Gmail no está en la tabla de roles)
+                        alert("Acceso denegado. Tu cuenta de Google no está registrada como administrador del Dashboard.");
+                        auth.signOut();
+                    }
+                });
+        }
+        
+        // --- 5. CARGAR MÉTRICAS (Simulación V2.0) ---
+        function loadDashboardMetrics() {
+             // 🚨 NOTA: Las rutas son las mismas que usamos en index.html
+             
+             // Simulación de Vistas
+             db.ref('leones/views/20251208/total').on('value', snap => {
+                 document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
+             });
+
+             // Simulación de Likes Netos (Idealmente se calcularía)
+             document.getElementById('stat-likes').textContent = '+150';
+             
+             // Simulación de Sugerencias Pendientes
+             document.getElementById('stat-sugs').textContent = '4';
+             
+             // Lógica de Pestañas
+             document.querySelectorAll('.nav-tab').forEach(tab => {
+                 tab.addEventListener('click', function() {
+                     document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                     this.classList.add('active');
+                     
+                     document.querySelectorAll('#dashboard-content > div').forEach(c => c.classList.remove('active'));
+                     document.getElementById(this.dataset.tab).classList.add('active');
+                 });
+             });
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</body>
+</html>
