@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Asesor Público Digital | Noticias</title>
     
-    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js)"></script>
-    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js)"></script>
-    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js)"></script>
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* Estilos básicos */
@@ -27,7 +28,7 @@
         .engagement-bar .dislike { background-color: #ef4444; color: white; }
         #view-counter { font-size: 1.2em; font-weight: bold; }
         
-        /* 🟢 Estilos de Modo Oscuro */
+        /* Estilos de Modo Oscuro */
         .dark-mode { background-color: #1c1c1c; color: #f4f4f9; }
         .dark-mode .container { background: #2c2c2c; box-shadow: none; }
         .dark-mode h1, .dark-mode h2 { color: #10b981; }
@@ -58,15 +59,15 @@
         // --- Configuración (PÚBLICA) ---
         const FIREBASE_CONFIG = { 
             apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", 
-            databaseURL: "[https://proyecto-asesor-publico-default-rtdb.firebaseio.com](https://proyecto-asesor-publico-default-rtdb.firebaseio.com)", 
+            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
         };
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
 
+        // Inicialización de Firebase con la versión estable
         firebase.initializeApp(FIREBASE_CONFIG);
         const db = firebase.database();
 
         let currentLocalityId = 'leones'; 
-        let userVoteKey = null; 
         let userVoteState = null; // Para control de voto
 
         // 1. OBTENER ID DE LOCALIDAD DE LA URL
@@ -101,7 +102,7 @@
                 return;
             }
 
-            userVoteKey = new Date().getTime(); 
+            const userVoteKey = new Date().getTime(); 
             const votePath = `${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${userVoteKey}`;
             
             db.ref(votePath).set({
@@ -134,6 +135,12 @@
             try {
                 // Leer el JSON generado por el robot (con timestamp para evitar caché)
                 const response = await fetch(`noticias_${currentLocalityId}.json?t=${new Date().getTime()}`);
+                
+                if (!response.ok) {
+                     // Si no se encuentra el archivo, el robot no se ha ejecutado correctamente.
+                    throw new Error("El informe no se ha generado o el archivo JSON no existe (404).");
+                }
+                
                 const data = await response.json();
 
                 if (!data || !data.categorias) {
@@ -160,7 +167,7 @@
                 
             } catch (error) {
                 console.error("Error al cargar el informe:", error);
-                reportContentDiv.innerHTML = `<p style="color:red;">No se pudo cargar el informe para **${currentLocalityId.toUpperCase()}**. Asegúrate de que el robot haya sido ejecutado y el archivo noticias_${currentLocalityId}.json exista.</p>`;
+                reportContentDiv.innerHTML = `<p style="color:red;">❌ Error al cargar el informe para **${currentLocalityId.toUpperCase()}**. Causa: ${error.message || 'Error de conexión o JSON mal formado'}.<br> Ejecuta el robot desde el Dashboard.</p>`;
             }
         }
 
