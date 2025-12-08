@@ -8,6 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
     <style>
         /* CSS Base para Estilo GitHub/n8n */
         :root {
@@ -92,6 +93,10 @@
         }
         .status-al-dia { color: var(--color-primary); font-weight: 700; }
         .status-pendiente { color: var(--color-error); font-weight: 700; }
+        
+        /* 🟢 NUEVOS ESTILOS DE ESTADO DE CONTENIDO */
+        .status-loading { color: #fca311; font-weight: 700; } /* Naranja */
+        .status-error { color: var(--color-error); font-weight: 700; } /* Rojo */
         
         #loading { text-align: center; padding: 50px; }
 
@@ -207,12 +212,11 @@
                                     <th>ID de Firebase</th>
                                     <th>País/Provincia</th>
                                     <th>Fecha de Creación</th>
-                                    <th>Acciones</th>
+                                    <th>Estado del Contenido</th> <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="localidades-table-body">
-                                <tr><td colspan="5" style="text-align:center;">Cargando localidades...</td></tr>
-                            </tbody>
+                                <tr><td colspan="6" style="text-align:center;">Cargando localidades...</td></tr> </tbody>
                         </table>
                     </div>
                     
@@ -453,9 +457,43 @@
                 });
             }).catch(error => {
                 console.error("Error cargando sponsors:", error);
-                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></td>';
             });
         }
+
+        // 🟢 Función para obtener y mostrar el estado del contenido
+        async function updateContentStatus(id) {
+            const statusCell = document.getElementById(`status-${id}`);
+            // Añade timestamp para evitar que el navegador use caché para el JSON
+            const jsonUrl = `noticias_${id}.json?t=${new Date().getTime()}`; 
+
+            try {
+                const response = await fetch(jsonUrl);
+
+                if (!response.ok) {
+                    // Si 404, 500, etc., significa que el robot no ha subido el JSON correctamente.
+                    statusCell.className = 'status-error';
+                    statusCell.innerHTML = '⚠️ ERROR o No Generado (404)';
+                    return;
+                }
+
+                const data = await response.json();
+                const lastUpdated = new Date(data.last_updated).toLocaleString('es-AR', {
+                    year: 'numeric', month: 'short', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+
+                statusCell.className = 'status-al-dia';
+                statusCell.innerHTML = `✅ Actualizado: ${lastUpdated}`;
+                
+            } catch (error) {
+                // Falla de red o JSON mal formado (e.g., Gemini no devolvió JSON válido)
+                statusCell.className = 'status-error';
+                statusCell.innerHTML = `❌ Error de Red/JSON`;
+                console.error(`Error al cargar estado de ${id}:`, error);
+            }
+        }
+
 
         // --- FUNCIONES DE ACCIÓN (ROBOT) ---
         
@@ -558,7 +596,7 @@
             const ciudadesRef = db.ref(BASE_CIUDAD_PATH); 
             const selector = document.getElementById('localidad-selector');
 
-            tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Cargando localidades...</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Cargando localidades...</td></tr>';
             selector.innerHTML = '';
 
             ciudadesRef.once('value').then(snapshot => {
@@ -567,7 +605,7 @@
                 let isFirst = true;
 
                 if (!ciudades) {
-                    tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No hay localidades registradas.</td></tr>';
+                    tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay localidades registradas.</td></tr>';
                     return;
                 }
 
@@ -575,15 +613,18 @@
                     const ciudad = ciudades[id].metadata;
                     
                     if (ciudad) {
-                        // 1. Llenar la Tabla
                         const fecha = ciudad.fecha_creacion ? new Date(ciudad.fecha_creacion).toLocaleDateString() : 'N/A';
+                        
+                        // 1. Crear la fila con el estado inicial 'Buscando...'
                         const row = tableBody.insertRow();
+                        row.id = `row-${id}`; 
+                        
                         row.innerHTML = `
                             <td>${ciudad.nombre_publico}</td>
                             <td>${id}</td>
                             <td>${ciudad.pais} / ${ciudad.provincia}</td>
                             <td>${fecha}</td>
-                            <td class="action-cell">
+                            <td id="status-${id}" class="status-loading">Buscando...</td> <td class="action-cell">
                                 <button class="btn btn-google" onclick="openPublicPage('${id}')">
                                     <i class="fas fa-external-link-alt"></i> Abrir Página
                                 </button>
@@ -599,7 +640,10 @@
                             </td>
                         `;
                         
-                        // 2. Llenar el Selector de Estadísticas
+                        // 2. Ejecutar la función de estado asíncrona (Añadido)
+                        updateContentStatus(id);
+
+                        // 3. Llenar el Selector de Estadísticas
                         const option = document.createElement('option');
                         option.value = id;
                         option.textContent = ciudad.nombre_publico;
@@ -612,14 +656,14 @@
                     }
                 });
 
-                // 3. Disparar la carga de métricas para la primera localidad
+                // 4. Disparar la carga de métricas para la primera localidad
                 selector.removeEventListener('change', loadMetricsHandler); 
                 selector.addEventListener('change', loadMetricsHandler);
                 loadDashboardMetrics(selector.value); 
                 
             }).catch(error => {
                 console.error("Error cargando localidades:", error);
-                tableBody.innerHTML = `<tr><td colspan="5" style="color: var(--color-error); text-align:center;">Error al conectar con el nodo de ciudades. Asegúrate de que las reglas de Firebase permitan la lectura.</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="6" style="color: var(--color-error); text-align:center;">Error al conectar con el nodo de ciudades. Asegúrate de que las reglas de Firebase permitan la lectura.</td></tr>`;
             });
         }
 
