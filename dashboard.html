@@ -145,7 +145,7 @@
                 <div class="divider">— O —</div>
                 
                 <p>Usa Google para acceso rápido:</p>
-                <button id="google-login-btn" class="btn btn-google"><i class="fas fa-google"></i> Iniciar Sesión con Google</button>
+                <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
             </div>
         </div>
 
@@ -498,14 +498,14 @@
             // Para entornos públicos, este token DEBE SER MANEJADO POR UN SERVIDOR PROXY.
             
             // 1. Pedir Token al Usuario (Inseguro, solo para pruebas manuales)
-            const GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización:"); 
+            const GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización. Este Token es SECRETO:"); 
             
             if (!GITHUB_TOKEN) {
                 alert("Actualización cancelada. Se requiere el Token de Acceso Personal de GitHub (PAT).");
                 return;
             }
 
-            alert(`Activando el flujo de trabajo de GitHub Actions para ${id}...`);
+            alert(`Activando el flujo de trabajo de GitHub Actions para ${id}. Esto ejecutará el script Python.`);
             
             const dispatchUrl = `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/dispatches`;
 
