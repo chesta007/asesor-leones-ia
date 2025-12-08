@@ -301,7 +301,6 @@
                         // Mostrar pestaña de Creación si es ADMIN
                         if (currentUserRole === 'ADMIN') {
                             document.querySelector('.admin-only').style.display = 'block';
-                            // ⚠️ NOTA: Ya no hay restricción de contenido dentro del div#creacion.
                         } else {
                             document.querySelector('.admin-only').style.display = 'none';
                         }
@@ -385,8 +384,10 @@
             });
         }
 
-        // --- 8. LÓGICA DE CREACIÓN DE LOCALIDAD (NUEVA FUNCIÓN) ---
-        document.getElementById('form-crear-localidad').addEventListener('submit', (e) => {
+        // ------------------------------------------------------------------
+        // 💥 8. LÓGICA DE CREACIÓN Y DUPLICACIÓN DE LOCALIDAD (NUEVA FUNCIÓN)
+        // ------------------------------------------------------------------
+        document.getElementById('form-crear-localidad').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const id = document.getElementById('localidad-id').value.toLowerCase().replace(/ /g, '_');
@@ -399,17 +400,46 @@
                 return;
             }
 
-            if (!confirm(`¿Estás seguro de crear la nueva localidad '${nombrePublico}' (ID: ${id}) duplicando la estructura de la plataforma actual?`)) {
+            if (!confirm(`¿Estás seguro de crear la nueva localidad '${nombrePublico}' (ID: ${id}) duplicando la estructura de la plataforma 'leones'?`)) {
                 return;
             }
 
-            // Aquí se implementaría la lógica de duplicación de la base de datos (Firebase RTDB Copy)
-            // Por ahora, solo mostraremos una confirmación de éxito.
-            console.log(`Iniciando duplicación para ID: ${id}`);
-            alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada y la duplicación de la estructura de la base de datos se ha iniciado. (Lógica de copia pendiente de implementar)`);
+            try {
+                // 1. Obtener la estructura completa de la localidad 'leones'
+                const leonesSnapshot = await db.ref('leones').once('value');
+                const leonesData = leonesSnapshot.val();
 
-            // Limpiar formulario tras la acción (o recargar la página)
-            e.target.reset();
+                if (!leonesData) {
+                    alert("Error: No se pudo encontrar la estructura base de 'leones' para duplicar.");
+                    return;
+                }
+
+                // 2. Comprobar si la nueva ruta ya existe
+                const newLocalidadCheck = await db.ref(id).once('value');
+                if (newLocalidadCheck.exists()) {
+                    alert(`Error: La ruta de la base de datos /${id} ya existe. Por favor, elige un ID único.`);
+                    return;
+                }
+
+                // 3. Escribir la estructura de 'leones' en la nueva ruta (copia)
+                await db.ref(id).set(leonesData);
+
+                // 4. Actualizar los metadatos de la nueva estructura creada
+                await db.ref(id + '/metadata').set({
+                    id: id,
+                    nombre_publico: nombrePublico,
+                    pais: pais,
+                    provincia: provincia,
+                    fecha_creacion: new Date().toISOString()
+                });
+                
+                alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada. La estructura de base de datos se duplicó de 'leones' a la ruta /${id}.`);
+                document.getElementById('form-crear-localidad').reset(); // Limpiar formulario
+
+            } catch (error) {
+                console.error("Error crítico al duplicar la estructura de la BD:", error);
+                alert("Error crítico al duplicar la estructura. Revisa la consola para más detalles.");
+            }
         });
     </script>
     
