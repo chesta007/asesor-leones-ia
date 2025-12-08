@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Asesor Público Digital V2.0</title>
     
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js)"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js)"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js)"></script>
 
     <style>
         /* CSS Base para Estilo GitHub/n8n */
@@ -279,19 +279,17 @@
         const FIREBASE_CONFIG = { 
             apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", 
             authDomain: "proyecto-asesor-publico.firebaseapp.com",
-            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
+            databaseURL: "[https://proyecto-asesor-publico-default-rtdb.firebaseio.com](https://proyecto-asesor-publico-default-rtdb.firebaseio.com)", 
             projectId: "proyecto-asesor-publico", 
         };
-        // ⚠️ RUTA DE ROLES CRÍTICA (CORREGIDA: Mayúsculas)
+        // ⚠️ RUTAS CRÍTICAS (Corregidas a MAYÚSCULAS)
         const ADMIN_ROLES_PATH = 'ROLES/'; 
-
-        // ⚠️ CONSTANTES DE RUTA ESCALABLE (CORREGIDA: Ruta completa)
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
         
         // ⚠️ CONFIGURACIÓN DE GITHUB ACTIONS
-        const GITHUB_REPO_OWNER = 'chesta007'; // ⬅️ REEMPLAZAR con tu usuario de GitHub
-        const GITHUB_REPO_NAME = 'asesor-leones-ia'; // ⬅️ REEMPLAZAR con tu repo
+        const GITHUB_REPO_OWNER = 'chesta007'; 
+        const GITHUB_REPO_NAME = 'asesor-leones-ia'; 
         const WORKFLOW_EVENT_TYPE = 'manual-update-city'; 
 
 
@@ -373,7 +371,7 @@
                             document.querySelector('.admin-only').style.display = 'none';
                         }
                         
-                        // 🟢 CORRECCIÓN CLAVE: LLAMAR A LA CARGA DE TABLA DE LOCALIDADES
+                        // 🟢 LLAMA A LA CARGA DE TABLA Y MÉTRICAS
                         loadLocalidadesTable(); 
                         
                         document.getElementById('loading').style.display = 'none';
@@ -695,8 +693,3 @@
             }
         });
     </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-</body>
-</html>
