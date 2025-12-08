@@ -21,12 +21,30 @@
         .category p { white-space: pre-wrap; }
         #metadata { font-size: 0.9em; color: #888; margin-bottom: 20px; }
         
-        /* Botones y Contador */
+        /* Botones y Contador Global (solo Vistas) */
         .engagement-bar { margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .engagement-bar button { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; font-weight: bold; }
-        .engagement-bar .like { background-color: #10b981; color: white; }
-        .engagement-bar .dislike { background-color: #ef4444; color: white; }
         #view-counter { font-size: 1.2em; font-weight: bold; }
+
+        /* 🟢 NUEVOS ESTILOS PARA VOTOS POR CATEGORÍA */
+        .category-engagement-bar { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-top: 10px; 
+            padding-top: 5px; 
+            border-top: 1px dashed #eee;
+            font-size: 0.9em;
+        }
+        .category-engagement-bar button { 
+            padding: 5px 10px; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin-left: 5px; 
+            font-weight: bold; 
+        }
+        .category-engagement-bar .like { background-color: #10b981; color: white; }
+        .category-engagement-bar .dislike { background-color: #ef4444; color: white; }
         
         /* Estilos de Modo Oscuro */
         .dark-mode { background-color: #1c1c1c; color: #f4f4f9; }
@@ -48,8 +66,6 @@
         <div class="engagement-bar">
             <div id="view-counter"><i class="fas fa-eye"></i> Vistas: 0</div>
             <div>
-                <button class="like" onclick="sendVote('like')">👍 Me Gusta</button>
-                <button class="dislike" onclick="sendVote('dislike')">👎 No Me Gusta</button>
                 <button onclick="toggleDarkMode()"><i class="fas fa-moon"></i> Modo Oscuro</button>
             </div>
         </div>
@@ -68,7 +84,10 @@
         const db = firebase.database();
 
         let currentLocalityId = 'leones'; 
-        let userVoteState = null; // Para control de voto
+        const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        
+        // Estado de voto por categoría guardado en sessionStorage
+        let userVoteState = {}; 
 
         // 1. OBTENER ID DE LOCALIDAD DE LA URL
         function getLocalityIdFromUrl() {
@@ -78,7 +97,6 @@
         
         // 2. REGISTRO DE VISITAS Y LECTURA DE CONTADOR
         function registerView() {
-            const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
             const viewPath = `${BASE_CIUDAD_PATH}${currentLocalityId}/views/${today}/total`;
             
             // 2.1. Lee el contador (para mostrarlo)
@@ -95,23 +113,26 @@
             }
         }
         
-        // 3. ENVIAR VOTO (LIKE/DISLIKE)
-        function sendVote(type) {
-            if (userVoteState) {
-                alert(`Ya has votado (${userVoteState}) en esta sesión.`);
+        // 🟢 3. NUEVA FUNCIÓN: ENVÍO DE VOTO POR CATEGORÍA
+        function sendCategoryVote(categoryId, type) {
+            // Control de voto único por sesión y categoría
+            if (sessionStorage.getItem(`vote_${categoryId}_${today}`)) {
+                alert(`Ya has votado (${sessionStorage.getItem('vote_' + categoryId + '_' + today)}) en esta categoría hoy.`);
                 return;
             }
 
             const userVoteKey = new Date().getTime(); 
-            const votePath = `${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${userVoteKey}`;
+            // 🟢 NUEVA RUTA: Agrega la fecha y el ID de la categoría
+            const votePath = `${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${today}/${categoryId}/${userVoteKey}`;
             
             db.ref(votePath).set({
                 type: type,
                 timestamp: firebase.database.ServerValue.TIMESTAMP
             })
             .then(() => {
-                alert(`✅ Voto de ${type} registrado con éxito.`);
-                userVoteState = type;
+                alert(`✅ Voto de ${type} registrado con éxito para la categoría "${categoryId}".`);
+                sessionStorage.setItem(`vote_${categoryId}_${today}`, type); // Guarda el voto en la sesión
+                loadCategoryVotes(categoryId); // Actualiza el contador
             })
             .catch(error => {
                 console.error("Error al registrar voto:", error);
@@ -119,13 +140,40 @@
             });
         }
         
-        // 4. MODO OSCURO
+        // 🟢 4. NUEVA FUNCIÓN: CARGAR CONTEO DE VOTOS POR CATEGORÍA
+        function loadCategoryVotes(categoryId) {
+            // Ruta para escuchar los cambios en los votos de la categoría de hoy
+            const votesRef = db.ref(`${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${today}/${categoryId}`);
+            
+            votesRef.on('value', snapshot => {
+                const votes = snapshot.val();
+                let likeCount = 0;
+                let dislikeCount = 0;
+                
+                if (votes) {
+                    Object.values(votes).forEach(vote => {
+                        if (vote.type === 'like') {
+                            likeCount++;
+                        } else if (vote.type === 'dislike') {
+                            dislikeCount++;
+                        }
+                    });
+                }
+                
+                const element = document.getElementById(`vote-count-${categoryId}`);
+                if(element) {
+                   element.innerHTML = `<i class="fas fa-thumbs-up"></i> ${likeCount} | <i class="fas fa-thumbs-down"></i> ${dislikeCount}`;
+                }
+            });
+        }
+        
+        // 5. MODO OSCURO
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
 
 
-        // 5. CARGA DE DATOS PRINCIPAL
+        // 6. CARGA DE DATOS PRINCIPAL (MODIFICADA)
         async function loadReport() {
             getLocalityIdFromUrl();
             document.getElementById('page-title').textContent = `Asesor Público | ${currentLocalityId.replace('_', ' ').toUpperCase()}`;
@@ -133,11 +181,10 @@
             const reportContentDiv = document.getElementById('report-content');
 
             try {
-                // Leer el JSON generado por el robot (con timestamp para evitar caché)
+                // Leer el JSON generado por el robot
                 const response = await fetch(`noticias_${currentLocalityId}.json?t=${new Date().getTime()}`);
                 
                 if (!response.ok) {
-                     // Si no se encuentra el archivo, el robot no se ha ejecutado correctamente.
                     throw new Error("El informe no se ha generado o el archivo JSON no existe (404).");
                 }
                 
@@ -147,27 +194,45 @@
                     throw new Error("Estructura de informe inválida o vacía.");
                 }
 
-                // 5.1 Renderizar Título y Metadata
+                // 6.1 Renderizar Título y Metadata
                 document.getElementById('main-title').textContent = data.title;
                 document.getElementById('metadata').textContent = `Actualizado: ${new Date(data.last_updated).toLocaleString()}`;
 
-                // 5.2 Renderizar Categorías
+                // 6.2 Renderizar Categorías (con botones de voto)
                 let html = '';
+                let categoriesToLoadVotes = []; 
+                
                 data.categorias.forEach(cat => {
+                    // Genera un ID limpio para usar en Firebase y HTML
+                    const categoryId = cat.nombre.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase(); 
+                    categoriesToLoadVotes.push(categoryId); 
+                    
                     html += `
                         <div class="category">
                             <h2>${cat.nombre}</h2>
                             <p>${cat.contenido}</p>
+                            <div class="category-engagement-bar">
+                                <div id="vote-count-${categoryId}">
+                                    <i class="fas fa-thumbs-up"></i> 0 | <i class="fas fa-thumbs-down"></i> 0
+                                </div>
+                                <div>
+                                    <button class="like" onclick="sendCategoryVote('${categoryId}', 'like')">👍 Me Gusta</button>
+                                    <button class="dislike" onclick="sendCategoryVote('${categoryId}', 'dislike')">👎 No Me Gusta</button>
+                                </div>
+                            </div>
                         </div>
                     `;
                 });
                 reportContentDiv.innerHTML = html;
                 
-                registerView(); // Llama a registrar y monitorear vistas
+                registerView(); // Llama a registrar y monitorear vistas (sin cambios)
+                
+                // 6.3 Cargar los contadores de votos para cada categoría
+                categoriesToLoadVotes.forEach(loadCategoryVotes);
                 
             } catch (error) {
                 console.error("Error al cargar el informe:", error);
-                reportContentDiv.innerHTML = `<p style="color:red;">❌ Error al cargar el informe para **${currentLocalityId.toUpperCase()}**. Causa: ${error.message || 'Error de conexión o JSON mal formado'}.<br> Ejecuta el robot desde el Dashboard.</p>`;
+                reportContentDiv.innerHTML = `<p style="color:red;">❌ Error al cargar el informe para **${currentLocalityId.toUpperCase()}**. Causa: ${error.message || 'Error de conexión o JSON mal formado'}.<br> Ejecuta el robot desde el Dashboard y verifica la consola (F12).</p>`;
             }
         }
 
