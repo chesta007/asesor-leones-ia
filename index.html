@@ -3,449 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asesor Público Digital - Leones V1.0</title>
+    <title id="page-title">Asesor Público Digital | Noticias</title>
     
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#10b981">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js)"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js)"></script>
+    <script src="[https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js](https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js)"></script>
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
 
     <style>
-        /* CSS RESET & VARIABLES */
-        :root {
-            --color-primary: #10b981; /* Verde Esmeralda (Acento) */
-            --color-error: #ef4444; 
-            --font-family: 'Inter', sans-serif;
-            --radius-default: 12px;
-            
-            /* Modo Claro (Default) */
-            --color-bg-body: #f3f4f6;
-            --color-bg-card: #ffffff;
-            --color-text-main: #111827;
-            --color-text-secondary: #4b5563;
-            --color-border: #e5e7eb;
-        }
+        /* Estilos básicos */
+        body { font-family: sans-serif; background-color: #f4f4f9; color: #333; line-height: 1.6; padding: 20px; transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: background 0.3s; }
+        h1 { color: #10b981; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 20px; color: #333; }
+        .category { margin-bottom: 30px; border: 1px solid #ddd; padding: 15px; border-radius: 6px; }
+        .category p { white-space: pre-wrap; }
+        #metadata { font-size: 0.9em; color: #888; margin-bottom: 20px; }
         
-        /* 1. MODO OSCURO (DARK MODE) */
-        .dark-mode {
-            --color-bg-body: #111827;
-            --color-bg-card: #1f2937;
-            --color-text-main: #f9fafb;
-            --color-text-secondary: #9ca3af;
-            --color-border: #374151;
-        }
-
-        /* ESTILOS BASE */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: var(--font-family);
-            background-color: var(--color-bg-body);
-            color: var(--color-text-main);
-            padding: 16px;
-            transition: background-color 0.3s, color 0.3s;
-            line-height: 1.6;
-        }
-        .container { max-width: 600px; margin: 0 auto; position: relative; }
+        /* Botones y Contador */
+        .engagement-bar { margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .engagement-bar button { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; font-weight: bold; }
+        .engagement-bar .like { background-color: #10b981; color: white; }
+        .engagement-bar .dislike { background-color: #ef4444; color: white; }
+        #view-counter { font-size: 1.2em; font-weight: bold; }
         
-        /* Estilo Glassmorphism Suave */
-        .card {
-            background-color: var(--color-bg-card);
-            border-radius: var(--radius-default);
-            padding: 20px;
-            margin-bottom: 16px;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .dark-mode .card {
-            background-color: rgba(31, 41, 55, 0.9); /* Ligeramente más opaco para Glass */
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-
-        /* HEADER & TOGGLE */
-        header { text-align: center; padding: 10px 0 20px 0; }
-        h1 { font-size: 1.8rem; color: var(--color-primary); font-weight: 900; }
-        #toggle-button {
-            position: absolute;
-            top: 10px;
-            right: 0;
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        /* FEATURE ITEMS */
-        .feature-item i { margin-right: 10px; color: var(--color-primary); }
-        
-        /* 4. LIKE/DISLIKE BUTTONS (Estilo Compacto) */
-        .feedback-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
-        .feedback-buttons button {
-            background-color: var(--color-bg-card);
-            color: var(--color-text-secondary);
-            border: 1px solid var(--color-border);
-            padding: 6px 10px;
-            border-radius: var(--radius-default);
-            cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
-            font-size: 0.9rem;
-        }
-        .feedback-buttons button.liked { color: var(--color-primary); border-color: var(--color-primary); }
-        .feedback-buttons button.disliked { color: var(--color-error); border-color: var(--color-error); }
-
-        /* 5. CONTADOR */
-        #live-counter { font-size: 2.5rem; font-weight: 900; color: var(--color-primary); margin-bottom: 10px; }
-        
-        /* 6. BOTÓN DE NOTIFICACIÓN (Posición estratégica al final) */
-        #notification-section { text-align: center; margin: 20px 0; }
-        #notification-button {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            border-radius: var(--radius-default);
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s, background-color 0.2s;
-        }
-        
-        /* 9. PWA: ESTRUCTURA DE DESPLIEGUE RÁPIDO (Acordeón) */
-        .content-preview { 
-            cursor: pointer; 
-            padding-bottom: 5px;
-            transition: opacity 0.3s;
-        }
-        .full-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
-            padding-top: 10px;
-        }
-        .card.active .full-content {
-            max-height: 1000px; /* Suficiente altura para desplegar */
-        }
-        .expand-btn {
-            color: var(--color-primary); 
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
-        /* CHART.JS STYLING */
-        #economic-chart {
-            background-color: var(--color-bg-body);
-            padding: 10px;
-            border-radius: var(--radius-default);
-            margin-top: 15px;
-        }
-        
-        /* 8. FOOTER */
-        footer { text-align: center; padding: 20px 0; font-size: 0.8rem; color: var(--color-text-secondary); }
-
+        /* 🟢 Estilos de Modo Oscuro */
+        .dark-mode { background-color: #1c1c1c; color: #f4f4f9; }
+        .dark-mode .container { background: #2c2c2c; box-shadow: none; }
+        .dark-mode h1, .dark-mode h2 { color: #10b981; }
+        .dark-mode .category { border-color: #444; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <h1 id="main-title">Cargando Informe Local...</h1>
+        <p id="metadata">Fecha: -- | Actualizado: --</p>
         
-        <i id="toggle-button" class="fas fa-moon"></i>
-
-        <header>
-            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Lunes 8 de diciembre de 2025</p>
-            <h1>ASESOR PÚBLICO DIGITAL</h1>
-        </header>
-
-        <div class="card" style="text-align: center;">
-            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Hoy lo leyeron</p>
-            <div id="live-counter">--</div>
-            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">personas en Leones.</p>
+        <div id="report-content">
+            <p>Conectando con la base de datos de Gemini...</p>
         </div>
 
-        <main id="daily-post-container">
-            
-            <div class="card" style="padding: 15px; background-color: rgba(16, 185, 129, 0.1);">
-                <p class="feature-item" style="margin: 0;"><i class="fas fa-trash-alt"></i> **Recolección de Residuos Hoy**</p>
-                <p style="margin-left: 30px; font-size: 0.9rem;">
-                    **Domiciliarios:** Martes y Viernes | **Reciclables:** Jueves.
-                </p>
+        <div class="engagement-bar">
+            <div id="view-counter"><i class="fas fa-eye"></i> Vistas: 0</div>
+            <div>
+                <button class="like" onclick="sendVote('like')">👍 Me Gusta</button>
+                <button class="dislike" onclick="sendVote('dislike')">👎 No Me Gusta</button>
+                <button onclick="toggleDarkMode()"><i class="fas fa-moon"></i> Modo Oscuro</button>
             </div>
-
-            <div class="card">
-                <h2 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 10px;">
-                    <i class="fas fa-clinic-medical"></i> Farmacia de Turno 24 hs.
-                </h2>
-                <p>
-                    **Nombre:** Farmacia Central | **Teléfono:** 3472-555123
-                </p>
-            </div>
-
-            <section class="card news-section" data-section="eventos">
-                <div class="content-preview">
-                    <h2 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 5px;">
-                        <i class="fas fa-calendar-alt"></i> Eventos y Agenda Local
-                    </h2>
-                    <p style="font-size: 0.9rem; color: var(--color-text-secondary);">
-                        Hoy, la Casa de la Cultura presenta un ciclo de cine gratuito a las 20:00 hs...
-                    </p>
-                    <span class="expand-btn">Ver Post Completo <i class="fas fa-chevron-down"></i></span>
-                </div>
-                <div class="full-content">
-                    <p>
-                        **Contenido Completo:** Hoy, la Casa de la Cultura presenta un ciclo de cine gratuito a las 20:00 hs. Se recomienda llegar con 15 minutos de anticipación. Hay rumores de una feria artesanal en Plaza 25 de Mayo.
-                    </p>
-                    <div class="feedback-buttons">
-                        <button class="like-btn" onclick="registerVote('eventos', 1)"><i class="fas fa-thumbs-up"></i> Me gusta</button>
-                        <button class="dislike-btn" onclick="registerVote('eventos', -1)"><i class="fas fa-thumbs-down"></i> No me sirve</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="card news-section" data-section="clima">
-                <div class="content-preview">
-                    <h2 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 5px;">
-                        <i class="fas fa-sun"></i> Clima y Consejos (29°C Soleado)
-                    </h2>
-                    <p style="font-size: 0.9rem; color: var(--color-text-secondary);">
-                        Día de verano pleno en Leones. La IA recomienda: ¡Hidratación extrema!...
-                    </p>
-                    <span class="expand-btn">Ver Post Completo <i class="fas fa-chevron-down"></i></span>
-                </div>
-                <div class="full-content">
-                    <p>
-                        **Contenido Completo:** Día de verano pleno en Leones. La IA recomienda: ¡Hidratación extrema! Evitar el sol directo entre 12 PM y 4 PM. Es un buen día para ir a la pileta.
-                    </p>
-                    <div class="feedback-buttons">
-                        <button class="like-btn" onclick="registerVote('clima', 1)"><i class="fas fa-thumbs-up"></i> Me gusta</button>
-                        <button class="dislike-btn" onclick="registerVote('clima', -1)"><i class="fas fa-thumbs-down"></i> No me sirve</button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="card news-section" data-section="economia">
-                <div class="content-preview">
-                    <h2 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 5px;">
-                        <i class="fas fa-chart-line"></i> Análisis Económico y Dólar
-                    </h2>
-                    <p style="font-size: 0.9rem; color: var(--color-text-secondary);">
-                        **Dólar Blue:** $1.445. Tendencia estable. Hoy es un buen día para renegociar...
-                    </p>
-                    <span class="expand-btn">Ver Post Completo <i class="fas fa-chevron-down"></i></span>
-                </div>
-                <div class="full-content">
-                    <p>
-                        **Contenido Completo:** El Dólar Blue se mantiene en $1.445. La IA no detecta cambios bruscos de precios en comercios mayoristas.
-                    </p>
-                    <div id="economic-chart-container" style="max-height: 250px;">
-                        <canvas id="economic-chart"></canvas>
-                    </div>
-                    <div class="feedback-buttons">
-                        <button class="like-btn" onclick="registerVote('economia', 1)"><i class="fas fa-thumbs-up"></i> Me gusta</button>
-                        <button class="dislike-btn" onclick="registerVote('economia', -1)"><i class="fas fa-thumbs-down"></i> No me sirve</button>
-                    </div>
-                </div>
-            </section>
-            
-            <div id="notification-section">
-                <button id="notification-button">
-                    <i class="fas fa-bell"></i> Activar Notificación Diaria 7 AM
-                </button>
-            </div>
-
-            <div class="card">
-                <h2 style="font-size: 1.2rem; color: var(--color-primary); margin-bottom: 10px;">
-                    <i class="fas fa-feather-alt"></i> ¿Qué te gustaría que agreguemos mañana?
-                </h2>
-                <textarea id="feedback-text" rows="3" style="width: 100%; padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-default); background-color: var(--color-bg-card); color: var(--color-text-main); margin-bottom: 10px; resize: vertical;"></textarea>
-                <button id="send-feedback" style="width: 100%; padding: 10px; background-color: var(--color-text-secondary); color: white; border: none; border-radius: var(--radius-default); font-weight: 700; cursor: pointer;">
-                    Enviar Sugerencia
-                </button>
-                <p id="feedback-status" style="text-align: center; margin-top: 10px; font-size: 0.9rem;"></p>
-            </div>
-            
-        </main>
-        
-        <footer>
-            <p>Versión V1.0 • Publicado diariamente a las 07:00 hs • Leones 2025</p>
-        </footer>
-
+        </div>
     </div>
 
     <script>
-        // --- CONSTANTES DE CONFIGURACIÓN V1.0 ---
+        // --- Configuración (PÚBLICA) ---
         const FIREBASE_CONFIG = { 
-            // CONFIGURACIÓN REAL DEL PROYECTO ASESOR PÚBLICO
-            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", // <-- Clave insertada
-            authDomain: "proyecto-asesor-publico.firebaseapp.com",
-            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
-            projectId: "proyecto-asesor-publico", // <-- ID del proyecto
+            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", 
+            databaseURL: "[https://proyecto-asesor-publico-default-rtdb.firebaseio.com](https://proyecto-asesor-publico-default-rtdb.firebaseio.com)", 
         };
-        const VAPID_PUBLIC_KEY = 'TU_CLAVE_PÚBLICA_VAPID_DE_FIREBASE'; 
-        
-        // --- RUTAS DE DATOS (Single Source of Truth: Firebase) ---
-        const TODAY_PATH = 'leones/views/' + new Date().toISOString().slice(0, 10).replace(/-/g, ''); 
-        const LIKES_PATH = 'leones/feedback/';
-        const SUGGESTIONS_PATH = 'leones/sugerencias/';
+        const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
 
-        // --- INICIALIZACIÓN REAL DE FIREBASE ---
         firebase.initializeApp(FIREBASE_CONFIG);
-        const db = firebase.database(); 
+        const db = firebase.database();
+
+        let currentLocalityId = 'leones'; 
+        let userVoteKey = null; 
+        let userVoteState = null; // Para control de voto
+
+        // 1. OBTENER ID DE LOCALIDAD DE LA URL
+        function getLocalityIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            currentLocalityId = params.get('localidad') || 'leones';
+        }
         
-        // --- 1. MODO OSCURO & AUTODETECTAR ---
-        const body = document.body;
-        const toggleButton = document.getElementById('toggle-button');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
-
-        function setDarkMode(isDark) {
-            isDark ? body.classList.add('dark-mode') : body.classList.remove('dark-mode');
-            toggleButton.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-        }
-
-        const storedMode = localStorage.getItem('darkMode');
-        if (storedMode === 'enabled' || (storedMode === null && prefersDark.matches)) {
-            setDarkMode(true);
-        } else if (storedMode === null) {
-            setDarkMode(false);
-        }
-
-        toggleButton.addEventListener('click', () => setDarkMode(!body.classList.contains('dark-mode')));
-        prefersDark.addEventListener('change', (e) => { 
-            if (localStorage.getItem('darkMode') === null) { setDarkMode(e.matches); } 
-        });
-
-        // --- 9. PWA: DESPLIEGUE RÁPIDO (Acordeón) ---
-        document.querySelectorAll('.content-preview').forEach(preview => {
-            preview.addEventListener('click', function() {
-                const card = this.closest('.card');
-                card.classList.toggle('active');
-                
-                const icon = this.querySelector('.fas.fa-chevron-down, .fas.fa-chevron-up');
-                if(icon) {
-                    if(card.classList.contains('active')) {
-                        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-                    } else {
-                        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-                    }
-                }
-            });
-        });
-
-        // --- 3. GRÁFICOS (Chart.js) ---
-        function createEconomicChart() {
-            const ctx = document.getElementById('economic-chart').getContext('2d');
-            const colorPrimary = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
-            const colorBorder = getComputedStyle(document.documentElement).getPropertyValue('--color-border').trim();
-            
-            const data = {
-                labels: ['Nov 1', 'Nov 15', 'Dic 1', 'Hoy'],
-                datasets: [{
-                    label: 'Tendencia Dólar Blue (Leones)',
-                    data: [1350, 1400, 1430, 1445],
-                    borderColor: colorPrimary,
-                    backgroundColor: colorPrimary + '33',
-                    fill: true,
-                    tension: 0.4
-                }]
-            };
-            new Chart(ctx, {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { grid: { display: false } },
-                        y: { ticks: { callback: (val) => '$' + val }, grid: { color: colorBorder } }
-                    }
-                }
-            });
-        }
-        document.addEventListener('DOMContentLoaded', createEconomicChart);
-
-
-        // --- 5. LIVE COUNTER (Firebase) ---
+        // 2. REGISTRO DE VISITAS Y LECTURA DE CONTADOR
         function registerView() {
-            const dateKey = 'viewed_' + TODAY_PATH;
-            if (!localStorage.getItem(dateKey)) {
-                const counterRef = db.ref(TODAY_PATH + '/total');
-                counterRef.transaction(currentCount => {
-                    return (currentCount || 0) + 1;
+            const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+            const viewPath = `${BASE_CIUDAD_PATH}${currentLocalityId}/views/${today}/total`;
+            
+            // 2.1. Lee el contador (para mostrarlo)
+            db.ref(viewPath).on('value', snap => {
+                document.getElementById('view-counter').innerHTML = `<i class="fas fa-eye"></i> Vistas: ${snap.val() ? snap.val().toLocaleString() : 0}`;
+            });
+
+            // 2.2. Registra la visita (solo si es la primera vez en esta sesión)
+            if (!sessionStorage.getItem('viewRegistered')) {
+                db.ref(viewPath).transaction((currentTotal) => {
+                    return (currentTotal || 0) + 1;
                 });
-                localStorage.setItem(dateKey, 'true');
+                sessionStorage.setItem('viewRegistered', 'true');
             }
         }
         
-        function startLiveCounter() {
-             db.ref(TODAY_PATH + '/total').on('value', (snapshot) => {
-                 const count = snapshot.val();
-                 document.getElementById('live-counter').textContent = count ? count.toLocaleString() : '0';
-             });
-        }
-
-        // --- 4. LIKES/DISLIKES (Firebase) ---
-        function registerVote(sectionId, voteValue) {
-            const userId = localStorage.getItem('userId') || Math.random().toString(36).substring(2, 9);
-            localStorage.setItem('userId', userId);
-            
-            const voteData = {
-                vote: voteValue,
-                timestamp: firebase.database.ServerValue.TIMESTAMP,
-                section: sectionId,
-                userId: userId
-            };
-            
-            db.ref(LIKES_PATH + sectionId).push(voteData)
-                .then(() => {
-                    alert(`Voto (${voteValue}) registrado para ${sectionId}.`);
-                })
-                .catch(error => {
-                    console.error("Error al registrar voto:", error);
-                });
-        }
-        
-        // --- 7. FORMULARIO SUGERENCIAS (Firebase) ---
-        document.getElementById('send-feedback').addEventListener('click', async () => {
-            const text = document.getElementById('feedback-text').value;
-            const status = document.getElementById('feedback-status');
-            
-            if (text.trim() === '') {
-                status.style.color = 'var(--color-error)';
-                status.textContent = 'Escribe tu sugerencia antes de enviar.';
+        // 3. ENVIAR VOTO (LIKE/DISLIKE)
+        function sendVote(type) {
+            if (userVoteState) {
+                alert(`Ya has votado (${userVoteState}) en esta sesión.`);
                 return;
             }
 
-            const feedbackData = {
-                sugerencia: text,
-                timestamp: firebase.database.ServerValue.TIMESTAMP,
-                user_agent: navigator.userAgent
-            };
+            userVoteKey = new Date().getTime(); 
+            const votePath = `${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${userVoteKey}`;
             
-            status.style.color = 'var(--color-primary)';
-            status.textContent = 'Enviando sugerencia...';
+            db.ref(votePath).set({
+                type: type,
+                timestamp: firebase.database.ServerValue.TIMESTAMP
+            })
+            .then(() => {
+                alert(`✅ Voto de ${type} registrado con éxito.`);
+                userVoteState = type;
+            })
+            .catch(error => {
+                console.error("Error al registrar voto:", error);
+                alert(`❌ Error al registrar voto. Verifica las reglas de Firebase.`);
+            });
+        }
+        
+        // 4. MODO OSCURO
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
 
-            db.ref(SUGGESTIONS_PATH).push(feedbackData)
-                .then(() => {
-                    document.getElementById('feedback-text').value = '';
-                    status.style.color = 'var(--color-primary)';
-                    status.textContent = '✅ Sugerencia enviada con éxito. ¡Gracias!';
-                })
-                .catch(error => {
-                    console.error("Error al enviar sugerencia:", error);
-                    status.style.color = 'var(--color-error)';
-                    status.textContent = '❌ Error al enviar. Intenta más tarde.';
+
+        // 5. CARGA DE DATOS PRINCIPAL
+        async function loadReport() {
+            getLocalityIdFromUrl();
+            document.getElementById('page-title').textContent = `Asesor Público | ${currentLocalityId.replace('_', ' ').toUpperCase()}`;
+            
+            const reportContentDiv = document.getElementById('report-content');
+
+            try {
+                // Leer el JSON generado por el robot (con timestamp para evitar caché)
+                const response = await fetch(`noticias_${currentLocalityId}.json?t=${new Date().getTime()}`);
+                const data = await response.json();
+
+                if (!data || !data.categorias) {
+                    throw new Error("Estructura de informe inválida o vacía.");
+                }
+
+                // 5.1 Renderizar Título y Metadata
+                document.getElementById('main-title').textContent = data.title;
+                document.getElementById('metadata').textContent = `Actualizado: ${new Date(data.last_updated).toLocaleString()}`;
+
+                // 5.2 Renderizar Categorías
+                let html = '';
+                data.categorias.forEach(cat => {
+                    html += `
+                        <div class="category">
+                            <h2>${cat.nombre}</h2>
+                            <p>${cat.contenido}</p>
+                        </div>
+                    `;
                 });
-        });
+                reportContentDiv.innerHTML = html;
+                
+                registerView(); // Llama a registrar y monitorear vistas
+                
+            } catch (error) {
+                console.error("Error al cargar el informe:", error);
+                reportContentDiv.innerHTML = `<p style="color:red;">No se pudo cargar el informe para **${currentLocalityId.toUpperCase()}**. Asegúrate de que el robot haya sido ejecutado y el archivo noticias_${currentLocalityId}.json exista.</p>`;
+            }
+        }
 
-        // --- INICIO DE LA APLICACIÓN ---
-        document.addEventListener('DOMContentLoaded', () => {
-             registerView();
-             startLiveCounter();
-        });
+        // Inicia la aplicación al cargar
+        window.onload = loadReport;
     </script>
 </body>
 </html>
