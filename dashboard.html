@@ -127,7 +127,7 @@
                 <div class="divider">— O —</div>
                 
                 <p>Usa Google para acceso rápido:</p>
-                <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+                <button id="google-login-btn" class="btn btn-google"><i class="fas fa-google"></i> Iniciar Sesión con Google</button>
             </div>
         </div>
 
@@ -165,6 +165,23 @@
 
                 <div id="localidades">
                     <div class="content-card">
+                        <h2>Localidades (Plataformas) Activas</h2>
+                        <table class="sponsors-table" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Público</th>
+                                    <th>ID de Firebase</th>
+                                    <th>País/Provincia</th>
+                                    <th>Fecha de Creación</th>
+                                </tr>
+                            </thead>
+                            <tbody id="localidades-table-body">
+                                <tr><td colspan="4" style="text-align:center;">Cargando localidades...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="content-card">
                         <h2>Gestión de Sponsors y Contratos (Leones)</h2>
                         <table class="sponsors-table">
                             <thead>
@@ -180,7 +197,6 @@
                         </table>
                     </div>
                 </div>
-
                 <div id="creacion">
                     <div class="content-card">
                         <h2>Creación de Nueva Localidad y Escalabilidad</h2>
@@ -230,10 +246,10 @@
             databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
             projectId: "proyecto-asesor-publico", 
         };
-        // ⚠️ CRÍTICO: CORRECCIÓN DE MAYÚSCULAS/MINÚSCULAS
+        // ⚠️ CRÍTICO: RUTA DE ROLES CORREGIDA (MAYÚSCULAS)
         const ADMIN_ROLES_PATH = 'ROLES/'; 
 
-        // ⚠️ CRÍTICO: CONSTANTES DE RUTA ESCALABLE (REINTRODUCIDAS)
+        // ⚠️ CONSTANTES DE RUTA ESCALABLE 
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
 
@@ -345,6 +361,9 @@
              // 6.4. Carga de Tabla de Sponsors
              loadSponsorsTable();
              
+             // 6.5. Carga de la nueva tabla de Localidades
+             loadLocalidadesTable();
+
              // Lógica de Pestañas
              document.querySelectorAll('.nav-tab').forEach(tab => {
                  tab.addEventListener('click', function() {
@@ -360,7 +379,7 @@
         // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
-            // Nota: La ruta coincide con la estructura de MONETIZACION que importaste
+            // Nota: La ruta de monetización debe estar fuera de la jerarquía de PAISES/
             const sponsorsRef = db.ref('MONETIZACION/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
@@ -388,6 +407,45 @@
             }).catch(error => {
                 console.error("Error cargando sponsors:", error);
                 tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></tr>';
+            });
+        }
+        
+        // --- 9. CARGA DE TABLA DE LOCALIDADES (NUEVA FUNCIÓN) ---
+        function loadLocalidadesTable() {
+            const tableBody = document.getElementById('localidades-table-body');
+            // Ruta que apunta a TODAS las ciudades de Córdoba
+            const ciudadesRef = db.ref(BASE_CIUDAD_PATH); 
+
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando localidades...</td></tr>';
+
+            ciudadesRef.once('value').then(snapshot => {
+                tableBody.innerHTML = ''; // Limpiar mensaje de carga
+                const ciudades = snapshot.val();
+                
+                if (!ciudades) {
+                    tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay localidades registradas.</td></tr>';
+                    return;
+                }
+
+                Object.keys(ciudades).forEach(id => {
+                    const ciudad = ciudades[id].metadata;
+                    
+                    if (ciudad) {
+                        // Formatear la fecha
+                        const fecha = ciudad.fecha_creacion ? new Date(ciudad.fecha_creacion).toLocaleDateString() : 'N/A';
+                        
+                        const row = tableBody.insertRow();
+                        row.innerHTML = `
+                            <td>${ciudad.nombre_publico}</td>
+                            <td>${id}</td>
+                            <td>${ciudad.pais} / ${ciudad.provincia}</td>
+                            <td>${fecha}</td>
+                        `;
+                    }
+                });
+            }).catch(error => {
+                console.error("Error cargando localidades:", error);
+                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con el nodo de ciudades.</td></tr>';
             });
         }
 
@@ -445,6 +503,9 @@
                 
                 alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada. Estructura duplicada en la ruta /${newLocalidadPath}.`);
                 document.getElementById('form-crear-localidad').reset(); 
+
+                // Actualizar la tabla de listado
+                loadLocalidadesTable();
 
             } catch (error) {
                 console.error("Error crítico al duplicar la estructura de la BD:", error);
