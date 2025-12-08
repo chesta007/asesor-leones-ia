@@ -13,6 +13,7 @@
         /* CSS Base para Estilo GitHub/n8n */
         :root {
             --color-primary: #10b981; /* Verde Esmeralda */
+            --color-error: #ef4444; 
             --color-bg-body: #0d1117; /* Fondo Oscuro GitHub */
             --color-bg-card: #161b22;
             --color-text-main: #c9d1d9;
@@ -30,15 +31,16 @@
         .container { max-width: 1200px; margin: 0 auto; }
 
         /* Estilos de Botones */
-        .btn-google {
-            background-color: #4285f4;
-            color: white;
+        .btn {
             padding: 10px 20px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 700;
+            margin-top: 10px;
         }
+        .btn-google { background-color: #4285f4; color: white; }
+        .btn-classic { background-color: var(--color-primary); color: white; width: 100%; }
 
         /* Dashboard y Navegación (Estilo GitHub) */
         .header { border-bottom: 2px solid var(--color-border); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
@@ -47,19 +49,30 @@
         .nav-tab.active { color: white; border-bottom: 2px solid var(--color-primary); }
         .content-card { background-color: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: 6px; padding: 20px; margin-bottom: 20px; }
         
+        /* Login Screen */
+        #login-screen { text-align: center; max-width: 400px; margin: 100px auto; }
+        #login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-bg-card);
+            color: var(--color-text-main);
+        }
+        .divider { margin: 20px 0; font-size: 0.9em; color: var(--color-text-secondary); }
+        
         /* Contenido Oculto */
         #dashboard-content > div { display: none; }
         #dashboard-content > div.active { display: block; }
-
+        
         /* Tarjetas de Estadísticas */
         .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .stat-box { padding: 15px; border-left: 5px solid var(--color-primary); background-color: #1a1f26; border-radius: 4px; }
         .stat-box h3 { margin-top: 0; font-size: 1em; color: var(--color-primary); }
         .stat-box p { font-size: 1.8em; font-weight: 900; margin: 5px 0 0; }
         
-        /* Logística */
         #loading { text-align: center; padding: 50px; }
-        #login-screen { text-align: center; padding: 100px; }
     </style>
 </head>
 <body>
@@ -67,16 +80,29 @@
     <div class="container">
         
         <div id="loading">Cargando Dashboard...</div>
+        
         <div id="login-screen" style="display:none;">
-            <h2>Acceso de Gestión</h2>
-            <p>Inicia sesión con tu cuenta de Google para acceder a las métricas de la V2.0.</p>
-            <button id="google-login-btn" class="btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+            <div class="content-card">
+                <h2>Acceso de Gestión</h2>
+                
+                <form id="login-form">
+                    <input type="email" id="email" placeholder="Correo Electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit" class="btn btn-classic">Iniciar Sesión</button>
+                    <p id="login-error" style="color: var(--color-error); margin-top: 10px;"></p>
+                </form>
+
+                <div class="divider">— O —</div>
+                
+                <p>Usa Google para acceso rápido:</p>
+                <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+            </div>
         </div>
 
         <div id="main-dashboard" style="display:none;">
             <div class="header">
                 <h1 id="welcome-message">Dashboard de Gestión</h1>
-                <button id="logout-btn" class="btn-google" style="background-color: var(--color-error);">Cerrar Sesión</button>
+                <button id="logout-btn" class="btn btn-google" style="background-color: var(--color-error);">Cerrar Sesión</button>
             </div>
 
             <div class="nav-tabs">
@@ -115,7 +141,7 @@
                 <div id="creacion">
                     <div class="content-card">
                         <h2>Panel de Escalabilidad Global</h2>
-                        <p>Solo visible para el rol **ADMIN** (Pablo, Ema y Román).</p>
+                        <p>Solo visible para el rol **ADMIN**.</p>
                         <p>Aquí se añadirán los campos para seleccionar País/Provincia/Ciudad y el botón para **Duplicar la Plataforma**.</p>
                     </div>
                 </div>
@@ -126,14 +152,14 @@
     <script>
         // --- CONSTANTES DE CONFIGURACIÓN (TUS CLAVES) ---
         const FIREBASE_CONFIG = { 
-            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", // <-- Tu clave
+            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w",
             authDomain: "proyecto-asesor-publico.firebaseapp.com",
             databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
             projectId: "proyecto-asesor-publico", 
         };
         const ADMIN_ROLES_PATH = 'roles/'; 
 
-        // Inicialización de Firebase (Necesitamos Authentication)
+        // Inicialización de Firebase
         firebase.initializeApp(FIREBASE_CONFIG);
         const auth = firebase.auth();
         const db = firebase.database();
@@ -146,28 +172,44 @@
         document.getElementById('google-login-btn').addEventListener('click', () => {
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
-                .catch(error => alert(`Error de Login: ${error.message}`));
+                .catch(error => {
+                    document.getElementById('login-error').textContent = "Error de Login de Google. Asegúrate que tu dominio esté autorizado en Firebase.";
+                    console.error("Error de Login:", error);
+                });
         });
 
-        // 2. Cerrar Sesión
+        // 2. Iniciar Login Clásico (Email/Contraseña)
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            auth.signInWithEmailAndPassword(email, password)
+                .catch(error => {
+                    document.getElementById('login-error').textContent = "Error de Credenciales. Verifica Email y Contraseña.";
+                    console.error("Error de Login Clásico:", error);
+                });
+        });
+
+
+        // 3. Cerrar Sesión
         document.getElementById('logout-btn').addEventListener('click', () => {
             auth.signOut().then(() => console.log("Sesión cerrada."));
         });
         
-        // 3. Listener de Estado de Autenticación
+        // 4. Listener de Estado de Autenticación
         auth.onAuthStateChanged(user => {
             if (user) {
-                // Usuario autenticado
+                document.getElementById('login-error').textContent = ""; // Limpiar errores
                 handleSuccessfulLogin(user);
             } else {
-                // Usuario deslogueado
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('main-dashboard').style.display = 'none';
                 document.getElementById('login-screen').style.display = 'block';
             }
         });
 
-        // --- 4. GESTIÓN DE ROLES Y BIENVENIDA (AQUÍ USAMOS LAS COMAS) ---
+        // --- 5. GESTIÓN DE ROLES Y BIENVENIDA ---
         function handleSuccessfulLogin(user) {
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
@@ -179,7 +221,6 @@
                 .then(snapshot => {
                     const adminData = snapshot.val();
                     if (adminData && adminData.rol) {
-                        // Usuario es un administrador/editor/visualizador
                         currentUserRole = adminData.rol;
                         
                         document.getElementById('welcome-message').textContent = `Hola, ${adminData.nombre} (${currentUserRole})`;
@@ -187,27 +228,28 @@
                         // Mostrar pestaña de Creación si es ADMIN
                         if (currentUserRole === 'ADMIN') {
                             document.querySelector('.admin-only').style.display = 'block';
+                        } else {
+                            document.querySelector('.admin-only').style.display = 'none';
                         }
                         
-                        // Cargar Contenido y Métricas
                         loadDashboardMetrics(); 
                         
                         document.getElementById('loading').style.display = 'none';
                         document.getElementById('main-dashboard').style.display = 'block';
                     } else {
                         // Acceso denegado (El Gmail no está en la tabla de roles)
-                        alert("Acceso denegado. Tu cuenta de Google no está registrada como administrador del Dashboard.");
+                        alert("Acceso denegado. Tu cuenta de Google/Email no está registrada como administrador del Dashboard.");
                         auth.signOut();
                     }
                 });
         }
         
-        // --- 5. CARGAR MÉTRICAS (Simulación V2.0) ---
+        // --- 6. CARGAR MÉTRICAS (Simulación V2.0) ---
         function loadDashboardMetrics() {
-             // 🚨 NOTA: Las rutas son las mismas que usamos en index.html
+             const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
              
              // Simulación de Vistas
-             db.ref('leones/views/20251208/total').on('value', snap => {
+             db.ref('leones/views/' + today + '/total').on('value', snap => {
                  document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
              });
 
@@ -215,7 +257,10 @@
              document.getElementById('stat-likes').textContent = '+150';
              
              // Simulación de Sugerencias Pendientes
-             document.getElementById('stat-sugs').textContent = '4';
+             db.ref('leones/sugerencias/').once('value').then(snapshot => {
+                 const count = snapshot.numChildren();
+                 document.getElementById('stat-sugs').textContent = count;
+             });
              
              // Lógica de Pestañas
              document.querySelectorAll('.nav-tab').forEach(tab => {
