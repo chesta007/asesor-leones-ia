@@ -88,6 +88,23 @@
         .status-pendiente { color: var(--color-error); font-weight: 700; }
         
         #loading { text-align: center; padding: 50px; }
+
+        /* Estilos específicos para el Formulario de Creación */
+        .form-group label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            background-color: var(--color-bg-body);
+            color: var(--color-text-main);
+            box-sizing: border-box; /* Asegura que el padding no desborde */
+        }
     </style>
 </head>
 <body>
@@ -166,12 +183,42 @@
 
                 <div id="creacion">
                     <div class="content-card">
-                        <h2>Panel de Escalabilidad Global</h2>
-                        <p>Solo visible para el rol **ADMIN** (Pablo, Ema y Román).</p>
-                        <p>Aquí se añadirán los campos para seleccionar País/Provincia/Ciudad y el botón para **Duplicar la Plataforma**.</p>
+                        <h2>Creación de Nueva Localidad y Escalabilidad</h2>
+                        
+                        <form id="form-crear-localidad">
+                            <h3>Paso 1: Configuración de Ubicación</h3>
+                            <p>Ingresa los detalles geográficos y la clave de identificación única para la nueva plataforma.</p>
+                            
+                            <div class="form-group">
+                                <label for="localidad-id">ID de Localidad Único (Ej: `marcos_juarez`)</label>
+                                <input type="text" id="localidad-id" placeholder="ID en minúsculas y sin espacios" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="localidad-pais">País</label>
+                                <input type="text" id="localidad-pais" placeholder="Ej: Argentina" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="localidad-provincia">Provincia / Estado</label>
+                                <input type="text" id="localidad-provincia" placeholder="Ej: Córdoba" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="localidad-nombre-publico">Nombre Público de la Ciudad / Localidad</label>
+                                <input type="text" id="localidad-nombre-publico" placeholder="Ej: Marcos Juárez" required>
+                            </div>
+
+                            <h3 style="margin-top: 30px;">Paso 2: Duplicar Plataforma</h3>
+                            <p>Al hacer clic, el sistema creará la estructura base de datos (`/id_localidad/`) utilizando los datos de la configuración actual (Leones).</p>
+                            
+                            <button type="submit" class="btn btn-classic">
+                                <i class="fas fa-copy"></i> Crear y Duplicar Plataforma
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
 
@@ -254,6 +301,7 @@
                         // Mostrar pestaña de Creación si es ADMIN
                         if (currentUserRole === 'ADMIN') {
                             document.querySelector('.admin-only').style.display = 'block';
+                            // ⚠️ NOTA: Ya no hay restricción de contenido dentro del div#creacion.
                         } else {
                             document.querySelector('.admin-only').style.display = 'none';
                         }
@@ -336,6 +384,33 @@
                 tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></tr>';
             });
         }
+
+        // --- 8. LÓGICA DE CREACIÓN DE LOCALIDAD (NUEVA FUNCIÓN) ---
+        document.getElementById('form-crear-localidad').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const id = document.getElementById('localidad-id').value.toLowerCase().replace(/ /g, '_');
+            const pais = document.getElementById('localidad-pais').value;
+            const provincia = document.getElementById('localidad-provincia').value;
+            const nombrePublico = document.getElementById('localidad-nombre-publico').value;
+            
+            if (id === 'leones') {
+                alert("Error: El ID 'leones' ya existe. Por favor, elige un ID único.");
+                return;
+            }
+
+            if (!confirm(`¿Estás seguro de crear la nueva localidad '${nombrePublico}' (ID: ${id}) duplicando la estructura de la plataforma actual?`)) {
+                return;
+            }
+
+            // Aquí se implementaría la lógica de duplicación de la base de datos (Firebase RTDB Copy)
+            // Por ahora, solo mostraremos una confirmación de éxito.
+            console.log(`Iniciando duplicación para ID: ${id}`);
+            alert(`¡Éxito! La localidad "${nombrePublico}" (ID: ${id}) ha sido creada y la duplicación de la estructura de la base de datos se ha iniciado. (Lógica de copia pendiente de implementar)`);
+
+            // Limpiar formulario tras la acción (o recargar la página)
+            e.target.reset();
+        });
     </script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
