@@ -1,108 +1,109 @@
 import os
 import json
-from google import genai
-from datetime import datetime
+import requests
+from datetime import datetime, timedelta
 
-# --- CONFIGURACIÓN INICIAL ---
-LOCALIDAD = "Leones, Córdoba, Argentina"
-# Estas son las categorías que la IA generará en el post diario
-CATEGORIAS = ["Eventos y Agenda", "Clima y Consejos", "Análisis Económico Local", "Deportes y Pronósticos"]
+# --- 1. CONFIGURACIÓN ---
+# La clave de Gemini se lee de las variables de entorno de GitHub Actions
+# (La configuraste como GEMINI_API_KEY)
+# La clave de Firebase se carga del JSON de configuración que DEBES SUBIR (ver Tarea 1.2)
 
-def get_gemini_client():
-    """Inicializa la conexión a Gemini usando la clave secreta de GitHub."""
-    API_KEY = os.getenv("GEMINI_API_KEY")
-    if not API_KEY:
-        # Esto nos avisará que necesitamos configurar la clave secreta en GitHub.
-        raise ValueError("La clave GEMINI_API_KEY no está configurada en las variables de entorno.")
-    return genai.Client(api_key=API_KEY)
+# --- 2. CLAVES Y CONFIGURACIÓN DE FIREBASE ---
+# La URL base para el Live Counter y Likes/Dislikes (proyecto-asesor-publico)
+FIREBASE_BASE_URL = "https://proyecto-asesor-publico-default-rtdb.firebaseio.com"
+FIREBASE_AUTH_FILE = 'firebase_admin_key.json' # Archivo de credenciales de servicio (ver Tarea 1.2)
 
-def crear_prompt_asesor(categoria):
-    """Genera el prompt detallado para la IA en base a la categoría."""
+# --- 3. PROMPT MAESTRO DE GEMINI ---
+def get_gemini_prompt(city_name, yesterday_analysis="No hay análisis previo.", news_sources=""):
+    """Genera el prompt maestro para Gemini con todo el contexto."""
     
-    # 1. Definimos el rol y el contexto del output para garantizar la calidad
-    prompt = f"""
-    Eres un 'Asesor Público Digital' para la localidad de {LOCALIDAD}. Tu tarea es generar un informe breve y útil para la gente de la zona.
+    # Simulación de datos externos (en la V1.0, esto se obtendría de APIs reales)
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    tomorrow_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    return f"""
+    Eres el 'Asesor Público Digital' para {city_name}. Tu misión es generar el informe diario de noticias locales.
     
-    ---
+    Reglas de Contenido:
+    1. El tono debe ser profesional, local y muy útil para la vida diaria del ciudadano.
+    2. Debes incluir **hipervínculos** (en formato Markdown: [Texto del Link](URL)) para todas las noticias de medios locales.
+    3. Genera un **adelanto** para {tomorrow_date} (Recomendaciones a Futuro).
+    4. Usa el contexto del análisis del día anterior si está disponible: "{yesterday_analysis}".
+    5. Utiliza las siguientes secciones: Eventos y Agenda, Clima y Consejos (con temperatura y hora del partido), Análisis Económico (Dólar), y Recomendación de Valor.
     
-    [INSTRUCCIONES DE FORMATO]
-    * Responde SOLO con el contenido. No uses saludos, introducciones o frases de relleno.
-    * El output debe ser siempre un bloque de texto en formato Markdown.
-    * El título principal debe ser un H2 (##).
+    Datos de Contexto y Fuentes Simuladas (Trátalos como reales):
+    - Ciudad: {city_name}
+    - Fecha del informe: {current_date}
+    - Pronóstico: Soleado con máxima de 29°C.
+    - Dólar Blue: $1.445 (Estable).
+    - Evento Destacado: Gran partido de fútbol en el Club Atlético Leones a las 19:30 hs.
+    - Medios Locales: {news_sources}
     
-    [CONTENIDO REQUERIDO: {categoria}]
-    
-    Genera un análisis enfocado en {categoria} para hoy, {datetime.now().strftime('%d de %B de %Y')}.
-    
+    Genera una respuesta en formato JSON, exactamente como se muestra en el EJEMPLO DE OUTPUT, sin ninguna otra explicación o texto fuera del JSON.
     """
-    
-    # 2. Añadimos instrucciones específicas para las categorías difíciles (para guiar mejor a la IA)
-    if 'Económico' in categoria:
-        prompt += """
-        * Incluye una mención sobre la tendencia del dólar Blue/CCL (ej. 'Parece estable' o 'Al alza').
-        * Ofrece un consejo práctico de ahorro o inversión para un habitante de Leones.
-        * No uses datos numéricos precisos, enfócate en tendencias y recomendaciones.
-        """
-    elif 'Deportes' in categoria:
-         prompt += """
-        * Analiza las chances de ganar de los equipos locales en sus próximos partidos.
-        * Incluye una predicción o un resumen de resultados recientes.
-        """
-    
-    return prompt
 
-def generar_contenido_ia(cliente_gemini, prompt):
-    """Llama a la API de Gemini y retorna el texto generado."""
-    print(f"Generando contenido con prompt para: {prompt[:30]}...")
+# --- 4. FUNCIÓN PRINCIPAL DE GENERACIÓN ---
+def generate_and_upload():
+    # 🚨 NOTA: En la escalabilidad, la ciudad se leería de un archivo de configuración
+    city_name = "Leones, Córdoba"
     
-    try:
-        response = cliente_gemini.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt
-        )
-        return response.text
-    except Exception as e:
-        print(f"Error al llamar a Gemini: {e}")
-        return f"## Error de Generación en IA: {prompt}"
-
-def main():
-    """Función principal: Orquesta la generación de todos los contenidos."""
+    # 1. Obtener Análisis Previo (Simulación)
+    # En la V2.0, esto obtendría el reporte semanal de Gemini. Por ahora, es una simulación.
+    yesterday_analysis = "El informe de ayer tuvo alto 'Like' en Deportes. Mantener foco."
     
-    # Inicialización
-    try:
-        gemini_client = get_gemini_client()
-    except ValueError as e:
-        print(f"Fallo crítico: {e}")
-        # Si la clave API no está, el programa se detiene.
+    # 2. Llamada a la API de Gemini (Usando la clave de GitHub Secrets)
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        print("Error: Clave GEMINI_API_KEY no encontrada en el entorno.")
         return
 
-    # Aquí almacenaremos todo el contenido generado para el frontend.
-    noticias_generadas = {
-        "last_updated": datetime.now().isoformat(),
-        "localidad": LOCALIDAD,
-        "categorias": []
-    }
+    prompt = get_gemini_prompt(
+        city_name,
+        yesterday_analysis=yesterday_analysis,
+        news_sources="[Municipalidad de Leones](https://www.leones.gob.ar/noticias)"
+    )
 
-    # Proceso de Generación por Categoría
-    for categoria in CATEGORIAS:
-        prompt = crear_prompt_asesor(categoria)
-        contenido_markdown = generar_contenido_ia(gemini_client, prompt)
+    try:
+        # Aquí se realizaría la llamada real a Gemini con el modelo apropiado
+        # Por ahora, simulamos una respuesta compleja de Gemini con hipervínculos
         
-        # Guardamos la estructura final que usará el frontend
-        noticias_generadas["categorias"].append({
-            "nombre": categoria,
-            "contenido": contenido_markdown
-        })
+        # 3. Respuesta Simulada (Debería venir de Gemini en JSON)
+        gemini_response_text = {
+            "title": f"Informe {city_name}",
+            "last_updated": datetime.now().isoformat(),
+            "categorias": [
+                {
+                    "nombre": "🚨 Recomendación Inteligente (Adelanto Mañana)",
+                    "contenido": f"La IA recomienda hoy: Visitar el [Museo Local](https://www.leonescultura.org/museo) antes del martes {tomorrow_date}, ya que se espera una ola de calor que limitará las actividades al aire libre. La tendencia económica se mantendrá estable."
+                },
+                {
+                    "nombre": "⚽ Eventos y Agenda Local",
+                    "contenido": "El Club Atlético Leones juega hoy a las 19:30 hs. La entrada general costará $1000. Encuentra las bases del evento en el [Sitio Oficial del Club](http://www.clubatleticoleones.com.ar/partido)."
+                },
+                {
+                    "nombre": "☀️ Clima y Consejos",
+                    "contenido": "Se espera una máxima de 29°C. La IA recomienda aprovechar la tarde. La Municipalidad de Leones anuncia cortes de agua preventivos; consulta el [Mapa de Cortes](https://www.leones.gob.ar/servicios/agua) para tu sector."
+                }
+            ]
+        }
         
-    # Guardado Final
-    # Guardamos todo en un único archivo JSON que el HTML leerá después.
-    # El archivo será 'noticias.json'
-    with open('noticias.json', 'w', encoding='utf-8') as f:
-        json.dump(noticias_generadas, f, ensure_ascii=False, indent=4)
-    
-    print("--------------------------------")
-    print("✅ Proceso completado. Archivo 'noticias.json' generado.")
-    print("--------------------------------")
+        # 4. Guardar JSON Final (Simulado)
+        final_json_content = gemini_response_text
+        
+        # 5. Escribir noticias.json en el repositorio
+        with open('noticias.json', 'w', encoding='utf-8') as f:
+            json.dump(final_json_content, f, ensure_ascii=False, indent=4)
+        print("✅ Generación de noticias.json exitosa.")
+        
+        # 6. Subir noticias.json a Firebase (Para futuras lecturas de otras apps)
+        firebase_path = f"/leones/posts/{datetime.now().strftime('%Y%m%d')}.json"
+        
+        # Simulamos la carga a Firebase
+        # requests.put(f"{FIREBASE_BASE_URL}{firebase_path}", json=final_json_content)
+        # print(f"✅ Post guardado en Firebase: {firebase_path}")
+
+    except Exception as e:
+        print(f"❌ Error en la generación o subida: {e}")
 
 if __name__ == "__main__":
-    main()
+    generate_and_upload()
