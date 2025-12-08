@@ -277,16 +277,16 @@
             databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
             projectId: "proyecto-asesor-publico", 
         };
-        // ⚠️ RUTA DE ROLES CRÍTICA (MAYÚSCULAS)
+        // ⚠️ RUTA DE ROLES CRÍTICA (CORREGIDA: Mayúsculas)
         const ADMIN_ROLES_PATH = 'ROLES/'; 
- 
-        // ⚠️ CONSTANTES DE RUTA ESCALABLE 
+
+        // ⚠️ CONSTANTES DE RUTA ESCALABLE (CORREGIDA: Ruta completa)
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
         
         // ⚠️ CONFIGURACIÓN DE GITHUB ACTIONS
-        const GITHUB_REPO_OWNER = 'chesta007'; 
-        const GITHUB_REPO_NAME = 'asesor-leones-ia'; 
+        const GITHUB_REPO_OWNER = 'chesta007'; // ⬅️ REEMPLAZAR con tu usuario de GitHub
+        const GITHUB_REPO_NAME = 'asesor-leones-ia'; // ⬅️ REEMPLAZAR con tu repo
         const WORKFLOW_EVENT_TYPE = 'manual-update-city'; 
 
 
@@ -346,14 +346,13 @@
             }
         });
 
-        // --- 5. GESTIÓN DE ROLES Y BIENVENIDA ---
+        // --- 5. GESTIÓN DE ROLES Y BIENVENIDA (CORREGIDA) ---
         function handleSuccessfulLogin(user) {
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('loading').style.display = 'block';
 
             const userEmailKey = user.email.toLowerCase().replace(/\./g, ','); 
             
-            // ⚠️ CORRECCIÓN CLAVE: Usa ADMIN_ROLES_PATH = 'ROLES/'
             db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
                 .then(snapshot => {
                     const adminData = snapshot.val();
@@ -369,7 +368,8 @@
                             document.querySelector('.admin-only').style.display = 'none';
                         }
                         
-                        loadDashboardMetrics(); 
+                        // 🟢 CORRECCIÓN CLAVE: LLAMAR A LA CARGA DE TABLA DE LOCALIDADES
+                        loadLocalidadesTable(); 
                         
                         document.getElementById('loading').style.display = 'none';
                         document.getElementById('main-dashboard').style.display = 'block';
@@ -421,10 +421,10 @@
              });
         }
         
-        // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
+        // --- 7. CARGA DE TABLA DE SPONSORS (RUTAS CORREGIDAS) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
-            // ⚠️ RUTA CORREGIDA: Usa MONETIZACION/ (Mayúsculas)
+            // RUTA CORREGIDA: Usa MONETIZACION/ (Mayúsculas)
             const sponsorsRef = db.ref('MONETIZACION/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
@@ -455,7 +455,7 @@
             });
         }
 
-        // --- FUNCIONES DE ACCIÓN ---
+        // --- FUNCIONES DE ACCIÓN (ROBOT) ---
         
         function generatePublicLink(id) {
             const baseUrl = window.location.origin + window.location.pathname.replace('dashboard.html', 'index.html');
@@ -527,10 +527,9 @@
             alert(`Funcionalidad de Gestión de Contratos para ${id} (Próxima Fase).`);
         }
 
-        // --- 9. CARGA DE TABLA DE LOCALIDADES (INCLUYE CARGA DE SELECTORES) ---
+        // --- 9. CARGA DE TABLA DE LOCALIDADES (CORREGIDA) ---
         function loadLocalidadesTable() {
             const tableBody = document.getElementById('localidades-table-body');
-            // ⚠️ RUTA CORREGIDA: Usa BASE_CIUDAD_PATH
             const ciudadesRef = db.ref(BASE_CIUDAD_PATH); 
             const selector = document.getElementById('localidad-selector');
 
