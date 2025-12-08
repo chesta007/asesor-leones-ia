@@ -38,7 +38,7 @@
             cursor: pointer;
             font-weight: 700;
             margin-top: 10px;
-            white-space: nowrap; /* Evita que el texto de los botones se rompa */
+            white-space: nowrap; 
         }
         .btn-google { background-color: #4285f4; color: white; }
         .btn-classic { background-color: var(--color-primary); color: white; width: 100%; }
@@ -54,7 +54,7 @@
         }
         #current-time {
             font-size: 0.9em;
-            color: #8b949e; /* Color gris suave */
+            color: #8b949e; 
         }
         
         .nav-tabs { display: flex; border-bottom: 1px solid var(--color-border); margin-bottom: 20px; }
@@ -120,7 +120,7 @@
             padding: 5px 8px;
             font-size: 0.8em;
             margin: 0;
-            margin-bottom: 5px; /* Para el flex-wrap */
+            margin-bottom: 5px; 
             width: auto;
         }
     </style>
@@ -145,7 +145,7 @@
                 <div class="divider">— O —</div>
                 
                 <p>Usa Google para acceso rápido:</p>
-                <button id="google-login-btn" class="btn btn-google"><i class="fab fa-google"></i> Iniciar Sesión con Google</button>
+                <button id="google-login-btn" class="btn btn-google"><i class="fas fa-google"></i> Iniciar Sesión con Google</button>
             </div>
         </div>
 
@@ -293,8 +293,10 @@
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
         
-        // ⚠️ RUTA DEL ROBOT (WEBHOOK) - DEBE SER REEMPLAZADA POR LA URL REAL DE N8N O WORKFLOW
-        const ROBOT_WEBHOOK_URL = 'https://n8n.chesta007.io/webhook/update-robot/'; 
+        // ⚠️ CONFIGURACIÓN DE GITHUB ACTIONS
+        const GITHUB_REPO_OWNER = 'chesta007'; // ⬅️ REEMPLAZAR con tu usuario de GitHub
+        const GITHUB_REPO_NAME = 'asesor-leones-ia'; // ⬅️ REEMPLAZAR con tu repo
+        const WORKFLOW_EVENT_TYPE = 'manual-update-city'; // Nombre del evento que definiremos en el YAML
 
 
         // Inicialización de Firebase
@@ -304,7 +306,7 @@
 
         let currentUserRole = 'VISUALIZADOR'; 
 
-        // --- RELOJ DIGITAL EN TIEMPO REAL (NUEVA FUNCIÓN) ---
+        // --- RELOJ DIGITAL EN TIEMPO REAL ---
         function updateTime() {
             const now = new Date();
             const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
@@ -417,7 +419,7 @@
              // 6.3. Likes Netos (Simulación)
              document.getElementById('stat-likes').textContent = '+150';
 
-             loadSponsorsTable(); // Carga la tabla de sponsors (que ahora es estática para Leones)
+             loadSponsorsTable(); 
              
              // Lógica de Pestañas
              document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -434,7 +436,6 @@
         // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
-            // La ruta se mantiene estática por simplicidad de la monetización.
             const sponsorsRef = db.ref('MONETIZACION/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
@@ -465,11 +466,10 @@
             });
         }
 
-        // --- FUNCIONES DE ACCIÓN (NUEVAS) ---
+        // --- FUNCIONES DE ACCIÓN ---
         
         // Genera el link público. Asumimos que la página principal es index.html en el mismo repositorio.
         function generatePublicLink(id) {
-            // Ejemplo: https://chesta007.github.io/asesor-leones-ia/index.html?localidad=leones
             const baseUrl = window.location.origin + window.location.pathname.replace('dashboard.html', 'index.html');
             return `${baseUrl}?localidad=${id}`;
         }
@@ -494,26 +494,53 @@
         }
 
         async function executeRobotUpdate(id) {
-            alert(`Ejecutando robot de actualización para ${id}. Esto puede tardar unos segundos.`);
+            // ⚠️ ADVERTENCIA DE SEGURIDAD: ESTA LLAMADA REQUIERE UN TOKEN SECRETO (PAT)
+            // Para entornos públicos, este token DEBE SER MANEJADO POR UN SERVIDOR PROXY.
             
+            // 1. Pedir Token al Usuario (Inseguro, solo para pruebas manuales)
+            const GITHUB_TOKEN = prompt("Seguridad: Por favor, introduce tu Token de Acceso Personal (PAT) de GitHub para autorizar la actualización:"); 
+            
+            if (!GITHUB_TOKEN) {
+                alert("Actualización cancelada. Se requiere el Token de Acceso Personal de GitHub (PAT).");
+                return;
+            }
+
+            alert(`Activando el flujo de trabajo de GitHub Actions para ${id}...`);
+            
+            const dispatchUrl = `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/dispatches`;
+
             try {
-                // ⚠️ RUTA DEL ROBOT: Debes reemplazar ROBOT_WEBHOOK_URL por tu URL de N8N o de workflow
-                const response = await fetch(ROBOT_WEBHOOK_URL + id, {
+                const response = await fetch(dispatchUrl, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ action: 'update', localityId: id })
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Authorization': `token ${GITHUB_TOKEN}`, // ⚠️ MUY INSEGURO EN EL CLIENTE
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        event_type: WORKFLOW_EVENT_TYPE,
+                        client_payload: {
+                            locality_id: id, // Pasamos la ID de la localidad
+                            updated_by: auth.currentUser ? auth.currentUser.email : 'dashboard_user'
+                        }
+                    })
                 });
 
-                if (response.ok) {
-                    alert(`✅ Robot ejecutado con éxito para ${id}. Los cambios se verán en breve.`);
+                if (response.status === 204) {
+                    alert(`✅ GitHub Actions iniciado con éxito para ${id}. El robot Python se ejecutará en el servidor.`);
                 } else {
-                    const errorText = await response.text();
-                    alert(`❌ Error al ejecutar el robot para ${id}. Código: ${response.status}. Mensaje: ${errorText}`);
+                    const errorData = await response.json();
+                    console.error("Error de GitHub:", errorData);
+                    alert(`❌ Error al iniciar GitHub Actions (${response.status}). Verifica el PAT, el nombre del evento (${WORKFLOW_EVENT_TYPE}) y los permisos del Token. Mensaje: ${errorData.message}`);
                 }
             } catch (error) {
-                console.error("Error de conexión al robot:", error);
-                alert(`❌ Error de conexión al robot. Verifica la constante ROBOT_WEBHOOK_URL.`);
+                console.error("Error al conectar con GitHub:", error);
+                alert(`❌ Error de red al intentar conectar con GitHub. Revisa tu conexión.`);
             }
+        }
+        
+        function manageContracts(id) {
+            alert(`Funcionalidad de Gestión de Contratos para ${id} (Próxima Fase).`);
         }
 
         // --- 9. CARGA DE TABLA DE LOCALIDADES (INCLUYE CARGA DE SELECTORES) ---
@@ -557,7 +584,7 @@
                                 <button class="btn btn-google" style="background-color: #007bff;" onclick="shareLocalidad('${id}')">
                                     <i class="fas fa-share-alt"></i> Compartir
                                 </button>
-                                <button class="btn btn-classic" style="background-color: #38a169;" disabled>
+                                <button class="btn btn-classic" style="background-color: #38a169;" onclick="manageContracts('${id}')">
                                     <i class="fas fa-edit"></i> Gestionar Contratos
                                 </button>
                             </td>
