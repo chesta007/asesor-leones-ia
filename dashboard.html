@@ -71,6 +71,21 @@
         .stat-box { padding: 15px; border-left: 5px solid var(--color-primary); background-color: #1a1f26; border-radius: 4px; }
         .stat-box h3 { margin-top: 0; font-size: 1em; color: var(--color-primary); }
         .stat-box p { font-size: 1.8em; font-weight: 900; margin: 5px 0 0; }
+
+        /* Estilos de Tabla de Sponsors */
+        .sponsors-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        .sponsors-table th, .sponsors-table td {
+            border: 1px solid var(--color-border);
+            padding: 10px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+        .status-al-dia { color: var(--color-primary); font-weight: 700; }
+        .status-pendiente { color: var(--color-error); font-weight: 700; }
         
         #loading { text-align: center; padding: 50px; }
     </style>
@@ -134,14 +149,25 @@
                 <div id="localidades">
                     <div class="content-card">
                         <h2>Gestión de Sponsors y Contratos (Leones)</h2>
-                        <p>Aquí se cargará la tabla de los 3 sponsors, estado de pago y fechas de vencimiento.</p>
+                        <table class="sponsors-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Contacto</th>
+                                    <th>Vencimiento</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sponsors-table-body">
+                                </tbody>
+                        </table>
                     </div>
                 </div>
 
                 <div id="creacion">
                     <div class="content-card">
                         <h2>Panel de Escalabilidad Global</h2>
-                        <p>Solo visible para el rol **ADMIN**.</p>
+                        <p>Solo visible para el rol **ADMIN** (Pablo, Ema y Román).</p>
                         <p>Aquí se añadirán los campos para seleccionar País/Provincia/Ciudad y el botón para **Duplicar la Plataforma**.</p>
                     </div>
                 </div>
@@ -152,7 +178,7 @@
     <script>
         // --- CONSTANTES DE CONFIGURACIÓN (TUS CLAVES) ---
         const FIREBASE_CONFIG = { 
-            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w",
+            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", // Clave real del proyecto
             authDomain: "proyecto-asesor-publico.firebaseapp.com",
             databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
             projectId: "proyecto-asesor-publico", 
@@ -173,7 +199,7 @@
             const provider = new firebase.auth.GoogleAuthProvider();
             auth.signInWithPopup(provider)
                 .catch(error => {
-                    document.getElementById('login-error').textContent = "Error de Login de Google. Asegúrate que tu dominio esté autorizado en Firebase.";
+                    document.getElementById('login-error').textContent = "Error de Login de Google. Verifica dominio autorizado.";
                     console.error("Error de Login:", error);
                 });
         });
@@ -200,7 +226,7 @@
         // 4. Listener de Estado de Autenticación
         auth.onAuthStateChanged(user => {
             if (user) {
-                document.getElementById('login-error').textContent = ""; // Limpiar errores
+                document.getElementById('login-error').textContent = ""; 
                 handleSuccessfulLogin(user);
             } else {
                 document.getElementById('loading').style.display = 'none';
@@ -244,23 +270,26 @@
                 });
         }
         
-        // --- 6. CARGAR MÉTRICAS (Simulación V2.0) ---
+        // --- 6. CARGAR MÉTRICAS Y SPONSORS ---
         function loadDashboardMetrics() {
              const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
              
-             // Simulación de Vistas
+             // 6.1. Vistas de Hoy
              db.ref('leones/views/' + today + '/total').on('value', snap => {
                  document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
              });
 
-             // Simulación de Likes Netos (Idealmente se calcularía)
-             document.getElementById('stat-likes').textContent = '+150';
-             
-             // Simulación de Sugerencias Pendientes
+             // 6.2. Sugerencias Pendientes
              db.ref('leones/sugerencias/').once('value').then(snapshot => {
                  const count = snapshot.numChildren();
                  document.getElementById('stat-sugs').textContent = count;
              });
+
+             // 6.3. Likes Netos (Simulación)
+             document.getElementById('stat-likes').textContent = '+150';
+
+             // 6.4. Carga de Tabla de Sponsors
+             loadSponsorsTable();
              
              // Lógica de Pestañas
              document.querySelectorAll('.nav-tab').forEach(tab => {
@@ -272,6 +301,40 @@
                      document.getElementById(this.dataset.tab).classList.add('active');
                  });
              });
+        }
+        
+        // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
+        function loadSponsorsTable() {
+            const tableBody = document.getElementById('sponsors-table-body');
+            // Nota: La ruta coincide con la estructura que acabas de importar en Firebase
+            const sponsorsRef = db.ref('monetizacion/leones/sponsors'); 
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
+            
+            sponsorsRef.once('value').then(snapshot => {
+                tableBody.innerHTML = ''; // Limpiar mensaje de carga
+                const sponsors = snapshot.val();
+                
+                if (!sponsors) {
+                    tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No hay sponsors registrados para Leones.</td></tr>';
+                    return;
+                }
+
+                Object.keys(sponsors).forEach(key => {
+                    const sponsor = sponsors[key];
+                    const statusClass = sponsor.estado_pago === 'AL DIA' ? 'status-al-dia' : 'status-pendiente';
+                    
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${sponsor.nombre}</td>
+                        <td>${sponsor.contacto}</td>
+                        <td>${sponsor.vencimiento}</td>
+                        <td class="${statusClass}">${sponsor.estado_pago}</td>
+                    `;
+                });
+            }).catch(error => {
+                console.error("Error cargando sponsors:", error);
+                tableBody.innerHTML = '<tr><td colspan="4" style="color: var(--color-error); text-align:center;">Error al conectar con la base de datos de sponsors.</td></tr>';
+            });
         }
     </script>
     
