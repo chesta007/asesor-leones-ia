@@ -224,24 +224,21 @@
 
     <script>
         // --- CONSTANTES DE CONFIGURACIÓN (TUS CLAVES) ---
-        // ⚠️ CONFIGURACIÓN COMPLETA DE FIREBASE (INTEGRADA) ⚠️
-        const FIREBASE_CONFIG = {
-            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w",
+        const FIREBASE_CONFIG = { 
+            apiKey: "AIzaSyAPPXz2z0Eo72Sa9nIdwzvr7oVxOQpFs5w", 
             authDomain: "proyecto-asesor-publico.firebaseapp.com",
-            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com",
-            projectId: "proyecto-asesor-publico",
-            storageBucket: "proyecto-asesor-publico.firebasestorage.app",
-            messagingSenderId: "912508402406",
-            appId: "1:912508402406:web:f248bf9bbb070b882c9927",
-            measurementId: "G-99WE6KNN0C"
+            databaseURL: "https://proyecto-asesor-publico-default-rtdb.firebaseio.com", 
+            projectId: "proyecto-asesor-publico", 
         };
-        const ADMIN_ROLES_PATH = 'roles/'; 
+        // ⚠️ CRÍTICO: CORRECCIÓN DE MAYÚSCULAS/MINÚSCULAS
+        const ADMIN_ROLES_PATH = 'ROLES/'; 
 
-        // ⚠️ CONSTANTES DE RUTA ESCALABLE 
+        // ⚠️ CRÍTICO: CONSTANTES DE RUTA ESCALABLE (REINTRODUCIDAS)
         const BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades/';
         const PATH_LEONES = BASE_CIUDAD_PATH + 'leones';
 
-        // Inicialización de Firebase (Versión v8)
+
+        // Inicialización de Firebase
         firebase.initializeApp(FIREBASE_CONFIG);
         const auth = firebase.auth();
         const db = firebase.database();
@@ -299,15 +296,16 @@
             // CLAVE CRÍTICA: Reemplazar el punto por coma para que coincida con la BD
             const userEmailKey = user.email.toLowerCase().replace(/\./g, ','); 
             
+            // ⚠️ RUTA CORREGIDA: db.ref('ROLES/'...)
             db.ref(ADMIN_ROLES_PATH + userEmailKey).once('value')
                 .then(snapshot => {
                     const adminData = snapshot.val();
-                    
                     if (adminData && adminData.rol) {
                         currentUserRole = adminData.rol;
                         
                         document.getElementById('welcome-message').textContent = `Hola, ${adminData.nombre} (${currentUserRole})`;
                         
+                        // Mostrar pestaña de Creación si es ADMIN
                         if (currentUserRole === 'ADMIN') {
                             document.querySelector('.admin-only').style.display = 'block';
                         } else {
@@ -330,12 +328,12 @@
         function loadDashboardMetrics() {
              const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
              
-             // 6.1. Vistas de Hoy 
+             // 6.1. Vistas de Hoy ⬅️ RUTA CORREGIDA
              db.ref(PATH_LEONES + '/views/' + today + '/total').on('value', snap => {
                  document.getElementById('stat-views').textContent = snap.val() ? snap.val().toLocaleString() : '0';
              });
 
-             // 6.2. Sugerencias Pendientes 
+             // 6.2. Sugerencias Pendientes ⬅️ RUTA CORREGIDA
              db.ref(PATH_LEONES + '/sugerencias/').once('value').then(snapshot => {
                  const count = snapshot.numChildren();
                  document.getElementById('stat-sugs').textContent = count;
@@ -362,8 +360,8 @@
         // --- 7. CARGA DE TABLA DE SPONSORS (FASE 5) ---
         function loadSponsorsTable() {
             const tableBody = document.getElementById('sponsors-table-body');
-            // Nota: La ruta de monetización debe estar fuera de la jerarquía de PAISES/
-            const sponsorsRef = db.ref('monetizacion/leones/sponsors'); 
+            // Nota: La ruta coincide con la estructura de MONETIZACION que importaste
+            const sponsorsRef = db.ref('MONETIZACION/leones/sponsors'); 
             tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Cargando sponsors...</td></tr>';
             
             sponsorsRef.once('value').then(snapshot => {
@@ -414,12 +412,12 @@
             }
 
             try {
-                // 1. Obtener la estructura completa de la localidad 'leones' 
+                // 1. Obtener la estructura completa de la localidad 'leones' ⬅️ RUTA CORREGIDA
                 const leonesSnapshot = await db.ref(PATH_LEONES).once('value');
                 const leonesData = leonesSnapshot.val();
 
                 if (!leonesData) {
-                    alert(`Error: No se pudo encontrar la estructura base de 'leones' para duplicar en la ruta ${PATH_LEONES}. Debe existir la ruta: ${PATH_LEONES}`);
+                    alert(`Error: No se pudo encontrar la estructura base de 'leones' para duplicar en la ruta ${PATH_LEONES}.`);
                     return;
                 }
 
@@ -433,10 +431,10 @@
                     return;
                 }
 
-                // 4. Escribir la estructura de 'leones' en la nueva ruta (copia) 
+                // 4. Escribir la estructura de 'leones' en la nueva ruta (copia) ⬅️ RUTA CORREGIDA
                 await db.ref(newLocalidadPath).set(leonesData);
 
-                // 5. Actualizar los metadatos de la nueva estructura creada 
+                // 5. Actualizar los metadatos de la nueva estructura creada ⬅️ RUTA CORREGIDA
                 await db.ref(newLocalidadPath + '/metadata').set({
                     id: id,
                     nombre_publico: nombrePublico,
