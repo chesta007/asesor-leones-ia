@@ -2,7 +2,6 @@
 name: Actualización Manual de Localidad (Gemini Robot)
 
 on:
-  # Dispara la ejecución desde el Dashboard de forma manual
   repository_dispatch:
     types: [manual-update-city] 
 
@@ -10,12 +9,10 @@ jobs:
   run_generator_for_city:
     runs-on: ubuntu-latest
     
-    # 🟢 PERMISO CLAVE: Otorga permiso al bot para commitear el nuevo JSON (Corrige Error 403)
     permissions:
       contents: write 
       
     env:
-      # Captura la ID de la localidad enviada desde el Dashboard
       TARGET_LOCALITY_ID: ${{ github.event.client_payload.locality_id }}
 
     steps:
@@ -27,8 +24,7 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Instalar dependencias (requests, google-genai y pytz)
-      # 🟢 AGREGAR PYTZ para la corrección de la Zona Horaria de Argentina
+    - name: Instalar dependencias
       run: pip install requests google-genai pytz
 
     - name: Ejecutar Robot (Generator.py)
@@ -38,16 +34,13 @@ jobs:
         # Ejecuta el script pasándole la ID de la ciudad como argumento
         python generator.py $TARGET_LOCALITY_ID
       env:
-        # Clave secreta para Gemini, protegida en tu repo
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
         
     - name: Commit de los archivos generados y actualizados
       run: |
-        # Configurar Git con el bot de Actions
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         
-        # Agrega el archivo único generado (noticias_[id].json)
         git add noticias_*.json 
         git commit -m "Robot: Actualización forzada para $TARGET_LOCALITY_ID" || echo "No hay cambios para commit"
         git push
