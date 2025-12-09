@@ -3,9 +3,8 @@ import json
 import requests
 import sys
 from datetime import datetime, timedelta
-# 🟢 Importar librerías de zona horaria
 from google import genai
-from google.genai.errors import APIError
+from google.genai.errors import APIError 
 import pytz 
 
 # --- CONFIGURACIÓN DE ZONA HORARIA ---
@@ -15,7 +14,7 @@ ARGENTINA_TIMEZONE = pytz.timezone('America/Argentina/Buenos_Aires')
 FIREBASE_BASE_URL = "https://proyecto-asesor-publico-default-rtdb.firebaseio.com"
 BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades'
 
-# BASE DE DATOS DE CONTEXTO LOCAL ÚNICO POR CIUDAD (AMPLIADO)
+# BASE DE DATOS DE CONTEXTO LOCAL ÚNICO POR CIUDAD (CON DETALLE DE FARMACIA)
 LOCAL_CONTEXT = {
     "leones": {
         "nombre_corto": "Leones",
@@ -38,7 +37,6 @@ def get_gemini_prompt(city_name, contexto, yesterday_analysis="No hay análisis 
     current_date = now_arg.strftime("%Y-%m-%d")
     tomorrow_date = (now_arg + timedelta(days=1)).strftime("%Y-%m-%d")
 
-    # [Resto del prompt es el mismo que el turno anterior, solicitando detalles de farmacia y voto]
     return f"""
     Eres el 'Asesor Público Digital' para {city_name}. Tu misión es generar el informe diario de noticias locales.
     
@@ -49,26 +47,15 @@ def get_gemini_prompt(city_name, contexto, yesterday_analysis="No hay análisis 
     
     Reglas de Contenido:
     1. El tono debe ser profesional, local y muy útil para el ciudadano.
-    2. Debes incluir **hipervínculos** (en formato Markdown: [Texto del Link](URL)).
+    2. El contenido debe ser único y relevante para {city_name}.
     3. Siempre genera la respuesta en formato JSON.
-    4. El JSON debe tener la siguiente estructura estricta: {{ "title": "...", "last_updated": "...", "categorias": [{{ "nombre": "...", "contenido": "..." }}, ...] }}
-    5. **Estructura de la Categoría "☎️ Teléfonos Útiles":**
-        * Debes usar el texto completo del contexto de la Farmacia de Turno, incluyendo el **nombre, la dirección y el enlace de Google Maps en formato Markdown**, además de otros teléfonos de emergencia. Usa los datos del contexto.
-    6. La fecha del informe es {current_date} y la del adelanto es {tomorrow_date}.
-    7. Debes generar el contenido de todas estas categorías:
-        * "☎️ Teléfonos Útiles"
-        * "⚽ Eventos y Agenda"
-        * "☀️ Clima y Consejos"
-        * "🚨 Recomendación Inteligente (Adelanto)"
+    4. **ESTRUCTURA DE LA CATEGORÍA '☎️ Teléfonos Útiles':** Debes usar el texto completo del contexto de la Farmacia de Turno, incluyendo el **nombre, la dirección y el enlace de Google Maps en formato Markdown**, además de otros teléfonos de emergencia. Usa los datos del contexto.
+    5. Debes generar el contenido de todas estas categorías: "☎️ Teléfonos Útiles", "⚽ Eventos y Agenda", "☀️ Clima y Consejos", "🚨 Recomendación Inteligente (Adelanto)".
 
-    Simulación de datos externos (para la IA):
-    - Clima: Soleado, 29°C.
-    - Economía local: Dólar Blue estable en $1.445.
-    
     Genera el JSON completo ahora.
     """
 
-# --- 3. LÓGICA DE EJECUCIÓN ---
+# --- 3. LÓGICA DE EJECUCIÓN DEL ROBOT ---
 def generate_and_save_report(locality_id):
     
     if locality_id not in LOCAL_CONTEXT:
@@ -77,41 +64,27 @@ def generate_and_save_report(locality_id):
 
     contexto = LOCAL_CONTEXT[locality_id]
     city_name = contexto['nombre_corto']
-    
     yesterday_analysis = "El reporte de ayer en la categoría 'Deportes' tuvo un alto índice de 'Like' en ambas ciudades." 
 
     prompt = get_gemini_prompt(city_name, contexto, yesterday_analysis)
     
     try:
-        # Inicialización de la API de Gemini
         client = genai.Client()
-
-        # Llamada al modelo Gemini
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt
-        )
+        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         
-        # 3. Limpieza y Parseo del JSON
-        json_text = response.text
-        json_text = json_text.strip().lstrip("```json").rstrip("```").strip()
-            
+        json_text = response.text.strip().lstrip("```json").rstrip("```").strip()
         final_json_content = json.loads(json_text)
         
-        # 4. Añadir timestamp de actualización (usando la hora localizada)
+        # 🟢 CORRECCIÓN DE LA HORA: Usar la hora localizada
         final_json_content['last_updated'] = datetime.now(ARGENTINA_TIMEZONE).isoformat()
 
-        # 5. Escribir JSON en el repositorio
         output_filename = f"noticias_{locality_id}.json"
         with open(output_filename, 'w', encoding='utf-8') as f:
             json.dump(final_json_content, f, ensure_ascii=False, indent=4)
         print(f"✅ Generación de {output_filename} exitosa.")
         
-        # 6. Subir JSON a Firebase (Simulación)
-        print(f"✅ Post guardado en Firebase: /{BASE_CIUDAD_PATH}/{locality_id}/posts/{datetime.now().strftime('%Y%m%d')}.json")
-
     except APIError as e:
-        print(f"❌ Error de la API de Gemini. Verifica la clave y permisos: {e}")
+        print(f"❌ Error de la API de Gemini: {e}")
     except json.JSONDecodeError:
         print(f"❌ Error: Gemini no devolvió un JSON válido. Respuesta: {response.text[:200]}...")
     except Exception as e:
@@ -120,7 +93,8 @@ def generate_and_save_report(locality_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Uso: python generator.py <locality_id>")
+        # En modo automático, este script siempre recibe el ID de la ciudad
+        print("Error: Falta ID de localidad. Terminando.")
         sys.exit(1)
         
     locality_id = sys.argv[1]
