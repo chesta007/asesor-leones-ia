@@ -32,7 +32,6 @@ LOCAL_CONTEXT = {
 # --- 2. PROMPT MAESTRO DE GEMINI ---
 def get_gemini_prompt(city_name, contexto, yesterday_analysis="No hay análisis previo."):
     
-    # 🟢 USAR HORA LOCALIZADA
     now_arg = datetime.now(ARGENTINA_TIMEZONE)
     current_date = now_arg.strftime("%Y-%m-%d")
     tomorrow_date = (now_arg + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -75,7 +74,7 @@ def generate_and_save_report(locality_id):
         json_text = response.text.strip().lstrip("```json").rstrip("```").strip()
         final_json_content = json.loads(json_text)
         
-        # 🟢 CORRECCIÓN DE LA HORA: Usar la hora localizada
+        # CORRECCIÓN DE LA HORA: Usar la hora localizada
         final_json_content['last_updated'] = datetime.now(ARGENTINA_TIMEZONE).isoformat()
 
         output_filename = f"noticias_{locality_id}.json"
@@ -93,7 +92,6 @@ def generate_and_save_report(locality_id):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        # En modo automático, este script siempre recibe el ID de la ciudad
         print("Error: Falta ID de localidad. Terminando.")
         sys.exit(1)
         
