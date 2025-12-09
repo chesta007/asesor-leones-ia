@@ -25,7 +25,7 @@
         .engagement-bar { margin-top: 30px; padding-top: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         #view-counter { font-size: 1.2em; font-weight: bold; }
 
-        /* 🟢 NUEVOS ESTILOS PARA VOTOS POR CATEGORÍA */
+        /* Estilos para VOTOS POR CATEGORÍA */
         .category-engagement-bar { 
             display: flex; 
             justify-content: space-between; 
@@ -46,6 +46,19 @@
         .category-engagement-bar .like { background-color: #10b981; color: white; }
         .category-engagement-bar .dislike { background-color: #ef4444; color: white; }
         
+        /* Estilo para el botón de Feedback */
+        #feedback-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-weight: bold;
+        }
+
         /* Estilos de Modo Oscuro */
         .dark-mode { background-color: #1c1c1c; color: #f4f4f9; }
         .dark-mode .container { background: #2c2c2c; box-shadow: none; }
@@ -62,6 +75,10 @@
         <div id="report-content">
             <p>Conectando con la base de datos de Gemini...</p>
         </div>
+
+        <button id="feedback-button" onclick="submitFeedback()">
+            <i class="fas fa-comment-dots"></i> Enviar Sugerencia para Mejorar el Informe
+        </button>
 
         <div class="engagement-bar">
             <div id="view-counter"><i class="fas fa-eye"></i> Vistas: 0</div>
@@ -86,7 +103,6 @@
         let currentLocalityId = 'leones'; 
         const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
         
-        // Estado de voto por categoría guardado en sessionStorage
         let userVoteState = {}; 
 
         // 1. OBTENER ID DE LOCALIDAD DE LA URL
@@ -99,12 +115,10 @@
         function registerView() {
             const viewPath = `${BASE_CIUDAD_PATH}${currentLocalityId}/views/${today}/total`;
             
-            // 2.1. Lee el contador (para mostrarlo)
             db.ref(viewPath).on('value', snap => {
                 document.getElementById('view-counter').innerHTML = `<i class="fas fa-eye"></i> Vistas: ${snap.val() ? snap.val().toLocaleString() : 0}`;
             });
 
-            // 2.2. Registra la visita (solo si es la primera vez en esta sesión)
             if (!sessionStorage.getItem('viewRegistered')) {
                 db.ref(viewPath).transaction((currentTotal) => {
                     return (currentTotal || 0) + 1;
@@ -113,16 +127,14 @@
             }
         }
         
-        // 🟢 3. NUEVA FUNCIÓN: ENVÍO DE VOTO POR CATEGORÍA
+        // 3. FUNCIÓN DE ENVÍO DE VOTO POR CATEGORÍA
         function sendCategoryVote(categoryId, type) {
-            // Control de voto único por sesión y categoría
             if (sessionStorage.getItem(`vote_${categoryId}_${today}`)) {
                 alert(`Ya has votado (${sessionStorage.getItem('vote_' + categoryId + '_' + today)}) en esta categoría hoy.`);
                 return;
             }
 
             const userVoteKey = new Date().getTime(); 
-            // 🟢 NUEVA RUTA: Agrega la fecha y el ID de la categoría
             const votePath = `${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${today}/${categoryId}/${userVoteKey}`;
             
             db.ref(votePath).set({
@@ -131,8 +143,8 @@
             })
             .then(() => {
                 alert(`✅ Voto de ${type} registrado con éxito para la categoría "${categoryId}".`);
-                sessionStorage.setItem(`vote_${categoryId}_${today}`, type); // Guarda el voto en la sesión
-                loadCategoryVotes(categoryId); // Actualiza el contador
+                sessionStorage.setItem(`vote_${categoryId}_${today}`, type); 
+                loadCategoryVotes(categoryId); 
             })
             .catch(error => {
                 console.error("Error al registrar voto:", error);
@@ -140,9 +152,32 @@
             });
         }
         
-        // 🟢 4. NUEVA FUNCIÓN: CARGAR CONTEO DE VOTOS POR CATEGORÍA
+        // 4. FUNCIÓN PARA ENVIAR SUGERENCIAS PARA MEJORAR (Registro para la IA)
+        function submitFeedback() {
+            const feedbackText = prompt("Escribe tu sugerencia para mejorar el contenido del informe. (Ej: 'Necesito más noticias de tránsito'):");
+            
+            if (feedbackText && feedbackText.trim() !== "") {
+                const feedbackKey = new Date().getTime(); 
+                const feedbackPath = `${BASE_CIUDAD_PATH}${currentLocalityId}/feedback/${today}/${feedbackKey}`;
+                
+                db.ref(feedbackPath).set({
+                    text: feedbackText.trim(),
+                    timestamp: firebase.database.ServerValue.TIMESTAMP
+                })
+                .then(() => {
+                    alert(`✅ Gracias! Tu sugerencia ha sido enviada para su análisis. La IA la usará en el próximo reporte.`);
+                })
+                .catch(error => {
+                    console.error("Error al enviar feedback:", error);
+                    alert(`❌ Error al enviar la sugerencia. Verifica las reglas de Firebase.`);
+                });
+            } else if (feedbackText !== null) {
+                alert("Sugerencia cancelada.");
+            }
+        }
+        
+        // 5. FUNCIÓN: CARGAR CONTEO DE VOTOS POR CATEGORÍA
         function loadCategoryVotes(categoryId) {
-            // Ruta para escuchar los cambios en los votos de la categoría de hoy
             const votesRef = db.ref(`${BASE_CIUDAD_PATH}${currentLocalityId}/votes/${today}/${categoryId}`);
             
             votesRef.on('value', snapshot => {
@@ -167,13 +202,13 @@
             });
         }
         
-        // 5. MODO OSCURO
+        // 6. MODO OSCURO
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
 
 
-        // 6. CARGA DE DATOS PRINCIPAL (MODIFICADA)
+        // 7. CARGA DE DATOS PRINCIPAL (MODIFICADA)
         async function loadReport() {
             getLocalityIdFromUrl();
             document.getElementById('page-title').textContent = `Asesor Público | ${currentLocalityId.replace('_', ' ').toUpperCase()}`;
@@ -194,16 +229,15 @@
                     throw new Error("Estructura de informe inválida o vacía.");
                 }
 
-                // 6.1 Renderizar Título y Metadata
+                // 7.1 Renderizar Título y Metadata
                 document.getElementById('main-title').textContent = data.title;
                 document.getElementById('metadata').textContent = `Actualizado: ${new Date(data.last_updated).toLocaleString()}`;
 
-                // 6.2 Renderizar Categorías (con botones de voto)
+                // 7.2 Renderizar Categorías (con botones de voto)
                 let html = '';
                 let categoriesToLoadVotes = []; 
                 
                 data.categorias.forEach(cat => {
-                    // Genera un ID limpio para usar en Firebase y HTML
                     const categoryId = cat.nombre.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase(); 
                     categoriesToLoadVotes.push(categoryId); 
                     
@@ -225,14 +259,14 @@
                 });
                 reportContentDiv.innerHTML = html;
                 
-                registerView(); // Llama a registrar y monitorear vistas (sin cambios)
+                registerView(); 
                 
-                // 6.3 Cargar los contadores de votos para cada categoría
+                // 7.3 Cargar los contadores de votos para cada categoría
                 categoriesToLoadVotes.forEach(loadCategoryVotes);
                 
             } catch (error) {
                 console.error("Error al cargar el informe:", error);
-                reportContentDiv.innerHTML = `<p style="color:red;">❌ Error al cargar el informe para **${currentLocalityId.toUpperCase()}**. Causa: ${error.message || 'Error de conexión o JSON mal formado'}.<br> Ejecuta el robot desde el Dashboard y verifica la consola (F12).</p>`;
+                reportContentDiv.innerHTML = `<p style="color:red;">❌ Error al cargar el informe para **${currentLocalityId.toUpperCase()}**. Causa: ${error.message || 'Error de conexión o JSON mal formado'}.<br> Ejecuta el robot desde el Dashboard.</p>`;
             }
         }
 
