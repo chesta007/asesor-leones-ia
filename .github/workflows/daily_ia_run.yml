@@ -1,4 +1,4 @@
-# .github/workflows/daily-update.yml
+# .github/workflows/daily_ia_run.yml
 name: Tarea Diaria de IA (Generación Autónoma)
 
 on:
@@ -6,18 +6,16 @@ on:
   schedule:
     - cron: '0 6 * * *'
   
-  # También permite ejecutarlo manualmente para pruebas desde el menú de GitHub Actions
+  # Permite ejecución manual para pruebas desde GitHub
   workflow_dispatch:
 
 jobs:
   generate_and_deploy_content:
     runs-on: ubuntu-latest
     
-    # Permiso esencial para que el bot pueda commitear los nuevos JSON
     permissions:
       contents: write 
       
-    # 🟢 DEFINICIÓN DE CIUDADES PARA EL MODO AUTOMÁTICO
     env:
       ALL_LOCALITIES: "leones marcos_juarez" 
     
@@ -31,7 +29,6 @@ jobs:
           python-version: '3.x' 
       
       - name: Instalar dependencias (google-genai, requests, pytz)
-        # Instalamos todas las dependencias necesarias para Gemini y la zona horaria
         run: pip install google-genai requests pytz
 
       - name: Ejecutar Robot (Generator.py) para todas las ciudades
@@ -39,12 +36,10 @@ jobs:
           echo "Iniciando ejecución programada para las localidades definidas:"
           for city_id in $ALL_LOCALITIES; do
             echo "-> Generando contenido para $city_id"
-            # Ejecuta el script con el ID de la ciudad
             python generator.py $city_id
           done
       
         env:
-          # Clave de Gemini inyectada de forma segura
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         
       - name: Commit y Push de los archivos generados
@@ -52,7 +47,6 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           
-          # 🟢 CRÍTICO: Agrega y commitea todos los archivos noticias_*.json
           git add noticias_*.json 
-          git commit -m "Robot: Actualización Autónoma Programada [Dec 10th]" || echo "No hay cambios para commit"
+          git commit -m "Robot: Actualización Autónoma Programada" || echo "No hay cambios para commit"
           git push
