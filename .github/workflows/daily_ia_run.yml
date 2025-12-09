@@ -1,17 +1,25 @@
-name: Tarea Diaria de IA (Generación de Contenido)
+# .github/workflows/daily-update.yml
+name: Tarea Diaria de IA (Generación Autónoma)
 
 on:
-  # Ejecuta el flujo de trabajo a las 07:00 AM (UTC) todos los días
-  # 07:00 UTC es una hora de la madrugada en Argentina (ejemplo: 04:00 AM ART, dependiendo de DST)
+  # Ejecuta el flujo de trabajo todos los días a las 03:00 AM ART (06:00 AM UTC).
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 6 * * *'
   
-  # También permite ejecutarlo manualmente desde GitHub (útil para pruebas)
+  # También permite ejecutarlo manualmente para pruebas desde el menú de GitHub Actions
   workflow_dispatch:
 
 jobs:
-  generate_content:
+  generate_and_deploy_content:
     runs-on: ubuntu-latest
+    
+    # Permiso esencial para que el bot pueda commitear los nuevos JSON
+    permissions:
+      contents: write 
+      
+    # 🟢 DEFINICIÓN DE CIUDADES PARA EL MODO AUTOMÁTICO
+    env:
+      ALL_LOCALITIES: "leones marcos_juarez" 
     
     steps:
       - name: Checkout del repositorio
@@ -22,18 +30,29 @@ jobs:
         with:
           python-version: '3.x' 
       
-      - name: Instalar dependencias
-        run: pip install -r requirements.txt
+      - name: Instalar dependencias (google-genai, requests, pytz)
+        # Instalamos todas las dependencias necesarias para Gemini y la zona horaria
+        run: pip install google-genai requests pytz
 
-      - name: Ejecutar Robot de Generación de IA
-        # Aquí inyectamos tu clave secreta de Gemini
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python generator.py
+      - name: Ejecutar Robot (Generator.py) para todas las ciudades
+        run: |
+          echo "Iniciando ejecución programada para las localidades definidas:"
+          for city_id in $ALL_LOCALITIES; do
+            echo "-> Generando contenido para $city_id"
+            # Ejecuta el script con el ID de la ciudad
+            python generator.py $city_id
+          done
       
-      - name: Commit y Push del archivo noticias.json
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "robot: Actualización Autónoma del Asesor Diario [IA]"
-          # Solo hacemos commit del archivo de noticias que la IA generó
-          files: noticias.json
+        env:
+          # Clave de Gemini inyectada de forma segura
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        
+      - name: Commit y Push de los archivos generados
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
+          # 🟢 CRÍTICO: Agrega y commitea todos los archivos noticias_*.json
+          git add noticias_*.json 
+          git commit -m "Robot: Actualización Autónoma Programada [Dec 10th]" || echo "No hay cambios para commit"
+          git push
