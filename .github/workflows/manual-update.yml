@@ -1,3 +1,4 @@
+# .github/workflows/manual-update.yml
 name: Actualización Manual de Localidad (Robot Gemini)
 
 on:
@@ -9,7 +10,7 @@ jobs:
   generador_de_ejecución_para_ciudad:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Permiso necesario para commitear archivos
+      contents: write
       
     env:
       TARGET_LOCALITY_ID: ${{ github.event.client_payload.locality_id }}
@@ -23,7 +24,7 @@ jobs:
       with:
         python-version: '3.x'
         
-    # CORRECCIÓN CRÍTICA: Instala las dependencias necesarias, incluyendo pytz
+    # CRÍTICO: Aseguramos la instalación de las dependencias (incluyendo pytz)
     - name: Instalar dependencias
       run: pip install requests google-genai pytz
       
@@ -39,7 +40,5 @@ jobs:
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: "Robot: Actualización forzada para ${{ env.TARGET_LOCALITY_ID }}"
-        # Commit de todos los JSON (noticias_leones.json, noticias_marcos_juarez.json)
         files: noticias_*.json
-        # Esto se asegura de que el contenido se publique en GitHub Pages
         skip_ci: true
