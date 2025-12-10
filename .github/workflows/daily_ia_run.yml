@@ -1,3 +1,4 @@
+# .github/workflows/daily_ia_run.yml
 name: Tarea Diaria de IA (Generación Autónoma)
 
 on:
@@ -5,14 +6,20 @@ on:
   schedule:
     - cron: '0 6 * * *'
   
-  # También permite ejecutarlo manualmente desde GitHub (útil para pruebas)
+  # Permite ejecución manual para pruebas desde GitHub
   workflow_dispatch:
 
 jobs:
   generate_content:
     runs-on: ubuntu-latest
+    
+    # Permiso esencial para que el bot pueda commitear los nuevos JSON
     permissions:
-      contents: write # Permiso necesario para commitear archivos
+      contents: write 
+      
+    # 🟢 DEFINICIÓN DE CIUDADES PARA EL MODO AUTOMÁTICO
+    env:
+      ALL_LOCALITIES: "leones marcos_juarez" 
     
     steps:
       - name: Checkout del repositorio
@@ -23,22 +30,25 @@ jobs:
         with:
           python-version: '3.x' 
       
-      # CORRECCIÓN CRÍTICA: Instala las dependencias necesarias, incluyendo pytz
+      # CORRECCIÓN CRÍTICA: Instala todas las dependencias, incluyendo pytz
       - name: Instalar dependencias
         run: pip install requests google-genai pytz
 
       - name: Ejecutar Robot (Generación para TODAS las ciudades)
-        # Aquí la clave se inyecta desde los secretos del repositorio
+        # Se inyecta la clave y se ejecuta el script en un bucle implícito
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        # NOTA: Al no pasar argumentos, el script 'generator.py' ejecuta el loop para todas las ciudades.
-        run: python generator.py
+        run: |
+          echo "Iniciando ejecución programada para las localidades definidas:"
+          for city_id in $ALL_LOCALITIES; do
+            echo "-> Generando contenido para $city_id"
+            python generator.py $city_id
+          done
       
-      # CORRECCIÓN CRÍTICA: Hace commit de AMBOS archivos JSON generados (noticias_*.json)
+      # 🟢 CRÍTICO: Hace commit de AMBOS archivos JSON (noticias_leones.json y noticias_marcos_juarez.json)
       - name: Commit y Push de archivos generados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "robot: Actualización Autónoma Diaria (Leones y Marcos Juarez)"
-          files: noticias_*.json
-          # Esto se asegura de que el contenido se publique en GitHub Pages
+          commit_message: "Robot: Actualización Autónoma Diaria"
+          files: noticias_*.json # Asegura que AMBOS archivos se suban
           skip_ci: true
