@@ -1,46 +1,45 @@
-# .github/workflows/manual-update.yml
-name: Actualización Manual de Localidad (Gemini Robot)
+name: Actualización Manual de Localidad (Robot Gemini)
 
 on:
+  # Disparador usado por el Dashboard para ejecución específica por ciudad
   repository_dispatch:
-    types: [manual-update-city] 
+    types: [actualización-manual-ciudad]
 
 jobs:
-  run_generator_for_city:
+  generador_de_ejecución_para_ciudad:
     runs-on: ubuntu-latest
-    
     permissions:
-      contents: write 
+      contents: write # Permiso necesario para commitear archivos
       
     env:
       TARGET_LOCALITY_ID: ${{ github.event.client_payload.locality_id }}
-
+      
     steps:
     - name: Checkout del código
       uses: actions/checkout@v4
-
+      
     - name: Configurar Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
-
+        
+    # CORRECCIÓN CRÍTICA: Instala las dependencias necesarias, incluyendo pytz
     - name: Instalar dependencias
       run: pip install requests google-genai pytz
-
+      
     - name: Ejecutar Robot (Generator.py)
       run: |
         echo "Iniciando generación para localidad: $TARGET_LOCALITY_ID"
-        
         # Ejecuta el script pasándole la ID de la ciudad como argumento
         python generator.py $TARGET_LOCALITY_ID
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} 
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         
     - name: Commit de los archivos generados y actualizados
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
-        
-        git add noticias_*.json 
-        git commit -m "Robot: Actualización forzada para $TARGET_LOCALITY_ID" || echo "No hay cambios para commit"
-        git push
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Robot: Actualización forzada para ${{ env.TARGET_LOCALITY_ID }}"
+        # Commit de todos los JSON (noticias_leones.json, noticias_marcos_juarez.json)
+        files: noticias_*.json
+        # Esto se asegura de que el contenido se publique en GitHub Pages
+        skip_ci: true
