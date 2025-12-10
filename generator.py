@@ -14,7 +14,7 @@ ARGENTINA_TIMEZONE = pytz.timezone('America/Argentina/Buenos_Aires')
 FIREBASE_BASE_URL = "https://proyecto-asesor-publico-default-rtdb.firebaseio.com"
 BASE_CIUDAD_PATH = 'PAISES/argentina/provincias/cordoba/ciudades'
 
-# BASE DE DATOS DE CONTEXTO LOCAL ÚNICO POR CIUDAD (CON DETALLE DE FARMACIA)
+# ESTA ES LA ÚNICA LISTA MANUAL QUE DEBE MANTENERSE
 LOCAL_CONTEXT = {
     "leones": {
         "nombre_corto": "Leones",
@@ -25,6 +25,12 @@ LOCAL_CONTEXT = {
         "nombre_corto": "Marcos Juarez",
         "evento_local": "Festival de cine independiente en el Teatro Colón (20:00 hs).",
         "farmacia_turno_contexto": "La farmacia de turno es 'Farmacia Nueva', ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Enlace a Google Maps: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
+    },
+    # 🟢 NUEVA ENTRADA PARA MADRYN (¡Ahora el Robot la detectará en modo automático!)
+    "madryn": {
+        "nombre_corto": "Puerto Madryn",
+        "evento_local": "Inicio de la temporada de avistaje de ballenas.",
+        "farmacia_turno_contexto": "La farmacia de turno es 'Farmacia Del Sur', ubicada en Av. Gales 10. Teléfono: 445-1234. Enlace a Google Maps: [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)",
     }
 }
 # --- FIN CONTEXTO LOCAL ---
@@ -92,14 +98,15 @@ def generate_and_save_report(locality_id):
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        # Ejecución para una ciudad específica (uso manual)
+        # Modo Manual (activado por el Dashboard, con un argumento)
         locality_id = sys.argv[1]
         generate_and_save_report(locality_id)
     elif len(sys.argv) == 1:
-        # Ejecución para todas las ciudades (uso automático diario)
-        print("Iniciando generación para todas las localidades...")
-        for locality_id in LOCAL_CONTEXT.keys():
+        # Modo Automático (activado por el cron job, sin argumentos)
+        print("Iniciando generación para TODAS las localidades definidas en generator.py...")
+        # Itera sobre las claves de su propia lista
+        for locality_id in LOCAL_CONTEXT.keys(): 
             generate_and_save_report(locality_id)
     else:
-        print("Error: Uso inválido. Debe especificar una localidad o ninguna para ejecutar todas.")
+        print("Error: Uso inválido.")
         sys.exit(1)
