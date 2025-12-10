@@ -101,6 +101,7 @@
         const db = firebase.database();
 
         let currentLocalityId = 'leones'; 
+        // Genera la clave de fecha YYYYMMDD
         const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
         
         let userVoteState = {}; 
@@ -116,9 +117,11 @@
             const viewPath = `${BASE_CIUDAD_PATH}${currentLocalityId}/views/${today}/total`;
             
             db.ref(viewPath).on('value', snap => {
+                // Lee el contador de vistas y lo actualiza en el DOM
                 document.getElementById('view-counter').innerHTML = `<i class="fas fa-eye"></i> Vistas: ${snap.val() ? snap.val().toLocaleString() : 0}`;
             });
 
+            // Solo registra la visita una vez por sesión (no por recarga)
             if (!sessionStorage.getItem('viewRegistered')) {
                 db.ref(viewPath).transaction((currentTotal) => {
                     return (currentTotal || 0) + 1;
@@ -129,6 +132,7 @@
         
         // 3. FUNCIÓN DE ENVÍO DE VOTO POR CATEGORÍA
         function sendCategoryVote(categoryId, type) {
+            // Evitar doble voto
             if (sessionStorage.getItem(`vote_${categoryId}_${today}`)) {
                 alert(`Ya has votado (${sessionStorage.getItem('vote_' + categoryId + '_' + today)}) en esta categoría hoy.`);
                 return;
@@ -144,7 +148,7 @@
             .then(() => {
                 alert(`✅ Voto de ${type} registrado con éxito para la categoría "${categoryId}".`);
                 sessionStorage.setItem(`vote_${categoryId}_${today}`, type); 
-                loadCategoryVotes(categoryId); 
+                loadCategoryVotes(categoryId); // Vuelve a cargar el contador
             })
             .catch(error => {
                 console.error("Error al registrar voto:", error);
@@ -216,7 +220,7 @@
             const reportContentDiv = document.getElementById('report-content');
 
             try {
-                // Leer el JSON generado por el robot
+                // Leer el JSON generado por el robot, con un timestamp para evitar cache
                 const response = await fetch(`noticias_${currentLocalityId}.json?t=${new Date().getTime()}`);
                 
                 if (!response.ok) {
@@ -238,6 +242,7 @@
                 let categoriesToLoadVotes = []; 
                 
                 data.categorias.forEach(cat => {
+                    // Crea una ID limpia para cada categoría
                     const categoryId = cat.nombre.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase(); 
                     categoriesToLoadVotes.push(categoryId); 
                     
