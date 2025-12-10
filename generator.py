@@ -8,7 +8,6 @@ from google.genai.errors import APIError
 import pytz 
 
 # --- CONFIGURACIÓN DE ZONA HORARIA ---
-# Esto garantiza que la hora sea siempre la de Buenos Aires
 ARGENTINA_TIMEZONE = pytz.timezone('America/Argentina/Buenos_Aires')
 
 # --- 1. CONFIGURACIÓN Y CONTEXTO LOCAL ESCALABLE ---
@@ -20,7 +19,6 @@ LOCAL_CONTEXT = {
     "leones": {
         "nombre_corto": "Leones",
         "evento_local": "Gran partido de fútbol en el Club Atlético Leones (19:30 hs).",
-        # El contenido de la farmacia debe ser rico en información para que el JSON lo incluya.
         "farmacia_turno_contexto": "La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
     },
     "marcos_juarez": {
@@ -34,7 +32,6 @@ LOCAL_CONTEXT = {
 # --- 2. PROMPT MAESTRO DE GEMINI ---
 def get_gemini_prompt(city_name, contexto, yesterday_analysis="No hay análisis previo."):
     
-    # Usar la hora localizada para el prompt
     now_arg = datetime.now(ARGENTINA_TIMEZONE)
     current_date = now_arg.strftime("%Y-%m-%d")
     tomorrow_date = (now_arg + timedelta(days=1)).strftime("%Y-%m-%d")
@@ -66,7 +63,6 @@ def generate_and_save_report(locality_id):
 
     contexto = LOCAL_CONTEXT[locality_id]
     city_name = contexto['nombre_corto']
-    # Esto simula un análisis de feedback real para mejorar el prompt.
     yesterday_analysis = "El reporte de ayer en la categoría 'Deportes' tuvo un alto índice de 'Like' en ambas ciudades." 
 
     prompt = get_gemini_prompt(city_name, contexto, yesterday_analysis)
@@ -75,7 +71,6 @@ def generate_and_save_report(locality_id):
         client = genai.Client()
         response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         
-        # Limpieza robusta del JSON
         json_text = response.text.strip().lstrip("```json").rstrip("```").strip()
         final_json_content = json.loads(json_text)
         
