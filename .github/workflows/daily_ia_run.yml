@@ -1,23 +1,18 @@
-# .github/workflows/daily_ia_run.yml
 name: Tarea Diaria de IA (Generación Autónoma)
 
 on:
-  # Ejecuta el flujo de trabajo todos los días a las 03:00 AM ART (06:00 AM UTC).
+  # Ejecuta el flujo de trabajo a las 06:00 AM (UTC) todos los días (~03:00 AM ART)
   schedule:
     - cron: '0 6 * * *'
   
-  # Permite ejecución manual para pruebas desde GitHub
+  # También permite ejecutarlo manualmente desde GitHub (útil para pruebas)
   workflow_dispatch:
 
 jobs:
-  generate_and_deploy_content:
+  generate_content:
     runs-on: ubuntu-latest
-    
     permissions:
-      contents: write 
-      
-    env:
-      ALL_LOCALITIES: "leones marcos_juarez" 
+      contents: write # Permiso necesario para commitear archivos
     
     steps:
       - name: Checkout del repositorio
@@ -28,25 +23,22 @@ jobs:
         with:
           python-version: '3.x' 
       
-      - name: Instalar dependencias (google-genai, requests, pytz)
-        run: pip install google-genai requests pytz
+      # CORRECCIÓN CRÍTICA: Instala las dependencias necesarias, incluyendo pytz
+      - name: Instalar dependencias
+        run: pip install requests google-genai pytz
 
-      - name: Ejecutar Robot (Generator.py) para todas las ciudades
-        run: |
-          echo "Iniciando ejecución programada para las localidades definidas:"
-          for city_id in $ALL_LOCALITIES; do
-            echo "-> Generando contenido para $city_id"
-            python generator.py $city_id
-          done
-      
+      - name: Ejecutar Robot (Generación para TODAS las ciudades)
+        # Aquí la clave se inyecta desde los secretos del repositorio
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        
-      - name: Commit y Push de los archivos generados
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          
-          git add noticias_*.json 
-          git commit -m "Robot: Actualización Autónoma Programada" || echo "No hay cambios para commit"
-          git push
+        # NOTA: Al no pasar argumentos, el script 'generator.py' ejecuta el loop para todas las ciudades.
+        run: python generator.py
+      
+      # CORRECCIÓN CRÍTICA: Hace commit de AMBOS archivos JSON generados (noticias_*.json)
+      - name: Commit y Push de archivos generados
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "robot: Actualización Autónoma Diaria (Leones y Marcos Juarez)"
+          files: noticias_*.json
+          # Esto se asegura de que el contenido se publique en GitHub Pages
+          skip_ci: true
