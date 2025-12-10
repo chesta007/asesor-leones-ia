@@ -2,7 +2,7 @@
 name: Tarea Diaria de IA (Generación Autónoma)
 
 on:
-  # Ejecuta el flujo de trabajo a las 06:00 AM (UTC) todos los días (~03:00 AM ART)
+  # CRÍTICO: Disparador que se ejecuta todos los días a las 03:00 AM ART
   schedule:
     - cron: '0 6 * * *'
   
@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: write 
       
-    # 🟢 DEFINICIÓN DE CIUDADES PARA EL MODO AUTOMÁTICO
+    # Definición de las ciudades a ejecutar
     env:
       ALL_LOCALITIES: "leones marcos_juarez" 
     
@@ -30,22 +30,17 @@ jobs:
         with:
           python-version: '3.x' 
       
-      # CORRECCIÓN CRÍTICA: Instala todas las dependencias, incluyendo pytz
+      # CORRECCIÓN: Instala las dependencias necesarias
       - name: Instalar dependencias
         run: pip install requests google-genai pytz
 
       - name: Ejecutar Robot (Generación para TODAS las ciudades)
-        # Se inyecta la clave y se ejecuta el script en un bucle implícito
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          echo "Iniciando ejecución programada para las localidades definidas:"
-          for city_id in $ALL_LOCALITIES; do
-            echo "-> Generando contenido para $city_id"
-            python generator.py $city_id
-          done
+        # NOTA: Al no pasar argumentos, el script 'generator.py' ejecuta el loop para todas las ciudades.
+        run: python generator.py
       
-      # 🟢 CRÍTICO: Hace commit de AMBOS archivos JSON (noticias_leones.json y noticias_marcos_juarez.json)
+      # CRÍTICO: Hace commit de AMBOS archivos JSON
       - name: Commit y Push de archivos generados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
