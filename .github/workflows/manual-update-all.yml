@@ -1,0 +1,40 @@
+# .github/workflows/manual-update-all.yml
+name: ⚙️ Ejecución Manual General (Todas las Ciudades)
+
+on:
+  # Este es el disparador para un botón manual en la interfaz de GitHub
+  workflow_dispatch:
+
+jobs:
+  generador_de_ejecución_general:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permiso necesario para commitear archivos
+      
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+      
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        
+    # CRÍTICO: Aseguramos la instalación de las dependencias (incluyendo pytz)
+    - name: Instalar dependencias
+      run: pip install requests google-genai pytz
+      
+    - name: Ejecutar Robot para TODAS las Ciudades
+      run: |
+        echo "Iniciando generación para TODAS las localidades (Leones, Marcos Juarez, Madryn, etc...)"
+        # Ejecuta el script sin argumentos. El script generator.py iterará por todas las ciudades
+        python generator.py
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        
+    - name: Commit de los archivos generados
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Robot: Actualización manual general de todas las ciudades"
+        files: noticias_*.json
+        skip_ci: true
