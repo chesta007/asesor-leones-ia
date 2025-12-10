@@ -13,14 +13,9 @@ jobs:
   generate_content:
     runs-on: ubuntu-latest
     
-    # Permiso esencial para que el bot pueda commitear los nuevos JSON
     permissions:
       contents: write 
       
-    # Definición de las ciudades a ejecutar
-    env:
-      ALL_LOCALITIES: "leones marcos_juarez" 
-    
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
@@ -30,20 +25,20 @@ jobs:
         with:
           python-version: '3.x' 
       
-      # CORRECCIÓN: Instala las dependencias necesarias
+      # Instala las dependencias necesarias
       - name: Instalar dependencias
         run: pip install requests google-genai pytz
 
       - name: Ejecutar Robot (Generación para TODAS las ciudades)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        # NOTA: Al no pasar argumentos, el script 'generator.py' ejecuta el loop para todas las ciudades.
-        run: python generator.py
+        # NOTA: Ejecutamos el script sin argumentos. El script se encarga de ITERAR
+        run: python generator.py 
       
       # CRÍTICO: Hace commit de AMBOS archivos JSON
       - name: Commit y Push de archivos generados
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Robot: Actualización Autónoma Diaria"
-          files: noticias_*.json # Asegura que AMBOS archivos se suban
+          commit_message: "Robot: Actualización Autónoma Diaria (Todas las ciudades)"
+          files: noticias_*.json # Asegura que TODOS los archivos se suban
           skip_ci: true
