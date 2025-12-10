@@ -1,22 +1,26 @@
 {
-    "title": "Informe Diario de Noticias Locales - Leones",
-    "last_updated": "2025-12-08T18:26:04.441537-03:00",
-    "categorias": [
-        {
-            "nombre": "☎️ Teléfonos Útiles",
-            "contenido": "Estimados vecinos, para su conveniencia, la farmacia de turno en el día de hoy es **Farmacia Central**, ubicada en Bv. San Martín 123. Puede contactarlos al 472-5555. Encuentre su ubicación exacta aquí: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral). Además, recordamos los teléfonos de emergencia vitales para nuestra comunidad: Policía (101), Bomberos (100) y Hospital (107)."
+    "reporte_diario_leones": {
+        "fecha": "Hoy",
+        "saludo": "¡Bienvenidos vecinos de Leones al informe diario de su Asesor Público Digital!",
+        "contenido_noticias": {
+            "☎️ Teléfonos Útiles": {
+                "título": "Servicios Esenciales a su Alcance",
+                "contenido": "Para su tranquilidad, aquí le detallamos los contactos importantes para hoy en Leones:\n\n**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Acceder a Ubicación en Google Maps](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Emergencias:**\n*   Policía: 101\n*   Bomberos Voluntarios: 100\n*   Emergencias Médicas (Hospital local): 107"
+            },
+            "⚽ Eventos y Agenda": {
+                "título": "¡Hoy se vive el fútbol en Leones!",
+                "contenido": "Atención fanáticos del deporte local: hoy es un día imperdible en el Club Atlético Leones. La ciudad se prepara para un **gran partido de fútbol** que tendrá lugar a las **19:30 hs**. Tras la excelente repercusión que tuvieron nuestras noticias deportivas ayer, ¡invitamos a todos a acompañar y alentar a nuestros equipos! No se pierdan esta cita con la pasión deportiva de Leones."
+            },
+            "☀️ Clima y Consejos": {
+                "título": "Pronóstico y Precauciones para el Día",
+                "contenido": "Aunque no disponemos del pronóstico exacto para hoy, es fundamental estar preparado. Le recomendamos consultar el servicio meteorológico de su preferencia para planificar su día. Recuerde siempre: mantenerse hidratado, usar protector solar si pasa tiempo al aire libre y estar atento a los cambios climáticos. ¡Un día informado es un día más seguro!"
+            },
+            "🚨 Recomendación Inteligente (Adelanto)": {
+                "título": "Leones Participa: Tu Voz Importa",
+                "contenido": "Desde tu 'Asesor Público Digital', te adelantamos la importancia de participar activamente en la vida de nuestra ciudad. Mantente atento a los próximos comunicados municipales sobre iniciativas de mejora barrial y programas de participación ciudadana. Tu opinión y colaboración son el motor del progreso de Leones. ¡Juntos construimos la ciudad que queremos!"
+            }
         },
-        {
-            "nombre": "⚽ Eventos y Agenda",
-            "contenido": "La pasión deportiva vuelve a ser protagonista en Leones. Hoy, el **Club Atlético Leones** será el escenario de un gran partido de fútbol a las 19:30 hs. ¡Una cita imperdible para todos los aficionados! Dada la excelente recepción de nuestro contenido deportivo de ayer, los invitamos a sumarse y apoyar a nuestros equipos. ¡Esperamos verlos allí!"
-        },
-        {
-            "nombre": "☀️ Clima y Consejos",
-            "contenido": "Disfrutaremos de una jornada soleada en Leones, con una temperatura que alcanzará los 29°C. Se recomienda encarecidamente mantenerse hidratado bebiendo abundante agua, evitar la exposición prolongada al sol durante las horas pico y utilizar protector solar. ¡A disfrutar del buen tiempo con precaución!"
-        },
-        {
-            "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-            "contenido": "Para el día de mañana, martes 9 de diciembre de 2025, le sugerimos estar atento a las redes sociales municipales y carteleras locales. Se espera la difusión de importantes novedades sobre las actividades recreativas y culturales programadas para la temporada de verano. ¡Planifique con anticipación y no se pierda nada de lo que Leones tiene para ofrecer!"
-        }
-    ]
+        "despedida": "Gracias por elegirnos. ¡Que tengan una excelente jornada en Leones!"
+    },
+    "last_updated": "2025-12-10T03:25:14.274974-03:00"
 }
