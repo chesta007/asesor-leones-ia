@@ -1,55 +1,29 @@
 {
-    "reporte_diario_madryn": {
+    "informe_diario_puerto_madryn": {
         "fecha": "Hoy",
-        "titulo": "Informe Diario: Tu Guía en Puerto Madryn",
-        "secciones": [
-            {
-                "categoria": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    {
-                        "tipo": "farmacia_de_turno",
-                        "texto": "Farmacia de Turno (24 hs):",
-                        "detalle": "Farmacia Del Sur, Av. Gales 10. Tel: 445-1234. [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
-                    },
-                    {
-                        "tipo": "emergencias",
-                        "texto": "Emergencias:",
-                        "detalle": "Policía: 101 | Bomberos: 100 | Ambulancia/Emergencias Médicas: 107 | Defensa Civil: 103"
-                    }
+        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
+        "contenido": {
+            "☎️ Teléfonos Útiles": {
+                "farmacia_de_turno": "Farmacia de Turno (Hoy): Farmacia Del Sur, Av. Gales 10. Tel: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
+                "emergencias": [
+                    "Policía: 101",
+                    "Bomberos: 100",
+                    "Ambulancia (Emergencias Médicas): 107",
+                    "Prefectura Naval Argentina: 106"
                 ]
             },
-            {
-                "categoria": "⚽ Eventos y Agenda",
-                "contenido": [
-                    {
-                        "titulo": "¡Comienza la Temporada de Avistaje de Ballenas!",
-                        "descripcion": "Hoy es un día trascendental para Puerto Madryn: damos inicio oficial a la temporada de avistaje de la majestuosa Ballena Franca Austral. Este evento no solo posiciona a nuestra ciudad como capital mundial del ecoturismo, sino que también revitaliza la economía local y nos conecta profundamente con la naturaleza patagónica. Se esperan los primeros avistajes desde la costa y las primeras excursiones embarcadas. ¡Prepárense para vivir una experiencia inolvidable y ser testigos de este espectáculo natural único!"
-                    }
-                ]
+            "⚽ Eventos y Agenda": {
+                "destacado_del_dia": "¡Hoy es el gran día! Puerto Madryn da la bienvenida oficial al inicio de la temporada de avistaje de ballenas. Este evento emblemático posiciona a nuestra ciudad como un referente mundial en el turismo de naturaleza. Se invita a todos los residentes y visitantes a disfrutar con responsabilidad de este espectáculo único, respetando siempre las normativas de avistaje para asegurar la protección de la fauna marina. Los operadores turísticos habilitados ya están listos para ofrecer experiencias inolvidables.",
+                "nota_adicional": "Dado el gran interés manifestado ayer en la categoría 'Deportes', les adelantamos que estaremos preparando novedades sobre la agenda deportiva local para futuras ediciones. ¡Manténganse informados!"
             },
-            {
-                "categoria": "☀️ Clima y Consejos",
-                "contenido": [
-                    {
-                        "titulo": "Pronóstico para Hoy",
-                        "descripcion": "Se espera un día mayormente nublado en Puerto Madryn, con algunas aperturas de sol hacia la tarde. La temperatura máxima estimada rondará los 18°C, mientras que la mínima será de 9°C. Habrá viento moderado del sector oeste, con ráfagas que podrían superar los 40 km/h, especialmente durante la mañana."
-                    },
-                    {
-                        "titulo": "Consejos del Día",
-                        "descripcion": "Dada la presencia de viento y las variaciones térmicas, se recomienda salir con indumentaria adecuada, priorizando capas que permitan adaptarse a los cambios de temperatura y un buen cortavientos. Si realiza actividades al aire libre, no olvide protegerse del sol, aún en días nublados, y mantenerse bien hidratado. ¡A disfrutar de nuestra ciudad con precaución!"
-                    }
-                ]
+            "☀️ Clima y Consejos": {
+                "pronostico_madryn": "Para hoy en Puerto Madryn, se espera una jornada con cielo parcialmente nublado y temperaturas agradables. La mínima rondará los 10°C, alcanzando una máxima de 20°C. Los vientos soplarán del sector oeste con intensidad moderada, con algunas ráfagas por la tarde. Se recomienda llevar una campera liviana, especialmente si planea actividades al aire libre o cerca de la costa.",
+                "consejo_util": "Con el aumento de visitantes por la temporada, reforzamos la importancia de mantener la limpieza en playas y espacios públicos. Un entorno limpio es el mejor reflejo de nuestra ciudad y un compromiso de todos."
             },
-            {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    {
-                        "titulo": "Mañana en tu Reporte: ¡Activá tu Energía Madrynense!",
-                        "descripcion": "Viendo el gran interés y la excelente interacción que despertó la categoría 'Deportes' en el reporte de ayer, te adelantamos que mañana tendremos un contenido especial enfocado en las próximas actividades deportivas y recreativas. Prepara tus zapatillas y tu espíritu aventurero, porque te acercaremos información clave para mantener un estilo de vida activo y saludable en nuestra hermosa ciudad. ¡No te lo pierdas!"
-                    }
-                ]
+            "🚨 Recomendación Inteligente (Adelanto)": {
+                "recomendacion": "Ante el inicio de la temporada alta, se aconseja a los vecinos y comerciantes verificar y planificar con antelación sus trámites y gestiones. Utilice los canales digitales disponibles para consultas y evite aglomeraciones. La eficiencia en la información y la prevención nos benefician a todos y contribuyen a un flujo más ordenado en nuestra ciudad."
             }
-        ]
+        }
     },
-    "last_updated": "2025-12-10T03:25:46.423773-03:00"
+    "last_updated": "2025-12-11T03:26:22.215580-03:00"
 }

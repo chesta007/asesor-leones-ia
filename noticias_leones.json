@@ -1,26 +1,26 @@
 {
     "reporte_diario_leones": {
+        "titulo": "Informe Diario de Noticias Locales - Leones",
         "fecha": "Hoy",
-        "saludo": "¡Bienvenidos vecinos de Leones al informe diario de su Asesor Público Digital!",
-        "contenido_noticias": {
-            "☎️ Teléfonos Útiles": {
-                "título": "Servicios Esenciales a su Alcance",
-                "contenido": "Para su tranquilidad, aquí le detallamos los contactos importantes para hoy en Leones:\n\n**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Acceder a Ubicación en Google Maps](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Emergencias:**\n*   Policía: 101\n*   Bomberos Voluntarios: 100\n*   Emergencias Médicas (Hospital local): 107"
+        "asesor_publico_digital": "Leones Informa",
+        "categorias": [
+            {
+                "nombre": "☎️ Teléfonos Útiles",
+                "contenido": "Para su tranquilidad y comodidad, aquí tiene los contactos esenciales para el día:\n\n**Farmacia de Turno:** La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Otros Teléfonos de Emergencia:**\n*   **Policía:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas:** 107"
             },
-            "⚽ Eventos y Agenda": {
-                "título": "¡Hoy se vive el fútbol en Leones!",
-                "contenido": "Atención fanáticos del deporte local: hoy es un día imperdible en el Club Atlético Leones. La ciudad se prepara para un **gran partido de fútbol** que tendrá lugar a las **19:30 hs**. Tras la excelente repercusión que tuvieron nuestras noticias deportivas ayer, ¡invitamos a todos a acompañar y alentar a nuestros equipos! No se pierdan esta cita con la pasión deportiva de Leones."
+            {
+                "nombre": "⚽ Eventos y Agenda",
+                "contenido": "¡Leones, hoy vibrará la cancha! La pasión del fútbol nos convoca en el **Club Atlético Leones**, donde se disputará un gran partido a las **19:30 hs**. Recordando el entusiasmo que generó ayer la sección de Deportes, invitamos a toda la comunidad a sumarse y apoyar a nuestros equipos. ¡Será una noche imperdible de aliento y camaradería!"
             },
-            "☀️ Clima y Consejos": {
-                "título": "Pronóstico y Precauciones para el Día",
-                "contenido": "Aunque no disponemos del pronóstico exacto para hoy, es fundamental estar preparado. Le recomendamos consultar el servicio meteorológico de su preferencia para planificar su día. Recuerde siempre: mantenerse hidratado, usar protector solar si pasa tiempo al aire libre y estar atento a los cambios climáticos. ¡Un día informado es un día más seguro!"
+            {
+                "nombre": "☀️ Clima y Consejos",
+                "contenido": "Para hoy en Leones, anticipamos un día agradable con cielo parcialmente nublado y una temperatura máxima que rondará los 24°C. La noche será fresca, ideal para disfrutar al aire libre si asiste al partido. Recomendamos llevar una campera ligera y, como siempre, mantenerse bien hidratado. ¡Aproveche este lindo día!"
             },
-            "🚨 Recomendación Inteligente (Adelanto)": {
-                "título": "Leones Participa: Tu Voz Importa",
-                "contenido": "Desde tu 'Asesor Público Digital', te adelantamos la importancia de participar activamente en la vida de nuestra ciudad. Mantente atento a los próximos comunicados municipales sobre iniciativas de mejora barrial y programas de participación ciudadana. Tu opinión y colaboración son el motor del progreso de Leones. ¡Juntos construimos la ciudad que queremos!"
+            {
+                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": "Atención, vecinos: Tras la gran respuesta a nuestras noticias deportivas de ayer, adelantamos que en nuestro próximo informe exploraremos cómo las aplicaciones y plataformas digitales locales pueden mejorar su experiencia y participación en los eventos de la ciudad, desde la agenda cultural hasta los partidos de fútbol. ¡No se lo pierdan!"
             }
-        },
-        "despedida": "Gracias por elegirnos. ¡Que tengan una excelente jornada en Leones!"
+        ]
     },
-    "last_updated": "2025-12-10T03:25:14.274974-03:00"
+    "last_updated": "2025-12-11T03:26:00.808401-03:00"
 }
