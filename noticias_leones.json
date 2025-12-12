@@ -1,26 +1,14 @@
 {
     "reporte_diario_leones": {
-        "titulo": "Informe Diario de Noticias Locales - Leones",
         "fecha": "Hoy",
-        "asesor_publico_digital": "Leones Informa",
-        "categorias": [
-            {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad y comodidad, aquí tiene los contactos esenciales para el día:\n\n**Farmacia de Turno:** La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Otros Teléfonos de Emergencia:**\n*   **Policía:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas:** 107"
-            },
-            {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": "¡Leones, hoy vibrará la cancha! La pasión del fútbol nos convoca en el **Club Atlético Leones**, donde se disputará un gran partido a las **19:30 hs**. Recordando el entusiasmo que generó ayer la sección de Deportes, invitamos a toda la comunidad a sumarse y apoyar a nuestros equipos. ¡Será una noche imperdible de aliento y camaradería!"
-            },
-            {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Leones, anticipamos un día agradable con cielo parcialmente nublado y una temperatura máxima que rondará los 24°C. La noche será fresca, ideal para disfrutar al aire libre si asiste al partido. Recomendamos llevar una campera ligera y, como siempre, mantenerse bien hidratado. ¡Aproveche este lindo día!"
-            },
-            {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Atención, vecinos: Tras la gran respuesta a nuestras noticias deportivas de ayer, adelantamos que en nuestro próximo informe exploraremos cómo las aplicaciones y plataformas digitales locales pueden mejorar su experiencia y participación en los eventos de la ciudad, desde la agenda cultural hasta los partidos de fútbol. ¡No se lo pierdan!"
-            }
-        ]
+        "titulo": "Informe Diario del Asesor Público Digital: Novedades en Leones",
+        "contenido": {
+            "☎️ Teléfonos Útiles": "Farmacia de Turno: Hoy, la Farmacia Central, ubicada en Bv. San Martín 123, estará de turno para atender todas sus necesidades. Puede contactarlos al 472-5555. [Ver en Google Maps](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\nEmergencias:\n- Policía: 101\n- Bomberos Voluntarios: 100\n- Hospital/Emergencias Médicas: 107",
+            "⚽ Eventos y Agenda": "¡Atención, amantes del deporte! La jornada de hoy en Leones promete emociones fuertes y un ambiente vibrante. El evento central es el esperado gran partido de fútbol que se disputará en el Club Atlético Leones a las 19:30 hs. Tras el alto interés en deportes reportado ayer, esperamos una gran concurrencia para alentar a nuestros equipos locales. ¡No te lo pierdas y vení a vibrar con el fútbol en nuestro querido Club!",
+            "☀️ Clima y Consejos": "El pronóstico para hoy en Leones indica una jornada muy agradable. Se espera una temperatura mínima de 15°C y una máxima de 28°C, con cielo mayormente soleado y algunas nubes dispersas. El viento será leve. Disfrute del aire libre y recuerde mantenerse bien hidratado, especialmente si planea asistir al partido de fútbol esta noche. ¡Un día perfecto para disfrutar en Leones!",
+            "🚨 Recomendación Inteligente (Adelanto)": "Para quienes asistan al gran partido de esta noche, les recordamos la importancia de planificar su llegada con anticipación para asegurar un buen lugar y evitar aglomeraciones de último momento. Además, antes o después del evento, considere apoyar a nuestros comercios locales, ya sea disfrutando de una cena o realizando alguna compra. ¡Leones crece con tu apoyo!"
+        },
+        "mensaje_final": "Desde el Asesor Público Digital, trabajamos para que Leones esté siempre informado y conectado. ¡Que tengan un excelente día!"
     },
-    "last_updated": "2025-12-11T03:26:00.808401-03:00"
+    "last_updated": "2025-12-12T03:25:08.798504-03:00"
 }
