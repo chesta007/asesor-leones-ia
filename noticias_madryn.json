@@ -1,11 +1,69 @@
 {
-    "titulo_informe": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-    "fecha": "Hoy",
-    "contenido": {
-        "☎️ Teléfonos Útiles": "Para hoy, la Farmacia de Turno es **Farmacia Del Sur**, ubicada en Av. Gales 10. Teléfono: 445-1234. [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn).\n\n**Otros Teléfonos de Emergencia:**\n*   Policía: 101\n*   Bomberos: 100\n*   Emergencias Médicas: 107\n*   Prefectura Naval Argentina: 106",
-        "⚽ Eventos y Agenda": "¡Gran día para Puerto Madryn! Hoy damos inicio a la esperada **Temporada de Avistaje de Ballenas**. Este evento anual no solo celebra la majestuosa presencia de la Ballena Franca Austral en nuestras costas, sino que también marca un hito fundamental para el turismo y la economía local. Se espera una gran afluencia de visitantes. Recordamos a residentes y turistas la importancia del turismo responsable y el respeto por la fauna marina. Consultar siempre operadores turísticos habilitados para una experiencia segura y regulada.",
-        "☀️ Clima y Consejos": "El día en Puerto Madryn se presentará **parcialmente nublado con temperaturas agradables**, oscilando entre los 15°C y 22°C. Soplará una brisa moderada del sector este. **Consejo del día:** Con el inicio de la temporada de ballenas y el aumento de actividades al aire libre, recuerde mantenerse hidratado y usar protector solar, incluso en días nublados. Si planea salir a la costa, lleve ropa de abrigo ligera, ya que la sensación térmica puede variar.",
-        "🚨 Recomendación Inteligente (Adelanto)": "Ante el inminente aumento de la actividad turística en nuestra ciudad por la temporada de ballenas, el Asesor Público Digital recomienda a todos los ciudadanos y visitantes mantenerse informados a través de los **canales digitales oficiales del Municipio**. En ellos podrán encontrar información actualizada sobre servicios, eventos, regulaciones y consejos para disfrutar de una convivencia armónica y segura. ¡La información es nuestra mejor herramienta para una Madryn inteligente!"
+    "reporte_diario_puerto_madryn": {
+        "fecha_de_generacion": "DD-MM-AAAA",
+        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
+        "secciones": [
+            {
+                "categoria": "☎️ Teléfonos Útiles",
+                "contenido": [
+                    {
+                        "tipo": "Farmacia de Turno",
+                        "descripcion": "La farmacia de turno hoy es: Farmacia Del Sur, ubicada en Av. Gales 10. Teléfono: 445-1234. [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
+                    },
+                    {
+                        "tipo": "Emergencias Policía",
+                        "descripcion": "101"
+                    },
+                    {
+                        "tipo": "Bomberos Voluntarios",
+                        "descripcion": "100"
+                    },
+                    {
+                        "tipo": "Hospital Zonal Madryn",
+                        "descripcion": "107 (Ambulancia) / 445-1000"
+                    },
+                    {
+                        "tipo": "Defensa Civil",
+                        "descripcion": "103"
+                    }
+                ]
+            },
+            {
+                "categoria": "⚽ Eventos y Agenda",
+                "contenido": [
+                    {
+                        "titulo": "¡Inicia la Temporada de Avistaje de Ballenas en Puerto Madryn!",
+                        "descripcion": "Hoy es un día trascendental para nuestra ciudad, ya que damos oficialmente la bienvenida al inicio de la temporada de avistaje de ballenas. Un espectáculo natural único que atrae miradas de todo el mundo, ofreciéndonos la oportunidad de conectar con la majestuosa Ballena Franca Austral en su hábitat natural. Invitamos a vecinos y turistas a disfrutar de esta maravilla, siempre priorizando la elección de operadores turísticos habilitados y el respeto por la fauna marina."
+                    },
+                    {
+                        "titulo": "El Deporte Local en el Corazón de Madrynenses",
+                        "descripcion": "Queremos destacar el alto índice de 'Like' que recibió el reporte de ayer en la categoría 'Deportes'. Esto demuestra el profundo interés y la pasión de nuestra comunidad por las actividades deportivas y la vida activa. ¡Felicitaciones a todos los que hacen posible el deporte en Madryn!"
+                    }
+                ]
+            },
+            {
+                "categoria": "☀️ Clima y Consejos",
+                "contenido": [
+                    {
+                        "titulo": "Pronóstico del Tiempo para Hoy",
+                        "descripcion": "Se espera una jornada con cielo parcialmente nublado y temperaturas agradables. La máxima estimada alcanzará los 19°C, mientras que la mínima rondará los 10°C. Habrá vientos moderados del sector oeste, con algunas ráfagas por la tarde."
+                    },
+                    {
+                        "titulo": "Consejo del Día: Preparados para el Avistaje",
+                        "descripcion": "Con el inicio de la temporada de ballenas y la posibilidad de disfrutar de actividades al aire libre, recomendamos vestir en capas para adaptarse a los cambios de temperatura. No olvides protector solar y un sombrero, incluso en días nublados. ¡La hidratación es clave, lleva siempre tu botella de agua!"
+                    }
+                ]
+            },
+            {
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": [
+                    {
+                        "titulo": "Turismo Sostenible: Nuestro Compromiso con la Naturaleza",
+                        "descripcion": "Anticipamos la importancia de que todos seamos embajadores del turismo sostenible. Al iniciar la temporada de avistaje, es crucial recordar que la preservación de nuestro entorno marino es responsabilidad de todos. Informarse sobre las buenas prácticas y respetar las indicaciones de los guías y autoridades es fundamental para garantizar que futuras generaciones también puedan disfrutar de este privilegio."
+                    }
+                ]
+            }
+        ]
     },
-    "last_updated": "2025-12-13T03:23:06.637902-03:00"
+    "last_updated": "2025-12-14T03:23:02.746012-03:00"
 }

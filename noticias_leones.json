@@ -1,69 +1,25 @@
 {
-    "informe_diario_leones": {
-        "fecha": "Hoy",
-        "titulo": "Noticias Locales de Leones - Tu Asesor Público Digital",
-        "contenido": [
-            {
-                "categoria": "☎️ Teléfonos Útiles",
-                "descripcion": "Para su tranquilidad y conveniencia, aquí los números esenciales y la farmacia de turno para hoy en Leones:",
-                "items": [
-                    {
-                        "nombre": "Farmacia de Turno",
-                        "detalle": "Farmacia Central, ubicada en Bv. San Martín 123. Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)"
-                    },
-                    {
-                        "nombre": "Policía",
-                        "detalle": "101"
-                    },
-                    {
-                        "nombre": "Bomberos Voluntarios",
-                        "detalle": "100"
-                    },
-                    {
-                        "nombre": "Hospital Municipal",
-                        "detalle": "472-2000"
-                    },
-                    {
-                        "nombre": "Defensa Civil",
-                        "detalle": "103"
-                    }
-                ]
+    "reporte_diario_leones": {
+        "titulo": "Informe Diario Leones - Asesor Público Digital",
+        "fecha": "HOY",
+        "categorias": {
+            "telefonos_utiles": {
+                "titulo": "☎️ Teléfonos Útiles",
+                "contenido": "Hoy, la farmacia de turno es **Farmacia Central**, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral).\n\nOtros teléfonos de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Hospital:** 472-2222\n*   **Defensa Civil:** 103"
             },
-            {
-                "categoria": "⚽ Eventos y Agenda",
-                "descripcion": "¡La pasión futbolera se enciende hoy en Leones! Siguiendo el gran interés que los deportes generaron ayer, la ciudad se prepara para un evento imperdible que promete unir a la comunidad.",
-                "items": [
-                    {
-                        "nombre": "Gran Partido de Fútbol en el Club Atlético Leones",
-                        "detalle": "El Club Atlético Leones será el escenario de un emocionante encuentro a las 19:30 hs. Invitamos a toda la comunidad a vestir los colores de nuestro club y a alentar con entusiasmo. Será una excelente oportunidad para compartir en familia y amigos, y disfrutar del espíritu deportivo que tanto nos une. ¡La hinchada de Leones se hará sentir!"
-                    }
-                ]
+            "eventos_y_agenda": {
+                "titulo": "⚽ Eventos y Agenda",
+                "contenido": "¡Leones se viste de gala futbolística! Hoy, la pasión del deporte toma el centro de la escena con el gran partido en el Club Atlético Leones a las 19:30 hs. Tras la excelente repercusión de nuestra sección de Deportes de ayer, se espera una gran convocatoria y un ambiente cargado de emoción. ¡Acompañemos a nuestro equipo con entusiasmo y el habitual espíritu deportivo que nos caracteriza! Una noche que promete ser inolvidable para la comunidad leonesa."
             },
-            {
-                "categoria": "☀️ Clima y Consejos",
-                "descripcion": "El día en Leones se presenta con condiciones favorables para disfrutar de las actividades programadas y el aire libre.",
-                "items": [
-                    {
-                        "nombre": "Pronóstico del Clima",
-                        "detalle": "Se espera una jornada con cielos parcialmente nublados y momentos de sol pleno. La temperatura máxima rondará los 29°C, mientras que la mínima será de 16°C. Los vientos serán leves, predominando del sector noreste."
-                    },
-                    {
-                        "nombre": "Consejo del día",
-                        "detalle": "Ante las temperaturas agradables, le recordamos la importancia de mantenerse hidratado bebiendo suficiente agua a lo largo del día. Si planea asistir al partido de fútbol o realizar actividades al aire libre, considere usar protector solar y ropa cómoda. ¡Cuidar su bienestar es esencial para disfrutar al máximo de Leones!"
-                    }
-                ]
+            "clima_y_consejos": {
+                "titulo": "☀️ Clima y Consejos",
+                "contenido": "Para hoy en Leones, se pronostica una jornada mayormente soleada con algunas nubes dispersas. La temperatura máxima alcanzará los 26°C y la mínima se ubicará en los 15°C, con vientos leves del sector noreste. Un día ideal para disfrutar al aire libre.\n\n**Consejo del día:** ¡Manténgase bien hidratado, especialmente si planea asistir al partido de fútbol esta noche! Dada la temperatura agradable, es importante beber suficiente agua. Si pasa tiempo al sol, recuerde usar protector solar."
             },
-            {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "descripcion": "Pensando en su comodidad y la eficiencia de nuestros servicios, el Asesor Público Digital le adelanta una recomendación para optimizar su tiempo.",
-                "items": [
-                    {
-                        "nombre": "Verificación de Trámites Digitales",
-                        "detalle": "Le sugerimos verificar los canales digitales oficiales del municipio para cualquier trámite o consulta. Muchos de ellos pueden iniciarse, monitorearse o incluso completarse a través de nuestra plataforma web. Esta herramienta le permite ahorrar tiempo y evitar esperas innecesarias. ¡Aproveche la tecnología para una gestión más ágil y cómoda!"
-                    }
-                ]
+            "recomendacion_inteligente_adelanto": {
+                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": "Con motivo del gran evento deportivo que viviremos hoy, nuestro Asesor Público Digital recomienda: 'Disfrutemos de la pasión del fútbol con responsabilidad. Si asiste al Club Atlético Leones, planifique su llegada con antelación, respete las indicaciones de tránsito y seguridad, y recuerde que el buen comportamiento de todos hace aún más grande a nuestro Leones.'\n\n**Un adelanto para mañana:** Estén atentos a importantes novedades sobre los preparativos para la 'Semana del Pueblo', ¡una celebración que nos unirá a todos!"
             }
-        ]
+        }
     },
-    "last_updated": "2025-12-13T03:22:43.401816-03:00"
+    "last_updated": "2025-12-14T03:22:39.946463-03:00"
 }
