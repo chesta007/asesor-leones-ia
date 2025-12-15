@@ -1,25 +1,15 @@
 {
     "reporte_diario_leones": {
-        "titulo": "Informe Diario Leones - Asesor Público Digital",
-        "fecha": "HOY",
-        "categorias": {
-            "telefonos_utiles": {
-                "titulo": "☎️ Teléfonos Útiles",
-                "contenido": "Hoy, la farmacia de turno es **Farmacia Central**, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral).\n\nOtros teléfonos de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Hospital:** 472-2222\n*   **Defensa Civil:** 103"
-            },
-            "eventos_y_agenda": {
-                "titulo": "⚽ Eventos y Agenda",
-                "contenido": "¡Leones se viste de gala futbolística! Hoy, la pasión del deporte toma el centro de la escena con el gran partido en el Club Atlético Leones a las 19:30 hs. Tras la excelente repercusión de nuestra sección de Deportes de ayer, se espera una gran convocatoria y un ambiente cargado de emoción. ¡Acompañemos a nuestro equipo con entusiasmo y el habitual espíritu deportivo que nos caracteriza! Una noche que promete ser inolvidable para la comunidad leonesa."
-            },
-            "clima_y_consejos": {
-                "titulo": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Leones, se pronostica una jornada mayormente soleada con algunas nubes dispersas. La temperatura máxima alcanzará los 26°C y la mínima se ubicará en los 15°C, con vientos leves del sector noreste. Un día ideal para disfrutar al aire libre.\n\n**Consejo del día:** ¡Manténgase bien hidratado, especialmente si planea asistir al partido de fútbol esta noche! Dada la temperatura agradable, es importante beber suficiente agua. Si pasa tiempo al sol, recuerde usar protector solar."
-            },
-            "recomendacion_inteligente_adelanto": {
-                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Con motivo del gran evento deportivo que viviremos hoy, nuestro Asesor Público Digital recomienda: 'Disfrutemos de la pasión del fútbol con responsabilidad. Si asiste al Club Atlético Leones, planifique su llegada con antelación, respete las indicaciones de tránsito y seguridad, y recuerde que el buen comportamiento de todos hace aún más grande a nuestro Leones.'\n\n**Un adelanto para mañana:** Estén atentos a importantes novedades sobre los preparativos para la 'Semana del Pueblo', ¡una celebración que nos unirá a todos!"
-            }
-        }
+        "fecha": "Hoy",
+        "titulo": "Tu Informe Diario: Leones al Día",
+        "intro": "¡Hola, vecino y vecina de Leones! Tu Asesor Público Digital te trae las novedades más importantes para que estés siempre conectado con nuestra ciudad.",
+        "secciones": {
+            "☎️ Teléfonos Útiles": "Mantente informado y seguro. Aquí tienes los contactos importantes para hoy:\n\n*   **Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n*   **Emergencias Médicas (Ambulancia):** 107\n*   **Policía Local:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Hospital Local (Guardia):** 472-3333",
+            "⚽ Eventos y Agenda": "¡Leones se prepara para una noche vibrante de fútbol! Tras el alto índice de interacción que tuvo nuestra categoría 'Deportes' ayer, hoy la pasión se traslada a la cancha.\n\n*   **Gran Partido de Fútbol en el Club Atlético Leones:** Desde las 19:30 hs, el Club Atlético Leones abre sus puertas para un imperdible partido. ¡Acompañemos a nuestros representantes y hagamos sentir el aliento leonense! Una excelente oportunidad para compartir en familia y amigos.",
+            "☀️ Clima y Consejos": "Para hoy en Leones, se espera un día con cielo mayormente despejado y temperaturas agradables. La máxima rondará los 25°C, con una mínima de 15°C por la mañana temprano.\n\n*   **Consejo del Día:** Disfruta del buen clima. Si planeas asistir al partido o realizar actividades al aire libre, recuerda mantenerte hidratado y, si el sol es intenso, utiliza protección solar. Por la noche, una campera liviana será tu mejor aliada.",
+            "🚨 Recomendación Inteligente (Adelanto)": "Anticipando un futuro más conectado y seguro para Leones, te invitamos a reflexionar sobre la importancia de la información oficial. Desde tu Asesor Público Digital, recomendamos verificar siempre la fuente de las noticias, optando por los canales oficiales del municipio y medios locales de confianza. ¡Juntos, construimos una comunidad informada y protegida contra la desinformación!"
+        },
+        "cierre": "Gracias por elegir estar informado con tu Asesor Público Digital de Leones. ¡Que tengas un excelente día!"
     },
-    "last_updated": "2025-12-14T03:22:39.946463-03:00"
+    "last_updated": "2025-12-15T03:27:49.909874-03:00"
 }

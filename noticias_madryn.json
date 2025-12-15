@@ -1,69 +1,47 @@
 {
-    "reporte_diario_puerto_madryn": {
-        "fecha_de_generacion": "DD-MM-AAAA",
-        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "secciones": [
+    "reporte_diario": {
+        "titulo": "Asesor Público Digital: Informe Diario de Noticias Locales - Puerto Madryn",
+        "fecha": "Hoy",
+        "categorias": [
             {
-                "categoria": "☎️ Teléfonos Útiles",
+                "titulo": "☎️ Teléfonos Útiles",
                 "contenido": [
-                    {
-                        "tipo": "Farmacia de Turno",
-                        "descripcion": "La farmacia de turno hoy es: Farmacia Del Sur, ubicada en Av. Gales 10. Teléfono: 445-1234. [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
-                    },
-                    {
-                        "tipo": "Emergencias Policía",
-                        "descripcion": "101"
-                    },
-                    {
-                        "tipo": "Bomberos Voluntarios",
-                        "descripcion": "100"
-                    },
-                    {
-                        "tipo": "Hospital Zonal Madryn",
-                        "descripcion": "107 (Ambulancia) / 445-1000"
-                    },
-                    {
-                        "tipo": "Defensa Civil",
-                        "descripcion": "103"
-                    }
+                    "**Farmacia de Turno Hoy:**",
+                    "Farmacia Del Sur",
+                    "Av. Gales 10",
+                    "Teléfono: 445-1234",
+                    "Ubicación: [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)",
+                    "",
+                    "**Emergencias:**",
+                    "Policía: 101",
+                    "Bomberos: 100",
+                    "Emergencias Médicas (SAME): 107",
+                    "Defensa Civil: 103"
                 ]
             },
             {
-                "categoria": "⚽ Eventos y Agenda",
+                "titulo": "⚽ Eventos y Agenda",
                 "contenido": [
-                    {
-                        "titulo": "¡Inicia la Temporada de Avistaje de Ballenas en Puerto Madryn!",
-                        "descripcion": "Hoy es un día trascendental para nuestra ciudad, ya que damos oficialmente la bienvenida al inicio de la temporada de avistaje de ballenas. Un espectáculo natural único que atrae miradas de todo el mundo, ofreciéndonos la oportunidad de conectar con la majestuosa Ballena Franca Austral en su hábitat natural. Invitamos a vecinos y turistas a disfrutar de esta maravilla, siempre priorizando la elección de operadores turísticos habilitados y el respeto por la fauna marina."
-                    },
-                    {
-                        "titulo": "El Deporte Local en el Corazón de Madrynenses",
-                        "descripcion": "Queremos destacar el alto índice de 'Like' que recibió el reporte de ayer en la categoría 'Deportes'. Esto demuestra el profundo interés y la pasión de nuestra comunidad por las actividades deportivas y la vida activa. ¡Felicitaciones a todos los que hacen posible el deporte en Madryn!"
-                    }
+                    "**¡Madryn da la Bienvenida a la Temporada de Ballenas!** Hoy es un día trascendental para Puerto Madryn, ya que oficialmente damos inicio a la tan esperada temporada de avistaje de ballenas. Este evento no solo marca el regreso de nuestros majestuosos visitantes al Golfo Nuevo, sino que también impulsa el turismo y la economía local. Las primeras embarcaciones ya están listas para zarpar, ofreciendo a residentes y visitantes una experiencia inolvidable. Invitamos a todos a vivir y celebrar esta maravilla natural que nos posiciona como referente mundial en turismo de naturaleza.",
+                    "",
+                    "**La Energía Deportiva se Mantiene Viva:** Tras el gran interés en la categoría de 'Deportes' de ayer, queremos destacar que la pasión por el deporte sigue fuerte en nuestra ciudad. Con el mejoramiento del clima y las oportunidades que brinda nuestro entorno, se espera una mayor actividad en canchas y espacios al aire libre. Estén atentos a los próximos eventos locales que fomentan la participación comunitaria y el bienestar."
                 ]
             },
             {
-                "categoria": "☀️ Clima y Consejos",
+                "titulo": "☀️ Clima y Consejos",
                 "contenido": [
-                    {
-                        "titulo": "Pronóstico del Tiempo para Hoy",
-                        "descripcion": "Se espera una jornada con cielo parcialmente nublado y temperaturas agradables. La máxima estimada alcanzará los 19°C, mientras que la mínima rondará los 10°C. Habrá vientos moderados del sector oeste, con algunas ráfagas por la tarde."
-                    },
-                    {
-                        "titulo": "Consejo del Día: Preparados para el Avistaje",
-                        "descripcion": "Con el inicio de la temporada de ballenas y la posibilidad de disfrutar de actividades al aire libre, recomendamos vestir en capas para adaptarse a los cambios de temperatura. No olvides protector solar y un sombrero, incluso en días nublados. ¡La hidratación es clave, lleva siempre tu botella de agua!"
-                    }
+                    "**Pronóstico para Hoy:** Se espera una jornada con mañanas frescas y vientos moderados del sector oeste, con ráfagas que podrían alcanzar los 35-45 km/h. El cielo presentará intervalos nubosos, tendiendo a despejarse hacia la tarde. La temperatura máxima rondará los 18°C, mientras que la mínima se ubicará en torno a los 10°C. La sensación térmica podría ser menor debido al viento.",
+                    "",
+                    "**Consejo del Día:** Considerando la variabilidad del clima costero y el viento, especialmente si planea actividades al aire libre o el avistaje de ballenas, le recomendamos encarecidamente vestirse en capas. Esto le permitirá adaptarse a los cambios de temperatura y protegerse del viento. No olvide su protección solar y un gorro, ya que la exposición al sol y al viento puede ser intensa."
                 ]
             },
             {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
                 "contenido": [
-                    {
-                        "titulo": "Turismo Sostenible: Nuestro Compromiso con la Naturaleza",
-                        "descripcion": "Anticipamos la importancia de que todos seamos embajadores del turismo sostenible. Al iniciar la temporada de avistaje, es crucial recordar que la preservación de nuestro entorno marino es responsabilidad de todos. Informarse sobre las buenas prácticas y respetar las indicaciones de los guías y autoridades es fundamental para garantizar que futuras generaciones también puedan disfrutar de este privilegio."
-                    }
+                    "**Anticipe su Experiencia de Avistaje:** Con el inicio de la temporada de ballenas y la alta afluencia de turistas esperada, se recomienda a quienes deseen realizar el avistaje marítimo que coordinen y reserven sus excursiones con suficiente antelación. Esto no solo garantiza la disponibilidad, sino que también permite elegir los mejores horarios y operadoras. Asimismo, prevean los tiempos de traslado hacia las áreas de embarque y los puntos de interés turístico. Próximamente, ofreceremos un adelanto sobre opciones de movilidad sostenible en la ciudad."
                 ]
             }
         ]
     },
-    "last_updated": "2025-12-14T03:23:02.746012-03:00"
+    "last_updated": "2025-12-15T03:28:22.709048-03:00"
 }
