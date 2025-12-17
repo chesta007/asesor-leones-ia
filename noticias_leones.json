@@ -1,26 +1,25 @@
 {
     "reporte_diario_leones": {
+        "titulo": "Asesor Público Digital - Informe Diario para Leones",
         "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital para Leones",
-        "introduccion": "Estimados vecinos de Leones, su Asesor Público Digital les trae el resumen de noticias y servicios esenciales para la jornada de hoy. ¡Manténganse informados y conectados!",
         "categorias": [
             {
                 "nombre": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad y comodidad, aquí tiene los contactos esenciales para hoy:\n\n*   **Farmacia de Turno:** Farmacia Central, Bv. San Martín 123 - Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n*   **Policía:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas:** 107"
+                "contenido": "Estimados vecinos, para cualquier necesidad urgente, aquí tienen los teléfonos de utilidad para hoy:\n*   **Farmacia de Turno:** La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral).\n*   **Emergencias:**\n    *   Policía: 101\n    *   Bomberos Voluntarios: 100\n    *   Hospital Municipal: 472-2020\n    *   Defensa Civil: 103\nManténganse seguros y bien informados."
             },
             {
                 "nombre": "⚽ Eventos y Agenda",
-                "contenido": "¡Atención, Leones! La pasión del fútbol se vive intensamente esta noche en el Club Atlético Leones. A partir de las 19:30 hs, prepárense para un gran encuentro que promete emociones fuertes y un ambiente vibrante en las tribunas. ¡No se pierdan la oportunidad de alentar a nuestro equipo y disfrutar de una jornada deportiva inolvidable! Considerando el alto interés generado ayer en la categoría 'Deportes', les recomendamos llegar con anticipación para asegurar su lugar y vivir al máximo esta fiesta del fútbol."
+                "contenido": "¡Atención, amantes del deporte! Siguiendo el gran interés demostrado ayer en la sección de Deportes, hoy Leones vibrará con un evento imperdible. A las 19:30 horas, el Club Atlético Leones será el escenario de un emocionante partido de fútbol. Invitamos a toda la comunidad a acercarse, alentar y disfrutar de una jornada deportiva llena de pasión y camaradería. ¡No se lo pierdan!"
             },
             {
                 "nombre": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Leones, esperamos una jornada agradable con cielo parcialmente nublado. La temperatura máxima se estima alrededor de los 24°C, ideal para disfrutar de actividades al aire libre. Le recordamos la importancia de mantenerse hidratado a lo largo del día y, si planea pasar tiempo bajo el sol, usar protección solar adecuada para cuidar su piel. ¡Disfrute de un día perfecto!"
+                "contenido": "Para hoy en Leones, se pronostica una jornada con temperaturas agradables, ideal para actividades al aire libre durante la tarde. Se recomienda mantenerse hidratado y, si planea asistir al partido de fútbol, llevar algún abrigo ligero para el anochecer, ya que la temperatura podría descender. ¡Disfrute del día con precaución!"
             },
             {
                 "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "En vista del gran partido de fútbol que se celebrará esta noche en el Club Atlético Leones, nuestra recomendación inteligente es planificar sus traslados con anticipación si se dirige a la zona del estadio. Se espera un aumento significativo en la circulación vehicular y peatonal. Considere el uso de medios de transporte alternativos, respete las indicaciones de tránsito y de los agentes de seguridad para una circulación fluida y segura. ¡Colaboremos entre todos para una experiencia positiva y sin contratiempos para todos los vecinos!"
+                "contenido": "En preparación para futuros informes, recordamos a nuestros vecinos la importancia de participar activamente en la vida digital de Leones. Estén atentos a los canales oficiales para informarse sobre trámites en línea, programas de capacitación y encuestas ciudadanas. Su voz es fundamental para seguir construyendo una Leones más conectada y eficiente. ¡Próximamente, más novedades sobre participación ciudadana digital!"
             }
         ]
     },
-    "last_updated": "2025-12-16T03:25:41.435252-03:00"
+    "last_updated": "2025-12-17T03:24:43.264850-03:00"
 }
