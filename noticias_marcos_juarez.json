@@ -1,39 +1,7 @@
 {
-    "reporte_diario_marcos_juarez": {
-        "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital para Marcos Juarez",
-        "saludo": "Estimado vecino y vecina de Marcos Juarez, aquí su Asesor Público Digital con las novedades más importantes para el día de hoy, pensadas para usted y nuestra comunidad.",
-        "categorias": [
-            {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:** Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Para su comodidad, aquí tiene la [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva).",
-                    "**Emergencias (Policía):** 101",
-                    "**Bomberos Voluntarios:** 100",
-                    "**Hospital Abel Ayerza:** 452-2222",
-                    "**Defensa Civil:** 103"
-                ]
-            },
-            {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "**Festival de Cine Independiente en el Teatro Colón (20:00 hs):** La agenda cultural de Marcos Juarez brilla hoy con un imperdible Festival de Cine Independiente. A partir de las 20:00 horas, el emblemático Teatro Colón será el epicentro para disfrutar de producciones cinematográficas únicas y de gran valor artístico. Es una excelente oportunidad para apoyar la cultura local y sumergirse en historias innovadoras. ¡Los esperamos!"
-                ]
-            },
-            {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": [
-                    "**Pronóstico para Hoy:** La jornada en Marcos Juarez se presenta mayormente soleada durante la mañana, con un aumento gradual de la nubosidad hacia la tarde. Se espera una temperatura máxima agradable, rondando los 26°C, con vientos leves predominantes del sector noreste.",
-                    "**Consejo del Día:** Con estas temperaturas, es ideal para disfrutar de los espacios al aire libre de nuestra ciudad. Le recordamos la importancia de mantenerse hidratado bebiendo suficiente agua y, si realiza actividades bajo el sol, utilice protección solar. ¡Aproveche para dar un paseo o hacer ejercicio!"
-                ]
-            },
-            {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "**Impulso al Deporte Local:** Atendiendo al alto interés y la excelente recepción que tuvieron ayer las noticias de 'Deportes', le adelantamos que el municipio está trabajando en nuevas iniciativas para fomentar la actividad física y el deporte en nuestra comunidad. Manténgase informado a través de nuestros canales oficiales, donde próximamente compartiremos detalles sobre programas y eventos. Su participación es clave para fortalecer el tejido deportivo de Marcos Juarez. ¡Pronto más novedades para todos los amantes del deporte!"
-                ]
-            }
-        ]
-    },
-    "last_updated": "2025-12-17T03:24:57.524899-03:00"
+    "☎️ Teléfonos Útiles": "Para su tranquilidad y atención, aquí tiene los números esenciales de Marcos Juárez:\n\n*   **Farmacia de Turno:** Farmacia Nueva, Av. Belgrano 500. Teléfono: 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Emergencias Médicas (Ambulancia):** 107\n*   **Defensa Civil:** 103",
+    "⚽ Eventos y Agenda": "Marcos Juárez palpita hoy con una agenda cultural imperdible:\n\n*   **Festival de Cine Independiente en el Teatro Colón:** No se pierda esta noche, a las 20:00 hs, la oportunidad de disfrutar de producciones cinematográficas únicas. Apoyemos el talento y la cultura en nuestra ciudad. ¡Una propuesta diferente para los amantes del buen cine!",
+    "☀️ Clima y Consejos": "Disfrutemos de un día muy agradable en Marcos Juárez:\n\n*   **Pronóstico:** Se espera una jornada soleada con algunas nubes dispersas. La temperatura máxima alcanzará los 26°C, mientras que la mínima será de 15°C. Un día ideal para actividades al aire libre.\n*   **Consejo del día:** Aproveche las horas de sol para dar un paseo por nuestros parques o plazas. Recuerde mantenerse hidratado, especialmente si realiza actividades físicas.",
+    "🚨 Recomendación Inteligente (Adelanto)": "Atención, vecinos de Marcos Juárez, y en especial a los aficionados al deporte:\n\nDado el gran interés y la excelente recepción que tuvieron nuestras noticias deportivas de ayer, les adelantamos que estamos preparando un informe especial sobre la participación de nuestros equipos locales en las próximas ligas de fútbol y hockey. ¡Manténganse conectados para conocer todos los detalles y el calendario de partidos!",
+    "last_updated": "2025-12-18T03:24:58.400211-03:00"
 }
