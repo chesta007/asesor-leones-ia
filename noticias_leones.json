@@ -1,37 +1,21 @@
 {
-    "informe_diario_leones": {
-        "fecha": "Hoy",
-        "titulo": "Asesor Público Digital: Informe Diario para Leones",
-        "secciones": [
-            {
-                "categoria": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
-                    "**Emergencias Policiales:** 101",
-                    "**Bomberos Voluntarios:** 100",
-                    "**Hospital Municipal (Emergencias):** 107 / 472-3000"
-                ]
-            },
-            {
-                "categoria": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "¡Atención, Leones! La pasión futbolera se enciende hoy en nuestra ciudad. Ante el gran entusiasmo demostrado ayer por la categoría 'Deportes', les recordamos el **gran partido de fútbol** que tendrá lugar en el **Club Atlético Leones** a partir de las **19:30 hs**. Es una excelente oportunidad para disfrutar en comunidad y apoyar a nuestro equipo. ¡No te lo pierdas!"
-                ]
-            },
-            {
-                "categoria": "☀️ Clima y Consejos",
-                "contenido": [
-                    "**Pronóstico para Hoy:** En Leones, esperamos un día parcialmente nublado con una temperatura máxima agradable de 25°C y una mínima que rondará los 15°C. La humedad se mantendrá en niveles confortables.",
-                    "**Consejo del Día:** Con este clima ideal para actividades al aire libre, recordá siempre protegerte del sol, incluso en días nublados, utilizando protector solar. Además, mantenete hidratado bebiendo suficiente agua durante todo el día para disfrutar plenamente de nuestras actividades."
-                ]
-            },
-            {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "¡Anticipo para nuestros ciudadanos! Mañana estaremos profundizando en la importancia del reciclaje y cómo podemos implementar pequeñas acciones en nuestros hogares que generen un gran impacto ambiental en Leones. Preparate para conocer consejos prácticos y sumarte a esta iniciativa vital para el futuro de nuestra comunidad."
-                ]
-            }
-        ]
-    },
-    "last_updated": "2025-12-18T03:24:50.201315-03:00"
+    "reporte_diario_leones": [
+        {
+            "titulo": "☎️ Teléfonos Útiles",
+            "contenido": "¡Estimados vecinos! Aquí tienen la información vital para el día:\n\n*   **Farmacia de Turno Hoy:** Farmacia Central\n    *   **Dirección:** Bv. San Martín 123\n    *   **Teléfono:** 472-5555\n    *   **Ubicación:** [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Números de Emergencia:**\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Hospital:** 107"
+        },
+        {
+            "titulo": "⚽ Eventos y Agenda",
+            "contenido": "¡Atención, amantes del deporte en Leones! Tras el excelente recibimiento de nuestras noticias deportivas ayer, hoy es un día imperdible para vivir la pasión local. A las 19:30 hs, el Club Atlético Leones será el escenario de un gran partido de fútbol. ¡Acérquense a alentar a nuestros equipos y disfruten de una jornada a puro deporte en comunidad!"
+        },
+        {
+            "titulo": "☀️ Clima y Consejos",
+            "contenido": "El pronóstico para hoy en Leones indica una jornada soleada con temperaturas agradables, alcanzando una máxima de 26°C. Un día ideal para disfrutar al aire libre. Se recomienda mantenerse hidratado bebiendo suficiente agua y, si planean estar expuestos al sol por períodos prolongados, utilizar protector solar. ¡Aprovechemos el buen tiempo con responsabilidad!"
+        },
+        {
+            "titulo": "🚨 Recomendación Inteligente (Adelanto)",
+            "contenido": "Pensando en la seguridad y el bienestar de todos, les recordamos la importancia de mantener actualizada la información de contacto de sus familiares y servicios de emergencia en sus teléfonos móviles. En caso de cualquier eventualidad, un acceso rápido a estos datos puede ser crucial. ¡La prevención es nuestra mejor aliada!"
+        }
+    ],
+    "last_updated": "2025-12-19T03:24:06.983588-03:00"
 }

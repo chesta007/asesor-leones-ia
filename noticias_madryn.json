@@ -1,91 +1,39 @@
 {
     "reporte_diario_madryn": {
-        "fecha": "2023-09-01",
-        "titulo": "Informe Diario de Noticias - Puerto Madryn",
-        "introduccion": "Su Asesor Público Digital le trae las novedades más importantes y datos útiles para hoy en Puerto Madryn. ¡Comienza una temporada llena de magia!",
+        "fecha": "2023-10-27",
+        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
         "categorias": [
             {
                 "nombre": "☎️ Teléfonos Útiles",
                 "contenido": [
-                    {
-                        "tipo": "farmacia_de_turno",
-                        "nombre": "Farmacia Del Sur",
-                        "direccion": "Av. Gales 10",
-                        "telefono": "445-1234",
-                        "mapa": "[Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)",
-                        "mensaje_adicional": "La Farmacia Del Sur se encuentra hoy de turno para atender sus necesidades de salud. Consulte su ubicación exacta en el enlace."
-                    },
-                    {
-                        "tipo": "emergencias",
-                        "lista": [
-                            {
-                                "servicio": "Emergencias Médicas (SAME)",
-                                "numero": "107"
-                            },
-                            {
-                                "servicio": "Policía",
-                                "numero": "101"
-                            },
-                            {
-                                "servicio": "Bomberos Voluntarios",
-                                "numero": "100"
-                            },
-                            {
-                                "servicio": "Defensa Civil",
-                                "numero": "103"
-                            },
-                            {
-                                "servicio": "Hospital Zonal Dr. Andrés Isola",
-                                "numero": "445-0000"
-                            }
-                        ]
-                    }
+                    "Farmacia de Turno: Farmacia Del Sur, Av. Gales 10. Teléfono: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
+                    "Emergencias (Policía, Bomberos, Ambulancia): 101",
+                    "Defensa Civil: 103",
+                    "Hospital Zonal Dr. Andrés Ísola: 445-0000",
+                    "Prefectura Naval Argentina: 106"
                 ]
             },
             {
                 "nombre": "⚽ Eventos y Agenda",
                 "contenido": [
-                    {
-                        "titulo": "¡Puerto Madryn Celebra el Inicio de la Temporada de Avistaje de Ballenas!",
-                        "descripcion": "Hoy es un día trascendental para nuestra ciudad: se da oficialmente por inaugurada la temporada de avistaje de la majestuosa Ballena Franca Austral. Puerto Madryn se viste de gala para recibir a estos gigantes del mar, un espectáculo natural único en el mundo que atrae a miles de visitantes y llena de orgullo a nuestra comunidad. Es el momento de planificar su encuentro con la naturaleza y vivir una experiencia inolvidable, siempre con el mayor respeto por la fauna marina. Se invita a consultar a los operadores turísticos habilitados para garantizar una excursión segura y responsable."
-                    },
-                    {
-                        "titulo": "Importancia y Conciencia",
-                        "descripcion": "El avistaje de ballenas no solo es un motor económico y turístico, sino también una poderosa herramienta para la educación ambiental y la conservación. Disfrutemos de este privilegio con la responsabilidad que se merece, contribuyendo a la protección de nuestro valioso ecosistema marino."
-                    }
+                    "¡Hoy es un día trascendental para Puerto Madryn! Damos inicio oficial a la esperada temporada de avistaje de ballenas francas australes en el Golfo Nuevo. Este evento, que atrae miradas de todo el mundo, no solo celebra la majestuosidad de nuestra fauna marina, sino que también marca el pulso de nuestra actividad turística y cultural. Se recomienda a todos los interesados en participar de las excursiones de avistaje contactar con anticipación a los operadores turísticos habilitados para garantizar su lugar y conocer los protocolos de seguridad y conservación. ¡Prepárense para vivir una experiencia inolvidable frente a la costa de nuestra ciudad!",
+                    "Para estar al tanto de otras actividades culturales y deportivas que se desarrollen en la ciudad, invitamos a consultar la agenda oficial del Ente Mixto de Promoción Turística (EMPROTUR) y las plataformas del Municipio."
                 ]
             },
             {
                 "nombre": "☀️ Clima y Consejos",
                 "contenido": [
-                    {
-                        "tipo": "clima_hoy",
-                        "condicion": "Parcialmente nublado con periodos de sol y viento moderado.",
-                        "temperatura": "Máxima: 15°C / Mínima: 8°C",
-                        "viento": "Viento del sector oeste, moderado a fuerte (20-40 km/h) con ráfagas.",
-                        "humedad": "55%"
-                    },
-                    {
-                        "tipo": "consejos_utiles",
-                        "lista": [
-                            "Vestir en capas: El clima patagónico es variable. Se recomienda vestimenta por capas para adaptarse a los cambios de temperatura y viento, especialmente si planea salir al mar.",
-                            "Protección contra el viento: Use gorro, guantes y un cortavientos. El viento puede ser un factor importante durante el día.",
-                            "Hidratación y protección solar: A pesar de las temperaturas frescas, el sol puede estar presente. No olvide beber agua y usar protector solar, especialmente en las excursiones.",
-                            "Precaución en rutas: Con el aumento del flujo turístico, extreme las precauciones al conducir en rutas y caminos cercanos a la ciudad."
-                        ]
-                    }
+                    "Para la jornada de hoy en Puerto Madryn, se espera un día con predominio de cielo parcialmente nublado y momentos de sol, con una temperatura máxima que rondará los 17°C y una mínima de 8°C. Los vientos soplarán del sector oeste con intensidad moderada, con ráfagas que podrían acentuarse, especialmente en la costa. Un clima propicio para disfrutar de actividades al aire libre, siempre con las precauciones necesarias.",
+                    "Consejo del día: Con el inicio de la temporada de avistaje y un previsible aumento en la afluencia de visitantes, les recordamos a nuestros vecinos y a quienes nos visitan circular con especial precaución en zonas costeras y accesos a la ciudad. Asimismo, es fundamental mantener nuestros espacios públicos limpios, utilizando los cestos de basura y respetando la naturaleza que nos rodea."
                 ]
             },
             {
                 "nombre": "🚨 Recomendación Inteligente (Adelanto)",
                 "contenido": [
-                    {
-                        "titulo": "¡Asegure su Experiencia de Avistaje de Ballenas con Anticipación!",
-                        "descripcion": "Con el inicio oficial de la temporada, la demanda de excursiones para el avistaje de ballenas incrementará notablemente. Nuestra 'Recomendación Inteligente' es planificar con antelación: reserve su lugar con operadores turísticos habilitados lo antes posible. Esto no solo le garantiza disponibilidad y los mejores horarios, sino que le permite prepararse adecuadamente para esta inolvidable aventura. Además, informe a sus visitantes sobre la importancia de la reserva previa para una experiencia sin contratiempos y para apoyar el turismo responsable en Puerto Madryn."
-                    }
+                    "¡Vecinos de Madryn, tomen nota! Hemos registrado el alto interés y la excelente interacción que generó la categoría 'Deportes' en nuestro informe de ayer. Esto nos impulsa a seguir profundizando en temas que les importan. Por ello, queremos adelantarles que en los próximos días estaremos publicando un reporte especial detallando nuevas iniciativas municipales para el fomento del deporte y la actividad física en la ciudad, así como una agenda completa de próximos eventos deportivos locales. ¡Prepárense para mover el cuerpo y participar de las propuestas que Puerto Madryn tiene para ustedes!"
                 ]
             }
         ]
     },
-    "last_updated": "2025-12-17T03:25:16.986298-03:00"
+    "last_updated": "2025-12-19T03:24:33.983132-03:00"
 }
