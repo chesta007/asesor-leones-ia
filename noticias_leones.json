@@ -1,21 +1,7 @@
 {
-    "reporte_diario_leones": [
-        {
-            "titulo": "☎️ Teléfonos Útiles",
-            "contenido": "¡Estimados vecinos! Aquí tienen la información vital para el día:\n\n*   **Farmacia de Turno Hoy:** Farmacia Central\n    *   **Dirección:** Bv. San Martín 123\n    *   **Teléfono:** 472-5555\n    *   **Ubicación:** [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\n**Números de Emergencia:**\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Hospital:** 107"
-        },
-        {
-            "titulo": "⚽ Eventos y Agenda",
-            "contenido": "¡Atención, amantes del deporte en Leones! Tras el excelente recibimiento de nuestras noticias deportivas ayer, hoy es un día imperdible para vivir la pasión local. A las 19:30 hs, el Club Atlético Leones será el escenario de un gran partido de fútbol. ¡Acérquense a alentar a nuestros equipos y disfruten de una jornada a puro deporte en comunidad!"
-        },
-        {
-            "titulo": "☀️ Clima y Consejos",
-            "contenido": "El pronóstico para hoy en Leones indica una jornada soleada con temperaturas agradables, alcanzando una máxima de 26°C. Un día ideal para disfrutar al aire libre. Se recomienda mantenerse hidratado bebiendo suficiente agua y, si planean estar expuestos al sol por períodos prolongados, utilizar protector solar. ¡Aprovechemos el buen tiempo con responsabilidad!"
-        },
-        {
-            "titulo": "🚨 Recomendación Inteligente (Adelanto)",
-            "contenido": "Pensando en la seguridad y el bienestar de todos, les recordamos la importancia de mantener actualizada la información de contacto de sus familiares y servicios de emergencia en sus teléfonos móviles. En caso de cualquier eventualidad, un acceso rápido a estos datos puede ser crucial. ¡La prevención es nuestra mejor aliada!"
-        }
-    ],
-    "last_updated": "2025-12-19T03:24:06.983588-03:00"
+    "☎️ Teléfonos Útiles": "Farmacia de Turno: Farmacia Central, en Bv. San Martín 123. Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n\nEmergencias:\nPolicía: 101\nBomberos Voluntarios: 100\nHospital Municipal: 107",
+    "⚽ Eventos y Agenda": "¡Atención, Leones! La emoción del fútbol nos espera hoy con un **gran partido en el Club Atlético Leones, que comenzará a las 19:30 hs**. Este evento es una excelente oportunidad para apoyar a nuestros deportistas y disfrutar en comunidad. Recordamos la alta interacción en la sección de Deportes de ayer, lo que demuestra el gran interés en la actividad local. ¡No se lo pierdan!",
+    "☀️ Clima y Consejos": "Para hoy en Leones, se pronostica un día **soleado con temperaturas agradables**, alcanzando máximas alrededor de los 28°C. Será un día ideal para disfrutar al aire libre. **Consejo del Asesor:** Aproveche este hermoso clima para pasear por nuestras plazas o realizar actividades al aire libre con la familia. ¡Recuerde mantenerse bien hidratado!",
+    "🚨 Recomendación Inteligente (Adelanto)": "**¡La participación ciudadana es clave!** Le recordamos la importancia de utilizar los canales oficiales para cualquier consulta o trámite. Estamos trabajando para mejorar constantemente su experiencia digital. **Adelanto:** Mañana compartiremos información valiosa sobre cómo potenciar sus habilidades digitales a través de talleres gratuitos que se lanzarán próximamente en nuestra ciudad. ¡Estén atentos a las novedades!",
+    "last_updated": "2025-12-20T03:23:13.691133-03:00"
 }

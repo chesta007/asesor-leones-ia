@@ -1,39 +1,25 @@
 {
-    "reporte_diario_madryn": {
-        "fecha": "2023-10-27",
-        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "categorias": [
+    "reporte_diario": {
+        "fecha": "Hoy",
+        "ciudad": "Puerto Madryn",
+        "contenido": [
             {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "Farmacia de Turno: Farmacia Del Sur, Av. Gales 10. Teléfono: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
-                    "Emergencias (Policía, Bomberos, Ambulancia): 101",
-                    "Defensa Civil: 103",
-                    "Hospital Zonal Dr. Andrés Ísola: 445-0000",
-                    "Prefectura Naval Argentina: 106"
-                ]
+                "categoria": "☎️ Teléfonos Útiles",
+                "detalle": "Para su tranquilidad y conveniencia, aquí los contactos importantes del día:\n*   **Farmacia de Turno:** Farmacia Del Sur (Av. Gales 10) - Tel: 445-1234. [Ver en Mapa](http://googleusercontent.com/maps.google.com/madryn)\n*   **Emergencias Policiales:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas (SAME):** 107\n*   **Defensa Civil:** 103"
             },
             {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "¡Hoy es un día trascendental para Puerto Madryn! Damos inicio oficial a la esperada temporada de avistaje de ballenas francas australes en el Golfo Nuevo. Este evento, que atrae miradas de todo el mundo, no solo celebra la majestuosidad de nuestra fauna marina, sino que también marca el pulso de nuestra actividad turística y cultural. Se recomienda a todos los interesados en participar de las excursiones de avistaje contactar con anticipación a los operadores turísticos habilitados para garantizar su lugar y conocer los protocolos de seguridad y conservación. ¡Prepárense para vivir una experiencia inolvidable frente a la costa de nuestra ciudad!",
-                    "Para estar al tanto de otras actividades culturales y deportivas que se desarrollen en la ciudad, invitamos a consultar la agenda oficial del Ente Mixto de Promoción Turística (EMPROTUR) y las plataformas del Municipio."
-                ]
+                "categoria": "⚽ Eventos y Agenda",
+                "detalle": "¡Hoy marca un día muy especial para nuestra ciudad! Damos inicio oficialmente a la temporada de avistaje de ballenas, un evento que posiciona a Puerto Madryn como capital nacional de este espectáculo natural. Se espera la llegada de los primeros ejemplares a las costas de Península Valdés, atrayendo a visitantes y renovando el espíritu turístico y ambiental de nuestra comunidad. Los operadores turísticos locales ya están listos para recibir a quienes deseen disfrutar de esta experiencia única. Se recomienda a los vecinos y turistas informarse sobre las medidas de cuidado y respeto hacia la fauna marina y consultar los servicios habilitados."
             },
             {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": [
-                    "Para la jornada de hoy en Puerto Madryn, se espera un día con predominio de cielo parcialmente nublado y momentos de sol, con una temperatura máxima que rondará los 17°C y una mínima de 8°C. Los vientos soplarán del sector oeste con intensidad moderada, con ráfagas que podrían acentuarse, especialmente en la costa. Un clima propicio para disfrutar de actividades al aire libre, siempre con las precauciones necesarias.",
-                    "Consejo del día: Con el inicio de la temporada de avistaje y un previsible aumento en la afluencia de visitantes, les recordamos a nuestros vecinos y a quienes nos visitan circular con especial precaución en zonas costeras y accesos a la ciudad. Asimismo, es fundamental mantener nuestros espacios públicos limpios, utilizando los cestos de basura y respetando la naturaleza que nos rodea."
-                ]
+                "categoria": "☀️ Clima y Consejos",
+                "detalle": "El pronóstico para hoy en Puerto Madryn indica una jornada con cielo parcialmente nublado y temperaturas frescas, oscilando entre los 7°C y 14°C. Se espera viento moderado del sector oeste, con ráfagas que podrían intensificarse por la tarde.\n\n**Consejo del día:** Si planea realizar actividades al aire libre, especialmente cerca de la costa o para el avistaje, es fundamental vestirse en capas para adaptarse a los cambios de temperatura y protegerse del viento. No olvide una gorra y gafas de sol, incluso en días nublados, la radiación solar puede ser considerable."
             },
             {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "¡Vecinos de Madryn, tomen nota! Hemos registrado el alto interés y la excelente interacción que generó la categoría 'Deportes' en nuestro informe de ayer. Esto nos impulsa a seguir profundizando en temas que les importan. Por ello, queremos adelantarles que en los próximos días estaremos publicando un reporte especial detallando nuevas iniciativas municipales para el fomento del deporte y la actividad física en la ciudad, así como una agenda completa de próximos eventos deportivos locales. ¡Prepárense para mover el cuerpo y participar de las propuestas que Puerto Madryn tiene para ustedes!"
-                ]
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "detalle": "Anticipando el interés de nuestra comunidad, y en base al alto índice de interacción positiva que tuvo la categoría 'Deportes' ayer, les adelantamos que en futuras ediciones estaremos profundizando en la agenda deportiva local. Atentos a las novedades sobre los clubes y actividades deportivas que enriquecen nuestro Puerto Madryn. ¡Pronto más detalles!"
             }
         ]
     },
-    "last_updated": "2025-12-19T03:24:33.983132-03:00"
+    "last_updated": "2025-12-20T03:23:36.394793-03:00"
 }

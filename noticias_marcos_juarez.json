@@ -1,44 +1,27 @@
 {
-    "informe_diario_marcos_juarez": {
-        "titulo": "Asesor Público Digital: Informe Diario para Marcos Juarez",
+    "reporte_diario_marcos_juarez": {
         "fecha": "Hoy",
-        "saludo": "Estimado vecino de Marcos Juarez, su Asesor Público Digital le brinda el reporte de noticias y servicios más relevantes para su día.",
-        "categorias": {
-            "☎️ Teléfonos Útiles": {
-                "descripcion": "Para su tranquilidad y en caso de necesidad, aquí tiene los contactos esenciales del día:",
-                "contenido": [
-                    "Farmacia de Turno: **Farmacia Nueva**, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación en Google Maps](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
-                    "Emergencias Policía: 101",
-                    "Emergencias Bomberos: 100",
-                    "Emergencias Médicas (Ambulancia): 107",
-                    "Defensa Civil: 103"
-                ]
+        "titulo": "Informe Diario del Asesor Público Digital para Marcos Juarez",
+        "introduccion": "Estimados ciudadanos de Marcos Juarez, su Asesor Público Digital les trae el reporte diario con información clave para la jornada. ¡Manténgase informado y conectado con nuestra ciudad!",
+        "categorias": [
+            {
+                "nombre": "☎️ Teléfonos Útiles",
+                "contenido": "Para su tranquilidad, la farmacia de turno hoy es **Farmacia Nueva**, ubicada en Av. Belgrano 500. Su teléfono de contacto es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n\nRecuerde siempre tener a mano estos números de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Emergencias Hospital:** 107"
             },
-            "⚽ Eventos y Agenda": {
-                "titulo": "Agenda Cultural de Hoy: ¡Cine Independiente en el Colón!",
-                "descripcion": "La ciudad se viste de cultura con eventos que no te puedes perder:",
-                "contenido": [
-                    "**Festival de Cine Independiente en el Teatro Colón:** ¡Una cita imperdible para los amantes del séptimo arte! Hoy, a partir de las **20:00 hs**, el emblemático Teatro Colón abre sus puertas para una jornada dedicada al cine independiente. Una oportunidad única para descubrir nuevas producciones y talentos, tanto locales como nacionales. ¡Apoyemos la cultura y disfrutemos del buen cine!",
-                    "Manténgase atento a los canales oficiales del municipio para conocer más actividades y propuestas culturales y deportivas que enriquecen nuestra comunidad."
-                ]
+            {
+                "nombre": "⚽ Eventos y Agenda",
+                "contenido": "¡La cultura nos convoca! Hoy es una jornada especial para los amantes del cine en Marcos Juarez. El **Festival de Cine Independiente** abre sus puertas a las **20:00 hs en el emblemático Teatro Colón**. Una oportunidad inigualable para disfrutar de producciones innovadoras y apoyar la difusión de nuevas propuestas artísticas. ¡No se quede afuera de esta experiencia cinematográfica!"
             },
-            "☀️ Clima y Consejos": {
-                "titulo": "El Clima en Marcos Juarez: Día Agradable",
-                "descripcion": "Conozca el pronóstico del tiempo y consejos prácticos para su jornada:",
-                "contenido": [
-                    "El pronóstico para hoy en Marcos Juarez indica una jornada mayormente soleada con algunas nubes dispersas. La temperatura máxima alcanzará los **25°C**, mientras que la mínima rondará los **15°C**. Los vientos serán leves del sector noreste, garantizando un día muy agradable.",
-                    "**Consejo del Día:** Con estas temperaturas ideales, es perfecto para disfrutar de un paseo al aire libre o de la noche cultural en el Teatro Colón. No olvide hidratarse adecuadamente y, si pasa mucho tiempo expuesto al sol, utilice protector solar. Por la noche, un abrigo ligero será suficiente."
-                ]
+            {
+                "nombre": "☀️ Clima y Consejos",
+                "contenido": "Para hoy en Marcos Juarez, se espera un día con **temperaturas agradables, alcanzando una máxima de 28°C y una mínima de 15°C**, con cielo parcialmente nublado. \n\n**Consejo Inteligente:** Aproveche este clima templado para realizar actividades al aire libre durante la mañana o al final de la tarde. ¡No olvide mantenerse hidratado y, si sale a caminar, use protector solar!"
             },
-            "🚨 Recomendación Inteligente (Adelanto)": {
-                "titulo": "Participación Ciudadana Digital: Su Voz Importa",
-                "descripcion": "Un adelanto y una invitación para hacer de Marcos Juarez una ciudad más inteligente:",
-                "contenido": [
-                    "**¡Impulsemos juntos la participación ciudadana digital!** Le recordamos que la Municipalidad de Marcos Juarez pone a disposición diversas plataformas digitales para trámites, consultas y sugerencias. Utilizar estos canales no solo agiliza sus gestiones, sino que también contribuye a una administración más eficiente, transparente y cercana. ¡Explore las opciones en la web municipal y sea parte activa de la transformación digital de nuestra ciudad!"
-                ]
+            {
+                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": "Como su Asesor Público Digital, le anticipamos que es un excelente momento para revisar y familiarizarse con los **canales digitales de atención ciudadana de la Municipalidad**. Desde allí podrá realizar trámites, consultas o reportar incidencias de forma rápida y eficiente. Estar conectados digitalmente agiliza la gestión y mejora nuestra ciudad. ¡Explore las opciones disponibles!"
             }
-        },
-        "cierre": "Gracias por confiar en su Asesor Público Digital. Que tenga un excelente día en Marcos Juarez."
+        ],
+        "despedida": "Gracias por confiar en su Asesor Público Digital. ¡Que tenga un excelente día en Marcos Juarez!"
     },
-    "last_updated": "2025-12-19T03:24:18.041084-03:00"
+    "last_updated": "2025-12-20T03:23:25.197684-03:00"
 }
