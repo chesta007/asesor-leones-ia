@@ -1,25 +1,26 @@
 {
-    "reporte_diario": {
+    "informe_diario_madryn": {
         "fecha": "Hoy",
-        "ciudad": "Puerto Madryn",
-        "contenido": [
+        "titulo": "Inicio de Temporada de Ballenas: Puerto Madryn se Viste de Gala",
+        "introduccion": "Puerto Madryn amanece con la emocionante noticia del inicio oficial de la temporada de avistaje de ballenas. Un día clave para nuestra ciudad, marcado por la majestuosidad de la fauna marina y la preparación para recibir a miles de visitantes. Además, te brindamos toda la información útil para que tu jornada transcurra de la mejor manera.",
+        "secciones": [
             {
                 "categoria": "☎️ Teléfonos Útiles",
-                "detalle": "Para su tranquilidad y conveniencia, aquí los contactos importantes del día:\n*   **Farmacia de Turno:** Farmacia Del Sur (Av. Gales 10) - Tel: 445-1234. [Ver en Mapa](http://googleusercontent.com/maps.google.com/madryn)\n*   **Emergencias Policiales:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas (SAME):** 107\n*   **Defensa Civil:** 103"
+                "contenido": "**Farmacia de Turno Hoy:** Farmacia Del Sur - Av. Gales 10. Teléfono: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)\n\n**Emergencias:**\n*   Policía: 101\n*   Bomberos: 100\n*   Emergencias Médicas: 107\n*   Defensa Civil: 103"
             },
             {
                 "categoria": "⚽ Eventos y Agenda",
-                "detalle": "¡Hoy marca un día muy especial para nuestra ciudad! Damos inicio oficialmente a la temporada de avistaje de ballenas, un evento que posiciona a Puerto Madryn como capital nacional de este espectáculo natural. Se espera la llegada de los primeros ejemplares a las costas de Península Valdés, atrayendo a visitantes y renovando el espíritu turístico y ambiental de nuestra comunidad. Los operadores turísticos locales ya están listos para recibir a quienes deseen disfrutar de esta experiencia única. Se recomienda a los vecinos y turistas informarse sobre las medidas de cuidado y respeto hacia la fauna marina y consultar los servicios habilitados."
+                "contenido": "¡El gran día ha llegado! Hoy, Puerto Madryn celebra el inicio de la esperada temporada de Avistaje de Ballenas Franca Austral 2024. Este evento no solo es un espectáculo natural incomparable, sino que también impulsa nuestra economía local y refuerza nuestra identidad como Capital Nacional de las Ballenas. Se invita a vecinos y turistas a informarse sobre los prestadores habilitados y las mejores prácticas para disfrutar de esta maravilla con respeto y responsabilidad ambiental. ¡Es un orgullo para nuestra ciudad dar la bienvenida a nuestras gigantes visitantes!\n\nManténganse atentos a la agenda municipal para futuras novedades sobre actividades culturales y deportivas, continuando con el entusiasmo que generaron los eventos de ayer."
             },
             {
                 "categoria": "☀️ Clima y Consejos",
-                "detalle": "El pronóstico para hoy en Puerto Madryn indica una jornada con cielo parcialmente nublado y temperaturas frescas, oscilando entre los 7°C y 14°C. Se espera viento moderado del sector oeste, con ráfagas que podrían intensificarse por la tarde.\n\n**Consejo del día:** Si planea realizar actividades al aire libre, especialmente cerca de la costa o para el avistaje, es fundamental vestirse en capas para adaptarse a los cambios de temperatura y protegerse del viento. No olvide una gorra y gafas de sol, incluso en días nublados, la radiación solar puede ser considerable."
+                "contenido": "Para este día de celebración, Puerto Madryn presentará un cielo mayormente despejado, con una temperatura máxima estimada de 15°C y una mínima de 6°C. El viento soplará con intensidad moderada desde el sector oeste, con algunas ráfagas. \n\n**Consejo del día:** Si planea acercarse a la costa o participar de alguna de las primeras excursiones de avistaje, recuerde vestirse con varias capas de abrigo. El viento patagónico puede hacer que la sensación térmica sea menor. Proteja su piel del sol con protector solar, incluso en días nublados o ventosos."
             },
             {
                 "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "detalle": "Anticipando el interés de nuestra comunidad, y en base al alto índice de interacción positiva que tuvo la categoría 'Deportes' ayer, les adelantamos que en futuras ediciones estaremos profundizando en la agenda deportiva local. Atentos a las novedades sobre los clubes y actividades deportivas que enriquecen nuestro Puerto Madryn. ¡Pronto más detalles!"
+                "contenido": "Con el inicio de la temporada de ballenas, anticipamos un aumento en el flujo vehicular, especialmente en las zonas costeras y los accesos a los puntos de embarque. \n\n**Recomendación Inteligente:** Sea un conductor precavido. Planifique sus tiempos de viaje, respete las señalizaciones de tránsito y las velocidades permitidas. Contribuyamos todos a mantener la seguridad vial para que residentes y visitantes puedan disfrutar plenamente de esta temporada sin contratiempos. Próximamente, compartiremos más detalles sobre iniciativas de turismo responsable y cuidado ambiental."
             }
         ]
     },
-    "last_updated": "2025-12-20T03:23:36.394793-03:00"
+    "last_updated": "2025-12-21T03:23:12.555126-03:00"
 }

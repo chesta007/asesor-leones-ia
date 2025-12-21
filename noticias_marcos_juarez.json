@@ -1,27 +1,27 @@
 {
     "reporte_diario_marcos_juarez": {
+        "titulo": "Asesor Público Digital: Informe Diario para Marcos Juarez",
         "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital para Marcos Juarez",
-        "introduccion": "Estimados ciudadanos de Marcos Juarez, su Asesor Público Digital les trae el reporte diario con información clave para la jornada. ¡Manténgase informado y conectado con nuestra ciudad!",
-        "categorias": [
+        "saludo": "Estimado vecino de Marcos Juarez, aquí su Asesor Público Digital con la información más relevante para su día.",
+        "secciones": [
             {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad, la farmacia de turno hoy es **Farmacia Nueva**, ubicada en Av. Belgrano 500. Su teléfono de contacto es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n\nRecuerde siempre tener a mano estos números de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Emergencias Hospital:** 107"
+                "categoria": "☎️ Teléfonos Útiles",
+                "contenido": "Para su tranquilidad, hoy la **Farmacia de Turno** es Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Encuéntrala fácilmente aquí: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva).\n\nOtros teléfonos de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Emergencias Médicas (Ambulancia):** 107"
             },
             {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": "¡La cultura nos convoca! Hoy es una jornada especial para los amantes del cine en Marcos Juarez. El **Festival de Cine Independiente** abre sus puertas a las **20:00 hs en el emblemático Teatro Colón**. Una oportunidad inigualable para disfrutar de producciones innovadoras y apoyar la difusión de nuevas propuestas artísticas. ¡No se quede afuera de esta experiencia cinematográfica!"
+                "categoria": "⚽ Eventos y Agenda",
+                "contenido": "¡La cultura toma el centro de la escena en Marcos Juarez! Hoy, a partir de las 20:00 hs, el Teatro Colón será el epicentro del **Festival de Cine Independiente**. Una oportunidad única para sumergirse en historias innovadoras y apoyar el talento cinematográfico. ¡No se lo pierdan!"
             },
             {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Marcos Juarez, se espera un día con **temperaturas agradables, alcanzando una máxima de 28°C y una mínima de 15°C**, con cielo parcialmente nublado. \n\n**Consejo Inteligente:** Aproveche este clima templado para realizar actividades al aire libre durante la mañana o al final de la tarde. ¡No olvide mantenerse hidratado y, si sale a caminar, use protector solar!"
+                "categoria": "☀️ Clima y Consejos",
+                "contenido": "Para hoy, se espera un día agradable en nuestra ciudad, con temperaturas que rondarán los 26°C y cielo parcialmente nublado. La tarde será propicia para disfrutar al aire libre. Le recomendamos mantenerse hidratado y, si planea exposiciones prolongadas al sol, no olvidar el protector solar."
             },
             {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Como su Asesor Público Digital, le anticipamos que es un excelente momento para revisar y familiarizarse con los **canales digitales de atención ciudadana de la Municipalidad**. Desde allí podrá realizar trámites, consultas o reportar incidencias de forma rápida y eficiente. Estar conectados digitalmente agiliza la gestión y mejora nuestra ciudad. ¡Explore las opciones disponibles!"
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": "Observamos con agrado el alto nivel de interacción y los 'Likes' en nuestras publicaciones de 'Deportes' de ayer. ¡Gracias por su entusiasmo! En respuesta a este interés, les adelantamos que estamos preparando un contenido especial con novedades y actividades deportivas locales que seguramente les encantará. ¡Manténganse atentos a nuestras próximas actualizaciones para no perderse nada!"
             }
         ],
-        "despedida": "Gracias por confiar en su Asesor Público Digital. ¡Que tenga un excelente día en Marcos Juarez!"
+        "despedida": "Gracias por confiar en su Asesor Público Digital. Que tenga un excelente día en Marcos Juarez."
     },
-    "last_updated": "2025-12-20T03:23:25.197684-03:00"
+    "last_updated": "2025-12-21T03:23:03.113331-03:00"
 }
