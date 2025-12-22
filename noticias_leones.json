@@ -1,25 +1,13 @@
 {
     "reporte_diario_leones": {
+        "titulo": "Informe Diario de Leones - Asesor Público Digital",
         "fecha": "Hoy",
-        "titulo": "Asesor Público Digital: Informe Diario para Leones",
-        "categorias": [
-            {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad y necesidad, aquí la información relevante:\n\nLa farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral).\n\n**Teléfonos de Emergencia:**\n*   Policía: 101\n*   Bomberos: 100\n*   Emergencias Médicas: 107"
-            },
-            {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": "¡Hoy Leones se viste de gala para el fútbol! La cita es a las 19:30 horas en el Club Atlético Leones, donde se disputará un gran partido. Tras el alto índice de interacción positiva en la categoría 'Deportes' de ayer, se espera una gran convocatoria. ¡Acompañemos a nuestros equipos y vivamos una jornada de pasión y camaradería en el estadio!"
-            },
-            {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Leones, se pronostica una jornada con cielo mayormente despejado y temperaturas agradables. La máxima estimada es de 26°C y la mínima de 14°C, con vientos leves del sector este. Le sugerimos aprovechar este excelente clima para disfrutar de actividades al aire libre durante el día. ¡No olvide mantenerse hidratado, especialmente si asiste al evento deportivo de la noche!"
-            },
-            {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Con motivo del gran evento deportivo de esta noche, queremos recordar a todos los vecinos la importancia de la convivencia y el respeto mutuo en los espacios públicos. Disfrutemos del partido con entusiasmo y pasión, pero siempre manteniendo el orden y la limpieza de nuestra querida ciudad. Su participación responsable es fundamental para la buena imagen de Leones."
-            }
-        ]
+        "contenido": {
+            "☎️ Teléfonos Útiles": "¡Siempre preparado! Aquí tienes los contactos esenciales para el día de hoy en Leones:\n\n*   **Farmacia de Turno:** La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n*   **Emergencias (Policía):** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas (Ambulancia):** 107\n*   **Hospital Municipal:** 472-1234 (número ficticio para ejemplo)\n*   **Defensa Civil:** 103",
+            "⚽ Eventos y Agenda": "¡Leones vibra con el deporte! Hoy es un día imperdible para los amantes del fútbol.\n\n*   **Gran Partido de Fútbol en el Club Atlético Leones:** A las 19:30 hs, el Club Atlético Leones será el epicentro de la pasión futbolera. Se espera un encuentro vibrante que promete emociones fuertes para todos los asistentes. ¡Ven y apoyemos a nuestros equipos locales! Dada la alta interacción que tuvieron los reportes de deportes ayer, ¡sabemos que la comunidad está lista para este gran evento!",
+            "☀️ Clima y Consejos": "Prepárate para un día agradable en Leones:\n\n*   **Pronóstico:** Se espera un día mayormente soleado con algunas nubes dispersas. La temperatura máxima rondará los 28°C y la mínima los 15°C. La humedad será moderada.\n*   **Consejo del Día:** Con temperaturas agradables, es un excelente día para disfrutar de actividades al aire libre. Recuerda hidratarte adecuadamente, especialmente si planeas asistir al partido de fútbol por la tarde. ¡No olvides tu gorra y protector solar si vas a estar expuesto al sol por mucho tiempo!",
+            "🚨 Recomendación Inteligente (Adelanto)": "Tu seguridad y bienestar son nuestra prioridad:\n\n*   **¡Participación Ciudadana Activa!:** Anímate a ser parte de los eventos locales y a interactuar con tus vecinos. La comunidad se construye con la participación de todos. Si vas al partido, organiza un viaje compartido o considera caminar para reducir el tráfico en las inmediaciones del Club Atlético Leones. ¡Tu pequeña acción contribuye a una ciudad más ordenada y sostenible!"
+        }
     },
-    "last_updated": "2025-12-21T03:22:55.927407-03:00"
+    "last_updated": "2025-12-22T03:27:18.101376-03:00"
 }

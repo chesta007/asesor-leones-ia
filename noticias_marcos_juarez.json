@@ -1,27 +1,77 @@
 {
-    "reporte_diario_marcos_juarez": {
-        "titulo": "Asesor Público Digital: Informe Diario para Marcos Juarez",
+    "informe_diario": {
+        "titulo": "Informe Diario del Asesor Público Digital - Marcos Juarez",
         "fecha": "Hoy",
-        "saludo": "Estimado vecino de Marcos Juarez, aquí su Asesor Público Digital con la información más relevante para su día.",
-        "secciones": [
+        "saludo": "¡Buenos días, vecinos y vecinas de Marcos Juarez!",
+        "contenido": [
             {
                 "categoria": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad, hoy la **Farmacia de Turno** es Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Encuéntrala fácilmente aquí: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva).\n\nOtros teléfonos de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Emergencias Médicas (Ambulancia):** 107"
+                "secciones": [
+                    {
+                        "titulo": "Farmacia de Turno",
+                        "descripcion": "La farmacia de turno es 'Farmacia Nueva', ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Enlace a Google Maps: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)"
+                    },
+                    {
+                        "titulo": "Emergencias",
+                        "contactos": [
+                            {
+                                "nombre": "Policía",
+                                "numero": "101"
+                            },
+                            {
+                                "nombre": "Bomberos Voluntarios",
+                                "numero": "100"
+                            },
+                            {
+                                "nombre": "Hospital Dr. Abel Ayerza",
+                                "numero": "470-0000"
+                            },
+                            {
+                                "nombre": "Defensa Civil",
+                                "numero": "103"
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "categoria": "⚽ Eventos y Agenda",
-                "contenido": "¡La cultura toma el centro de la escena en Marcos Juarez! Hoy, a partir de las 20:00 hs, el Teatro Colón será el epicentro del **Festival de Cine Independiente**. Una oportunidad única para sumergirse en historias innovadoras y apoyar el talento cinematográfico. ¡No se lo pierdan!"
+                "secciones": [
+                    {
+                        "titulo": "Noche de Cine Independiente en el Teatro Colón",
+                        "descripcion": "Hoy, a las 20:00 hs, el emblemático Teatro Colón de Marcos Juarez abre sus puertas para una jornada imperdible del Festival de Cine Independiente. Una oportunidad única para explorar nuevas perspectivas cinematográficas y apoyar el talento emergente. ¡No se lo pierdan!"
+                    },
+                    {
+                        "titulo": "Actividad Deportiva Local",
+                        "descripcion": "¡Atención, amantes del deporte! Sabemos que nuestra sección deportiva generó gran entusiasmo ayer. Para quienes buscan sumarse a la actividad física, les recordamos que la inscripción para las ligas de verano de fútbol y vóley en el Polideportivo Municipal está próxima a cerrar. ¡Aprovechen y sean parte de la pasión deportiva de Marcos Juarez!"
+                    }
+                ]
             },
             {
                 "categoria": "☀️ Clima y Consejos",
-                "contenido": "Para hoy, se espera un día agradable en nuestra ciudad, con temperaturas que rondarán los 26°C y cielo parcialmente nublado. La tarde será propicia para disfrutar al aire libre. Le recomendamos mantenerse hidratado y, si planea exposiciones prolongadas al sol, no olvidar el protector solar."
+                "secciones": [
+                    {
+                        "titulo": "Pronóstico para Hoy",
+                        "descripcion": "Para hoy en Marcos Juarez, se espera una jornada con cielo parcialmente nublado y temperaturas agradables. La máxima rondará los 27°C, mientras que la mínima será de 14°C. Los vientos soplarán leves desde el sector noreste."
+                    },
+                    {
+                        "titulo": "Consejo del Día",
+                        "descripcion": "Con estas temperaturas templadas, es un día ideal para realizar actividades al aire libre. Si planean una caminata o pasar tiempo en parques, no olviden protegerse del sol, utilizar lentes y mantenerse bien hidratados. ¡Disfruten de nuestro hermoso clima!"
+                    }
+                ]
             },
             {
                 "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Observamos con agrado el alto nivel de interacción y los 'Likes' en nuestras publicaciones de 'Deportes' de ayer. ¡Gracias por su entusiasmo! En respuesta a este interés, les adelantamos que estamos preparando un contenido especial con novedades y actividades deportivas locales que seguramente les encantará. ¡Manténganse atentos a nuestras próximas actualizaciones para no perderse nada!"
+                "secciones": [
+                    {
+                        "titulo": "Hacia una Marcos Juarez más Sostenible",
+                        "descripcion": "Desde la Asesoría Pública Digital, queremos adelantarles que pronto lanzaremos una campaña de concientización sobre la importancia de la gestión de residuos diferenciados en nuestros hogares. Su colaboración es fundamental para avanzar hacia una ciudad más limpia y sostenible. ¡Manténganse informados para conocer los detalles y sumarse a esta iniciativa colectiva!"
+                    }
+                ]
             }
         ],
-        "despedida": "Gracias por confiar en su Asesor Público Digital. Que tenga un excelente día en Marcos Juarez."
+        "despedida": "¡Que tengan un excelente día en Marcos Juarez!",
+        "observacion": "Recuerden que la información puede variar. Ante cualquier duda, consulte las fuentes oficiales."
     },
-    "last_updated": "2025-12-21T03:23:03.113331-03:00"
+    "last_updated": "2025-12-22T03:27:30.217389-03:00"
 }
