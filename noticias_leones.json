@@ -1,13 +1,39 @@
 {
     "reporte_diario_leones": {
-        "titulo": "Informe Diario de Leones - Asesor Público Digital",
         "fecha": "Hoy",
-        "contenido": {
-            "☎️ Teléfonos Útiles": "¡Siempre preparado! Aquí tienes los contactos esenciales para el día de hoy en Leones:\n\n*   **Farmacia de Turno:** La farmacia de turno es 'Farmacia Central', ubicada en Bv. San Martín 123. Su teléfono es 472-5555. Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n*   **Emergencias (Policía):** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas (Ambulancia):** 107\n*   **Hospital Municipal:** 472-1234 (número ficticio para ejemplo)\n*   **Defensa Civil:** 103",
-            "⚽ Eventos y Agenda": "¡Leones vibra con el deporte! Hoy es un día imperdible para los amantes del fútbol.\n\n*   **Gran Partido de Fútbol en el Club Atlético Leones:** A las 19:30 hs, el Club Atlético Leones será el epicentro de la pasión futbolera. Se espera un encuentro vibrante que promete emociones fuertes para todos los asistentes. ¡Ven y apoyemos a nuestros equipos locales! Dada la alta interacción que tuvieron los reportes de deportes ayer, ¡sabemos que la comunidad está lista para este gran evento!",
-            "☀️ Clima y Consejos": "Prepárate para un día agradable en Leones:\n\n*   **Pronóstico:** Se espera un día mayormente soleado con algunas nubes dispersas. La temperatura máxima rondará los 28°C y la mínima los 15°C. La humedad será moderada.\n*   **Consejo del Día:** Con temperaturas agradables, es un excelente día para disfrutar de actividades al aire libre. Recuerda hidratarte adecuadamente, especialmente si planeas asistir al partido de fútbol por la tarde. ¡No olvides tu gorra y protector solar si vas a estar expuesto al sol por mucho tiempo!",
-            "🚨 Recomendación Inteligente (Adelanto)": "Tu seguridad y bienestar son nuestra prioridad:\n\n*   **¡Participación Ciudadana Activa!:** Anímate a ser parte de los eventos locales y a interactuar con tus vecinos. La comunidad se construye con la participación de todos. Si vas al partido, organiza un viaje compartido o considera caminar para reducir el tráfico en las inmediaciones del Club Atlético Leones. ¡Tu pequeña acción contribuye a una ciudad más ordenada y sostenible!"
-        }
+        "titulo": "Informe Diario: Noticias de Leones - Tu Asesor Público Digital",
+        "categorias": [
+            {
+                "nombre": "☎️ Teléfonos Útiles",
+                "contenido": [
+                    "**Farmacia de Turno Hoy:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
+                    "**Emergencias:**",
+                    "Policía: 101",
+                    "Bomberos Voluntarios: 100",
+                    "Emergencias Médicas (Ambulancia): 107"
+                ]
+            },
+            {
+                "nombre": "⚽ Eventos y Agenda",
+                "contenido": [
+                    "¡La pasión deportiva sigue encendida en Leones! Tras el gran éxito y el alto índice de interacción que tuvimos ayer en nuestra sección de Deportes, hoy la emoción se traslada al campo de juego.",
+                    "**Evento Principal del Día:** Te invitamos a vivir una jornada a puro fútbol. Hoy, a las **19:30 hs**, el **Club Atlético Leones** será el escenario de un gran partido. ¡No te quedes afuera! Vení a alentar a nuestros equipos, disfrutar del buen juego y compartir un momento de camaradería con toda la comunidad. ¡Se espera una excelente convocatoria!"
+                ]
+            },
+            {
+                "nombre": "☀️ Clima y Consejos",
+                "contenido": [
+                    "Para hoy en Leones, se espera una jornada con cielo parcialmente nublado durante la mañana, dando paso a un incremento de la nubosidad hacia la tarde. La temperatura máxima pronosticada es de 27°C y la mínima de 17°C. No se esperan precipitaciones.",
+                    "**Consejo del Día:** Con temperaturas agradables, pero con el sol aún fuerte, es fundamental mantenerse hidratado durante todo el día, especialmente si planeas asistir al partido de fútbol. Llevar una botella de agua y usar protección solar son medidas sencillas para disfrutar plenamente de la jornada."
+                ]
+            },
+            {
+                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": [
+                    "Pensando en la seguridad y el bienestar de todos: En vista de los eventos deportivos y el aumento de actividad en la vía pública, queremos recordar la importancia del respeto a las normas de tránsito. Tanto peatones como conductores, practiquemos la paciencia y la atención plena. ¡Un Leones seguro lo construimos entre todos! Planifiquen sus traslados con tiempo, especialmente si se dirigen al Club Atlético."
+                ]
+            }
+        ]
     },
-    "last_updated": "2025-12-22T03:27:18.101376-03:00"
+    "last_updated": "2025-12-23T03:25:52.077252-03:00"
 }

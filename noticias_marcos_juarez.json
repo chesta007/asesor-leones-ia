@@ -1,77 +1,27 @@
 {
-    "informe_diario": {
+    "informe_diario_marcos_juarez": {
         "titulo": "Informe Diario del Asesor Público Digital - Marcos Juarez",
         "fecha": "Hoy",
-        "saludo": "¡Buenos días, vecinos y vecinas de Marcos Juarez!",
-        "contenido": [
-            {
-                "categoria": "☎️ Teléfonos Útiles",
-                "secciones": [
-                    {
-                        "titulo": "Farmacia de Turno",
-                        "descripcion": "La farmacia de turno es 'Farmacia Nueva', ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Enlace a Google Maps: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)"
-                    },
-                    {
-                        "titulo": "Emergencias",
-                        "contactos": [
-                            {
-                                "nombre": "Policía",
-                                "numero": "101"
-                            },
-                            {
-                                "nombre": "Bomberos Voluntarios",
-                                "numero": "100"
-                            },
-                            {
-                                "nombre": "Hospital Dr. Abel Ayerza",
-                                "numero": "470-0000"
-                            },
-                            {
-                                "nombre": "Defensa Civil",
-                                "numero": "103"
-                            }
-                        ]
-                    }
-                ]
+        "saludo": "Estimado/a vecino/a de Marcos Juarez, le presentamos el informe diario con la información más relevante para nuestra ciudad.",
+        "secciones": {
+            "telefonos_utiles": {
+                "titulo": "☎️ Teléfonos Útiles",
+                "contenido": "Para su tranquilidad y comodidad, aquí tiene los teléfonos útiles de Marcos Juarez para hoy:\n*   **Farmacia de Turno:** Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n*   **Emergencias:**\n    *   Policía: 101\n    *   Bomberos Voluntarios: 100\n    *   Hospital Dr. Abel Ayerza (Guardia): 421-112"
             },
-            {
-                "categoria": "⚽ Eventos y Agenda",
-                "secciones": [
-                    {
-                        "titulo": "Noche de Cine Independiente en el Teatro Colón",
-                        "descripcion": "Hoy, a las 20:00 hs, el emblemático Teatro Colón de Marcos Juarez abre sus puertas para una jornada imperdible del Festival de Cine Independiente. Una oportunidad única para explorar nuevas perspectivas cinematográficas y apoyar el talento emergente. ¡No se lo pierdan!"
-                    },
-                    {
-                        "titulo": "Actividad Deportiva Local",
-                        "descripcion": "¡Atención, amantes del deporte! Sabemos que nuestra sección deportiva generó gran entusiasmo ayer. Para quienes buscan sumarse a la actividad física, les recordamos que la inscripción para las ligas de verano de fútbol y vóley en el Polideportivo Municipal está próxima a cerrar. ¡Aprovechen y sean parte de la pasión deportiva de Marcos Juarez!"
-                    }
-                ]
+            "eventos_y_agenda": {
+                "titulo": "⚽ Eventos y Agenda",
+                "contenido": "La cultura y el entretenimiento son protagonistas hoy en nuestra ciudad:\n*   **Festival de Cine Independiente en el Teatro Colón:** ¡Una cita imperdible! Hoy, a partir de las 20:00 hs, el emblemático Teatro Colón abre sus puertas para dar inicio al Festival de Cine Independiente. Una oportunidad única para sumergirse en propuestas audiovisuales innovadoras y apoyar a creadores locales y nacionales. ¡Asegure su entrada y viva el arte en su máxima expresión!\n*   **Actividades Culturales:** Recuerde que el Centro Cultural Puni Frola mantiene su agenda de talleres y exposiciones abiertas al público. Consulte la cartelera para no perderse ninguna actividad."
             },
-            {
-                "categoria": "☀️ Clima y Consejos",
-                "secciones": [
-                    {
-                        "titulo": "Pronóstico para Hoy",
-                        "descripcion": "Para hoy en Marcos Juarez, se espera una jornada con cielo parcialmente nublado y temperaturas agradables. La máxima rondará los 27°C, mientras que la mínima será de 14°C. Los vientos soplarán leves desde el sector noreste."
-                    },
-                    {
-                        "titulo": "Consejo del Día",
-                        "descripcion": "Con estas temperaturas templadas, es un día ideal para realizar actividades al aire libre. Si planean una caminata o pasar tiempo en parques, no olviden protegerse del sol, utilizar lentes y mantenerse bien hidratados. ¡Disfruten de nuestro hermoso clima!"
-                    }
-                ]
+            "clima_y_consejos": {
+                "titulo": "☀️ Clima y Consejos",
+                "contenido": "El día se presenta ideal en Marcos Juarez para disfrutar de todas las actividades planificadas:\n*   **Pronóstico:** Se espera una jornada con cielo parcialmente nublado y temperaturas muy agradables. La máxima alcanzará los 25°C, mientras que por la noche descenderá a unos 15°C. Esto genera un ambiente perfecto para disfrutar al aire libre, especialmente el festival de cine.\n*   **Consejo del Día:** Aproveche las horas de sol para realizar actividades al aire libre. Si planea asistir al Teatro Colón por la noche, considere llevar un abrigo ligero, ya que la temperatura descenderá agradablemente."
             },
-            {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "secciones": [
-                    {
-                        "titulo": "Hacia una Marcos Juarez más Sostenible",
-                        "descripcion": "Desde la Asesoría Pública Digital, queremos adelantarles que pronto lanzaremos una campaña de concientización sobre la importancia de la gestión de residuos diferenciados en nuestros hogares. Su colaboración es fundamental para avanzar hacia una ciudad más limpia y sostenible. ¡Manténganse informados para conocer los detalles y sumarse a esta iniciativa colectiva!"
-                    }
-                ]
+            "recomendacion_inteligente_adelanto": {
+                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": "Anticipando el fin de semana y recordando el gran entusiasmo que generaron ayer nuestras noticias deportivas, les brindamos esta recomendación inteligente para su bienestar:\n*   **Planificación Activa:** Empiece a planificar sus actividades al aire libre para el fin de semana. Ya sea una caminata por nuestros hermosos espacios verdes, una salida en bicicleta o la práctica de algún deporte, ¡mantenerse activo es clave para nuestra salud física y mental! Estén atentos, pronto compartiremos novedades sobre futuras iniciativas deportivas municipales que sabemos serán de su interés."
             }
-        ],
-        "despedida": "¡Que tengan un excelente día en Marcos Juarez!",
-        "observacion": "Recuerden que la información puede variar. Ante cualquier duda, consulte las fuentes oficiales."
+        },
+        "cierre": "Desde el Asesor Público Digital, le deseamos un excelente día en Marcos Juarez."
     },
-    "last_updated": "2025-12-22T03:27:30.217389-03:00"
+    "last_updated": "2025-12-23T03:26:06.118855-03:00"
 }
