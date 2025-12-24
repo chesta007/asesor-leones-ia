@@ -1,39 +1,39 @@
 {
     "reporte_diario_leones": {
         "fecha": "Hoy",
-        "titulo": "Informe Diario: Noticias de Leones - Tu Asesor Público Digital",
+        "titulo": "Informe Diario de Noticias Locales - Asesor Público Digital",
         "categorias": [
             {
                 "nombre": "☎️ Teléfonos Útiles",
                 "contenido": [
-                    "**Farmacia de Turno Hoy:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
+                    "**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
                     "**Emergencias:**",
                     "Policía: 101",
-                    "Bomberos Voluntarios: 100",
-                    "Emergencias Médicas (Ambulancia): 107"
+                    "Bomberos: 100",
+                    "Hospital: 107"
                 ]
             },
             {
                 "nombre": "⚽ Eventos y Agenda",
                 "contenido": [
-                    "¡La pasión deportiva sigue encendida en Leones! Tras el gran éxito y el alto índice de interacción que tuvimos ayer en nuestra sección de Deportes, hoy la emoción se traslada al campo de juego.",
-                    "**Evento Principal del Día:** Te invitamos a vivir una jornada a puro fútbol. Hoy, a las **19:30 hs**, el **Club Atlético Leones** será el escenario de un gran partido. ¡No te quedes afuera! Vení a alentar a nuestros equipos, disfrutar del buen juego y compartir un momento de camaradería con toda la comunidad. ¡Se espera una excelente convocatoria!"
+                    "¡Atención, Leones! La pasión del fútbol nos convoca hoy en nuestro querido Club Atlético Leones.",
+                    "**Gran Partido de Fútbol:** A las 19:30 hs, el Club Atlético Leones vibrará con un emocionante encuentro. ¡No te lo pierdas! Dadas las altas interacciones en la categoría 'Deportes' de ayer, esperamos una gran concurrencia para alentar a nuestros equipos y disfrutar de una noche de camaradería."
                 ]
             },
             {
                 "nombre": "☀️ Clima y Consejos",
                 "contenido": [
-                    "Para hoy en Leones, se espera una jornada con cielo parcialmente nublado durante la mañana, dando paso a un incremento de la nubosidad hacia la tarde. La temperatura máxima pronosticada es de 27°C y la mínima de 17°C. No se esperan precipitaciones.",
-                    "**Consejo del Día:** Con temperaturas agradables, pero con el sol aún fuerte, es fundamental mantenerse hidratado durante todo el día, especialmente si planeas asistir al partido de fútbol. Llevar una botella de agua y usar protección solar son medidas sencillas para disfrutar plenamente de la jornada."
+                    "**Pronóstico para Hoy:** Leones espera una jornada mayormente soleada con temperaturas agradables que alcanzarán los 25°C. Hacia la tarde-noche, podría aumentar la nubosidad.",
+                    "**Consejo del Día:** Aprovecha este clima ideal para realizar actividades al aire libre. Si vas a asistir al partido, recuerda mantenerte hidratado y planificar tu llegada con tiempo para disfrutar plenamente del evento."
                 ]
             },
             {
                 "nombre": "🚨 Recomendación Inteligente (Adelanto)",
                 "contenido": [
-                    "Pensando en la seguridad y el bienestar de todos: En vista de los eventos deportivos y el aumento de actividad en la vía pública, queremos recordar la importancia del respeto a las normas de tránsito. Tanto peatones como conductores, practiquemos la paciencia y la atención plena. ¡Un Leones seguro lo construimos entre todos! Planifiquen sus traslados con tiempo, especialmente si se dirigen al Club Atlético."
+                    "Dada la reciente repercusión de los temas deportivos y el gran partido que nos espera hoy, nuestro próximo informe pondrá foco en las iniciativas municipales para fomentar el deporte y la vida saludable en Leones. ¡Prepara tus zapatillas y mantente al tanto para descubrir cómo sumarte y aprovechar las propuestas locales!"
                 ]
             }
         ]
     },
-    "last_updated": "2025-12-23T03:25:52.077252-03:00"
+    "last_updated": "2025-12-24T03:26:07.606232-03:00"
 }

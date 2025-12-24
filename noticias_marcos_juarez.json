@@ -1,27 +1,15 @@
 {
-    "informe_diario_marcos_juarez": {
-        "titulo": "Informe Diario del Asesor Público Digital - Marcos Juarez",
+    "MarcosJuarezDiario": {
         "fecha": "Hoy",
-        "saludo": "Estimado/a vecino/a de Marcos Juarez, le presentamos el informe diario con la información más relevante para nuestra ciudad.",
-        "secciones": {
-            "telefonos_utiles": {
-                "titulo": "☎️ Teléfonos Útiles",
-                "contenido": "Para su tranquilidad y comodidad, aquí tiene los teléfonos útiles de Marcos Juarez para hoy:\n*   **Farmacia de Turno:** Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n*   **Emergencias:**\n    *   Policía: 101\n    *   Bomberos Voluntarios: 100\n    *   Hospital Dr. Abel Ayerza (Guardia): 421-112"
-            },
-            "eventos_y_agenda": {
-                "titulo": "⚽ Eventos y Agenda",
-                "contenido": "La cultura y el entretenimiento son protagonistas hoy en nuestra ciudad:\n*   **Festival de Cine Independiente en el Teatro Colón:** ¡Una cita imperdible! Hoy, a partir de las 20:00 hs, el emblemático Teatro Colón abre sus puertas para dar inicio al Festival de Cine Independiente. Una oportunidad única para sumergirse en propuestas audiovisuales innovadoras y apoyar a creadores locales y nacionales. ¡Asegure su entrada y viva el arte en su máxima expresión!\n*   **Actividades Culturales:** Recuerde que el Centro Cultural Puni Frola mantiene su agenda de talleres y exposiciones abiertas al público. Consulte la cartelera para no perderse ninguna actividad."
-            },
-            "clima_y_consejos": {
-                "titulo": "☀️ Clima y Consejos",
-                "contenido": "El día se presenta ideal en Marcos Juarez para disfrutar de todas las actividades planificadas:\n*   **Pronóstico:** Se espera una jornada con cielo parcialmente nublado y temperaturas muy agradables. La máxima alcanzará los 25°C, mientras que por la noche descenderá a unos 15°C. Esto genera un ambiente perfecto para disfrutar al aire libre, especialmente el festival de cine.\n*   **Consejo del Día:** Aproveche las horas de sol para realizar actividades al aire libre. Si planea asistir al Teatro Colón por la noche, considere llevar un abrigo ligero, ya que la temperatura descenderá agradablemente."
-            },
-            "recomendacion_inteligente_adelanto": {
-                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Anticipando el fin de semana y recordando el gran entusiasmo que generaron ayer nuestras noticias deportivas, les brindamos esta recomendación inteligente para su bienestar:\n*   **Planificación Activa:** Empiece a planificar sus actividades al aire libre para el fin de semana. Ya sea una caminata por nuestros hermosos espacios verdes, una salida en bicicleta o la práctica de algún deporte, ¡mantenerse activo es clave para nuestra salud física y mental! Estén atentos, pronto compartiremos novedades sobre futuras iniciativas deportivas municipales que sabemos serán de su interés."
-            }
+        "titulo": "Informe Diario del Asesor Público Digital de Marcos Juarez",
+        "introduccion": "¡Estimado ciudadano de Marcos Juarez! Como su Asesor Público Digital, le presentamos el informe diario con las novedades y servicios esenciales para optimizar su jornada. Manténgase informado y conectado con lo que sucede en nuestra ciudad.",
+        "noticias": {
+            "☎️ Teléfonos Útiles": "Para su tranquilidad y seguridad, aquí tiene los números esenciales para hoy: La Farmacia de Turno es 'Farmacia Nueva', ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva). Para emergencias generales: Policía (101), Bomberos (100), Emergencias Médicas (107).",
+            "⚽ Eventos y Agenda": "Hoy, la cultura se viste de gala en Marcos Juarez con el esperado Festival de Cine Independiente en el emblemático Teatro Colón. La función principal comienza a las 20:00 hs. Una oportunidad única para disfrutar de producciones innovadoras y apoyar el arte local. ¡Le invitamos a sumergirse en el séptimo arte y compartir esta experiencia!",
+            "☀️ Clima y Consejos": "El día en Marcos Juarez se presenta con un cielo mayormente despejado y temperaturas agradables, alcanzando los 25°C por la tarde. Se recomienda aprovechar el buen tiempo para actividades al aire libre y, como siempre, mantenerse bien hidratado. No olvide usar protector solar si pasa tiempo prolongado bajo el sol. ¡Disfrute de un excelente día!",
+            "🚨 Recomendación Inteligente (Adelanto)": "Anticipamos que, en los próximos días, estaremos compartiendo una guía práctica detallada para optimizar el uso de los servicios municipales en línea. Esta iniciativa busca facilitarle la realización de trámites y consultas desde la comodidad de su hogar. Manténgase conectado a nuestras plataformas digitales oficiales para no perderse esta información clave. ¡Su municipio más cerca, siempre!"
         },
-        "cierre": "Desde el Asesor Público Digital, le deseamos un excelente día en Marcos Juarez."
+        "cierre": "Desde su Asesor Público Digital, le deseamos un día productivo e informado. ¡Marcos Juarez avanza con usted!"
     },
-    "last_updated": "2025-12-23T03:26:06.118855-03:00"
+    "last_updated": "2025-12-24T03:26:20.940803-03:00"
 }
