@@ -1,39 +1,47 @@
 {
-    "reporte_diario_leones": {
+    "informe_diario_leones": {
         "fecha": "Hoy",
-        "titulo": "Informe Diario de Noticias Locales - Asesor Público Digital",
-        "categorias": [
-            {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Su teléfono es 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
+        "titulo": "Informe Diario de Noticias Locales - Leones",
+        "contenido": {
+            "☎️ Teléfonos Útiles": {
+                "encabezado": "Tu guía rápida para cualquier necesidad en Leones:",
+                "detalles": [
+                    "**Farmacia de Turno:**",
+                    "Farmacia Central - Bv. San Martín 123",
+                    "Teléfono: 472-5555",
+                    "Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
+                    "",
                     "**Emergencias:**",
-                    "Policía: 101",
-                    "Bomberos: 100",
-                    "Hospital: 107"
+                    "Policía (Comisaría Leones): 101",
+                    "Bomberos Voluntarios Leones: 100",
+                    "Emergencias Médicas (Ambulancia): 107"
                 ]
             },
-            {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "¡Atención, Leones! La pasión del fútbol nos convoca hoy en nuestro querido Club Atlético Leones.",
-                    "**Gran Partido de Fútbol:** A las 19:30 hs, el Club Atlético Leones vibrará con un emocionante encuentro. ¡No te lo pierdas! Dadas las altas interacciones en la categoría 'Deportes' de ayer, esperamos una gran concurrencia para alentar a nuestros equipos y disfrutar de una noche de camaradería."
+            "⚽ Eventos y Agenda": {
+                "encabezado": "¡Leones Vive el Deporte!",
+                "detalles": [
+                    "**Gran Partido de Fútbol en el Club Atlético Leones:**",
+                    "Hoy a las 19:30 hs, no te pierdas el encuentro que promete vibrar a toda la ciudad.",
+                    "Tras el gran interés que generó la sección de deportes ayer, ¡esperamos una multitud apoyando a nuestros equipos!",
+                    "¡Acompañemos a nuestros jugadores y vivamos juntos la pasión del fútbol local!"
                 ]
             },
-            {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": [
-                    "**Pronóstico para Hoy:** Leones espera una jornada mayormente soleada con temperaturas agradables que alcanzarán los 25°C. Hacia la tarde-noche, podría aumentar la nubosidad.",
-                    "**Consejo del Día:** Aprovecha este clima ideal para realizar actividades al aire libre. Si vas a asistir al partido, recuerda mantenerte hidratado y planificar tu llegada con tiempo para disfrutar plenamente del evento."
+            "☀️ Clima y Consejos": {
+                "encabezado": "Preparados para el Día en Leones",
+                "detalles": [
+                    "**Pronóstico para Hoy:** Se espera un día mayormente soleado con temperaturas agradables, alcanzando una máxima de 25°C.",
+                    "**Consejo del Día:** Aprovecha este clima ideal para realizar actividades al aire libre antes del partido. Si planeas asistir al evento deportivo, recuerda llevar algo de abrigo ligero para la noche, ya que la temperatura podría descender."
                 ]
             },
-            {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "Dada la reciente repercusión de los temas deportivos y el gran partido que nos espera hoy, nuestro próximo informe pondrá foco en las iniciativas municipales para fomentar el deporte y la vida saludable en Leones. ¡Prepara tus zapatillas y mantente al tanto para descubrir cómo sumarte y aprovechar las propuestas locales!"
+            "🚨 Recomendación Inteligente (Adelanto)": {
+                "encabezado": "Pensando en tu Bienestar y Convivencia",
+                "detalles": [
+                    "**Convivencia Responsable en Eventos Públicos:** Con motivo del gran partido de fútbol de esta noche, recordamos la importancia de mantener la limpieza y el orden en los espacios públicos.",
+                    "Si asistes, por favor, utiliza los cestos de basura disponibles y ayuda a conservar la belleza de nuestro Club Atlético Leones y sus alrededores.",
+                    "¡Un Leones limpio es tarea de todos!"
                 ]
             }
-        ]
+        }
     },
-    "last_updated": "2025-12-24T03:26:07.606232-03:00"
+    "last_updated": "2025-12-25T03:25:16.095666-03:00"
 }

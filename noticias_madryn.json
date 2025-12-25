@@ -1,42 +1,57 @@
 {
-    "reporte_diario_puerto_madryn": {
-        "fecha": "Hoy",
+    "reporte_diario_madryn": {
         "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "categorias": [
+        "secciones": [
             {
-                "nombre": "☎️ Teléfonos Útiles",
+                "categoria": "☎️ Teléfonos Útiles",
                 "contenido": [
-                    "**Farmacia de Turno Hoy:** Farmacia Del Sur, ubicada en Av. Gales 10. Teléfono: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
-                    "**Emergencias (Policía, Bomberos, Ambulancia):** 911",
-                    "**Policía:** 101",
-                    "**Bomberos:** 100",
-                    "**Emergencias Médicas (Ambulancia):** 107",
-                    "**Prefectura Naval Argentina:** 106",
-                    "**Defensa Civil:** 103"
+                    {
+                        "tipo": "Farmacia de Turno",
+                        "detalle": "Hoy, la farmacia de turno es: Farmacia Del Sur, ubicada en Av. Gales 10. Teléfono: 445-1234. Para su comodidad, aquí puede encontrar su ubicación en el mapa: [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
+                    },
+                    {
+                        "tipo": "Emergencias",
+                        "detalle": [
+                            "Policía: 101 / 911",
+                            "Bomberos: 100",
+                            "Hospital Zonal: 107 (Ambulancias)",
+                            "Defensa Civil: 103"
+                        ]
+                    }
                 ]
             },
             {
-                "nombre": "⚽ Eventos y Agenda",
+                "categoria": "⚽ Eventos y Agenda",
                 "contenido": [
-                    "**¡Madryn se viste de gala! Hoy, 1 de junio, damos la bienvenida oficial a la Temporada de Avistaje de Ballenas Francas Australes 2024.** Este es un día clave para nuestra ciudad, marcando el inicio de un período de gran movimiento turístico y un orgullo para todos los madrynenses.",
-                    "Se espera que miles de visitantes comiencen a llegar para presenciar este espectáculo natural único en el mundo. Invitamos a residentes y turistas a disfrutar con respeto y conciencia de nuestra fauna marina.",
-                    "**Consejo:** Si planea acercarse a la costa en puntos como El Doradillo, recuerde mantener la distancia recomendada y seguir las indicaciones de los Guardaparques y operadores turísticos para una experiencia segura y enriquecedora."
+                    {
+                        "titulo": "¡Comienza la Temporada de Avistaje de Ballenas en Puerto Madryn!",
+                        "descripcion": "Un día histórico para Puerto Madryn. Hoy se da inicio oficial a la tan esperada temporada de avistaje de la ballena franca austral. Este evento, que posiciona a nuestra ciudad como Capital Nacional de la Ballena, atrae miradas y visitantes de todo el mundo. Las primeras excursiones marítimas zarparán, marcando el comienzo de meses de encuentros inolvidables con estos majestuosos cetáceos. Se invita a residentes y turistas a vivir esta experiencia única, recordando siempre la importancia del avistaje responsable y el respeto por la fauna marina. ¡Nuestra ciudad se prepara para un nuevo ciclo de maravillas naturales!"
+                    }
                 ]
             },
             {
-                "nombre": "☀️ Clima y Consejos",
+                "categoria": "☀️ Clima y Consejos",
                 "contenido": [
-                    "**Pronóstico para hoy:** Se espera una jornada con cielo parcialmente nublado en Puerto Madryn. La temperatura máxima alcanzará los 18°C, mientras que la mínima rondará los 10°C. El viento soplará del sector oeste con intensidad moderada a fuerte, especialmente durante la tarde.",
-                    "**Consejo del día:** Considerando las ráfagas de viento y los cambios de temperatura típicos de nuestra zona, se recomienda vestir en capas. Esto le permitirá adaptarse fácilmente a las variaciones climáticas, ya sea que esté realizando actividades al aire libre o disfrutando de la costa. No olvide hidratarse."
+                    {
+                        "titulo": "Pronóstico y Condiciones del Día",
+                        "descripcion": "Para este día inaugural de la temporada de ballenas, Puerto Madryn disfrutará de condiciones climáticas ideales. Se espera un cielo mayormente despejado con una temperatura máxima que rondará los 20°C y una mínima de 10°C. Los vientos serán leves a moderados del sector oeste, favoreciendo las actividades al aire libre y las excursiones marítimas. Las horas centrales del día presentarán la mayor radiación solar."
+                    },
+                    {
+                        "titulo": "Consejo Inteligente para Hoy",
+                        "descripcion": "Con el clima favorable y el inicio de la temporada de avistaje, recomendamos planificar una caminata por la costa o, si es posible, informarse sobre las salidas de avistaje. No olvide usar protector solar, sombrero y gafas de sol, incluso en días nublados. Las capas de ropa son siempre una buena opción para adaptarse a los cambios de temperatura entre la mañana, la tarde y la noche en nuestra hermosa ciudad."
+                    }
                 ]
             },
             {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
                 "contenido": [
-                    "Con el inminente aumento del flujo vehicular y la presencia de visitantes por el inicio de la temporada de ballenas, es fundamental que todos contribuyamos a un tránsito seguro y ordenado. La **Recomendación Inteligente para mañana** estará enfocada en la **seguridad vial y la importancia de respetar las normativas de tránsito**, tanto para conductores como para peatones. ¡Juntos hacemos de Madryn una ciudad más segura para todos!"
+                    {
+                        "titulo": "Activando el Deporte y Bienestar",
+                        "descripcion": "Observando el gran interés que generó el reporte de 'Deportes' de ayer, queremos adelantar que desde el Asesor Público Digital estaremos trabajando en la difusión de propuestas que combinen el disfrute de nuestra naturaleza con la actividad física. Estén atentos a futuras publicaciones con iniciativas que fomenten el deporte al aire libre, aprovechando los maravillosos paisajes de Puerto Madryn y el espíritu activo de nuestra comunidad. ¡Pronto más novedades para sumarse al movimiento!"
+                    }
                 ]
             }
         ]
     },
-    "last_updated": "2025-12-24T03:26:32.435740-03:00"
+    "last_updated": "2025-12-25T03:25:44.221305-03:00"
 }

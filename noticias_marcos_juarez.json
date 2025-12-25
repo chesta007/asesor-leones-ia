@@ -1,15 +1,44 @@
 {
-    "MarcosJuarezDiario": {
+    "reporte_diario_marcos_juarez": {
         "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital de Marcos Juarez",
-        "introduccion": "¡Estimado ciudadano de Marcos Juarez! Como su Asesor Público Digital, le presentamos el informe diario con las novedades y servicios esenciales para optimizar su jornada. Manténgase informado y conectado con lo que sucede en nuestra ciudad.",
-        "noticias": {
-            "☎️ Teléfonos Útiles": "Para su tranquilidad y seguridad, aquí tiene los números esenciales para hoy: La Farmacia de Turno es 'Farmacia Nueva', ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva). Para emergencias generales: Policía (101), Bomberos (100), Emergencias Médicas (107).",
-            "⚽ Eventos y Agenda": "Hoy, la cultura se viste de gala en Marcos Juarez con el esperado Festival de Cine Independiente en el emblemático Teatro Colón. La función principal comienza a las 20:00 hs. Una oportunidad única para disfrutar de producciones innovadoras y apoyar el arte local. ¡Le invitamos a sumergirse en el séptimo arte y compartir esta experiencia!",
-            "☀️ Clima y Consejos": "El día en Marcos Juarez se presenta con un cielo mayormente despejado y temperaturas agradables, alcanzando los 25°C por la tarde. Se recomienda aprovechar el buen tiempo para actividades al aire libre y, como siempre, mantenerse bien hidratado. No olvide usar protector solar si pasa tiempo prolongado bajo el sol. ¡Disfrute de un excelente día!",
-            "🚨 Recomendación Inteligente (Adelanto)": "Anticipamos que, en los próximos días, estaremos compartiendo una guía práctica detallada para optimizar el uso de los servicios municipales en línea. Esta iniciativa busca facilitarle la realización de trámites y consultas desde la comodidad de su hogar. Manténgase conectado a nuestras plataformas digitales oficiales para no perderse esta información clave. ¡Su municipio más cerca, siempre!"
-        },
-        "cierre": "Desde su Asesor Público Digital, le deseamos un día productivo e informado. ¡Marcos Juarez avanza con usted!"
+        "titulo": "Informe Diario: Su Asesor Público Digital en Marcos Juarez",
+        "saludo": "¡Buenos días, vecinos y vecinas de Marcos Juarez! Aquí su Asesor Público Digital con las novedades más importantes para hoy.",
+        "categorias": [
+            {
+                "nombre": "☎️ Teléfonos Útiles",
+                "contenido": [
+                    "**Farmacia de Turno:**",
+                    "Farmacia Nueva, Av. Belgrano 500.",
+                    "Teléfono: 473-8888.",
+                    "[Ubicación en Google Maps](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
+                    "",
+                    "**Emergencias:**",
+                    "Policía: 101",
+                    "Bomberos: 100",
+                    "Emergencias Médicas (SAME/Ambulancia): 107"
+                ]
+            },
+            {
+                "nombre": "⚽ Eventos y Agenda",
+                "contenido": [
+                    "**Festival de Cine Independiente en el Teatro Colón:** La cultura local se viste de gala esta noche. A partir de las 20:00 hs, el emblemático Teatro Colón será el escenario de un imperdible festival de cine independiente. Una excelente oportunidad para disfrutar de producciones únicas y apoyar el talento emergente. ¡No se lo pierdan y lleguen temprano para asegurar su lugar!"
+                ]
+            },
+            {
+                "nombre": "☀️ Clima y Consejos",
+                "contenido": [
+                    "**Pronóstico para hoy:** Se espera una mañana fresca con un rápido ascenso de la temperatura hacia el mediodía, alcanzando una máxima de 26°C. La tarde será soleada y la noche, muy agradable con vientos leves.",
+                    "**Consejo del día:** Recuerden hidratarse adecuadamente a lo largo del día, especialmente durante las horas de mayor temperatura. Si planean salir temprano, un abrigo ligero será ideal para las primeras horas de la mañana."
+                ]
+            },
+            {
+                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": [
+                    "**Impulsando la participación ciudadana:** El alto interés mostrado ayer en contenidos deportivos nos demuestra el dinamismo y la energía de nuestra comunidad. Como su Asesor Público Digital, queremos potenciar ese espíritu participativo. Próximamente, daremos a conocer iniciativas y plataformas digitales pensadas para que cada ciudadano pueda involucrarse activamente en la construcción de una Marcos Juarez más conectada e innovadora. ¡Estén atentos a cómo su voz puede sumar valor y hacer la diferencia!"
+                ]
+            }
+        ],
+        "despedida": "Eso es todo por hoy, Marcos Juarez. ¡Que tengan un excelente día y no olviden participar activamente en la vida de nuestra ciudad! Su Asesor Público Digital les saluda."
     },
-    "last_updated": "2025-12-24T03:26:20.940803-03:00"
+    "last_updated": "2025-12-25T03:25:30.458322-03:00"
 }
