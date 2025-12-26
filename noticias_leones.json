@@ -1,47 +1,25 @@
 {
-    "informe_diario_leones": {
+    "reporte_diario_leones": {
         "fecha": "Hoy",
         "titulo": "Informe Diario de Noticias Locales - Leones",
-        "contenido": {
-            "☎️ Teléfonos Útiles": {
-                "encabezado": "Tu guía rápida para cualquier necesidad en Leones:",
-                "detalles": [
-                    "**Farmacia de Turno:**",
-                    "Farmacia Central - Bv. San Martín 123",
-                    "Teléfono: 472-5555",
-                    "Enlace a Google Maps: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
-                    "",
-                    "**Emergencias:**",
-                    "Policía (Comisaría Leones): 101",
-                    "Bomberos Voluntarios Leones: 100",
-                    "Emergencias Médicas (Ambulancia): 107"
-                ]
+        "contenido": [
+            {
+                "categoria": "☎️ Teléfonos Útiles",
+                "detalle": "Para cualquier necesidad de salud, la Farmacia de Turno hoy es **Farmacia Central**, ubicada en Bv. San Martín 123. Puede contactarlos al 472-5555. Encuéntrela fácilmente aquí: [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral).\n\nOtros teléfonos de emergencia:\n*   **Policía:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas (Hospital Municipal):** 107"
             },
-            "⚽ Eventos y Agenda": {
-                "encabezado": "¡Leones Vive el Deporte!",
-                "detalles": [
-                    "**Gran Partido de Fútbol en el Club Atlético Leones:**",
-                    "Hoy a las 19:30 hs, no te pierdas el encuentro que promete vibrar a toda la ciudad.",
-                    "Tras el gran interés que generó la sección de deportes ayer, ¡esperamos una multitud apoyando a nuestros equipos!",
-                    "¡Acompañemos a nuestros jugadores y vivamos juntos la pasión del fútbol local!"
-                ]
+            {
+                "categoria": "⚽ Eventos y Agenda",
+                "detalle": "¡Atención, Leones! Hoy la pasión del fútbol se vive en nuestro querido Club Atlético Leones. No te pierdas el gran partido que comenzará a las **19:30 hs**. Vení a alentar a tu equipo, compartí la emoción con amigos y familia, y disfrutá de una noche deportiva imperdible. ¡Tu presencia es clave para sentir el aliento en la cancha!"
             },
-            "☀️ Clima y Consejos": {
-                "encabezado": "Preparados para el Día en Leones",
-                "detalles": [
-                    "**Pronóstico para Hoy:** Se espera un día mayormente soleado con temperaturas agradables, alcanzando una máxima de 25°C.",
-                    "**Consejo del Día:** Aprovecha este clima ideal para realizar actividades al aire libre antes del partido. Si planeas asistir al evento deportivo, recuerda llevar algo de abrigo ligero para la noche, ya que la temperatura podría descender."
-                ]
+            {
+                "categoria": "☀️ Clima y Consejos",
+                "detalle": "Para hoy, Leones nos regala una jornada con cielo mayormente despejado y temperaturas agradables que alcanzarán los 26°C durante la tarde. Se espera una brisa leve del sector noreste. **Consejo Inteligente:** Con estas condiciones ideales, es un excelente día para disfrutar de los espacios verdes de nuestra ciudad. ¡Recordá mantenerte hidratado y protegerte del sol si vas a estar al aire libre!"
             },
-            "🚨 Recomendación Inteligente (Adelanto)": {
-                "encabezado": "Pensando en tu Bienestar y Convivencia",
-                "detalles": [
-                    "**Convivencia Responsable en Eventos Públicos:** Con motivo del gran partido de fútbol de esta noche, recordamos la importancia de mantener la limpieza y el orden en los espacios públicos.",
-                    "Si asistes, por favor, utiliza los cestos de basura disponibles y ayuda a conservar la belleza de nuestro Club Atlético Leones y sus alrededores.",
-                    "¡Un Leones limpio es tarea de todos!"
-                ]
+            {
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "detalle": "En los próximos días, estaremos compartiendo información valiosa sobre cómo identificar y reportar correctamente la poda de árboles no autorizada en Leones. Tu colaboración es fundamental para cuidar nuestro arbolado urbano y mantener la belleza de nuestras calles. ¡Estate atento a los detalles sobre cómo actuar de forma eficiente!"
             }
-        }
+        ]
     },
-    "last_updated": "2025-12-25T03:25:16.095666-03:00"
+    "last_updated": "2025-12-26T03:25:00.558884-03:00"
 }
