@@ -1,27 +1,41 @@
 {
-    "informe_diario": {
-        "titulo": "Informe Diario Digital - Marcos Juarez",
-        "fecha": "Hoy",
-        "saludo": "Estimado ciudadano de Marcos Juarez, aquí le presentamos su informe diario para estar siempre informado y conectado con nuestra comunidad.",
+    "reporte_diario_marcos_juarez": {
+        "fecha": "2023-10-27",
+        "titulo": "Informe Diario de Noticias Locales - Marcos Juárez",
         "secciones": [
             {
                 "categoria": "☎️ Teléfonos Útiles",
-                "contenido": "Para hoy, su farmacia de turno en Marcos Juarez es **Farmacia Nueva**, ubicada en Av. Belgrano 500. Puede contactarlos al 473-8888. Encuentre su ubicación exacta aquí: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva).\n\nAdemás, recuerde estos números de emergencia:\n*   **Policía:** 101\n*   **Bomberos:** 100\n*   **Hospital:** 107\n*   **Defensa Civil:** 103"
+                "contenido": [
+                    "**Farmacia de Turno:** Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
+                    "**Emergencias:** 101 (Policía)",
+                    "**Bomberos:** 100",
+                    "**Emergencias Médicas:** 107",
+                    "**Defensa Civil:** 103"
+                ]
             },
             {
                 "categoria": "⚽ Eventos y Agenda",
-                "contenido": "¡Marcos Juarez vibra con la cultura! Hoy a las 20:00 hs, el **Teatro Colón** abre sus puertas para una noche imperdible: el **Festival de Cine Independiente**. Disfrute de producciones innovadoras y talentos emergentes. Una excelente oportunidad para sumergirse en historias únicas y apoyar el arte local e independiente. No se pierda esta propuesta que enriquece nuestra agenda cultural."
+                "contenido": [
+                    "**¡Noche de Cine Independiente en el Teatro Colón!**",
+                    "La cultura se toma la noche de Marcos Juárez. Hoy, a partir de las 20:00 hs, el icónico Teatro Colón será el epicentro del Festival de Cine Independiente. Una oportunidad imperdible para sumergirse en propuestas audiovisuales innovadoras y apoyar el talento emergente. ¡Prepara tus palomitas y ven a disfrutar!",
+                    "**Recordatorio Actividades Deportivas:** Siguiendo el gran interés demostrado en los deportes, recordamos las diversas actividades al aire libre y en polideportivos municipales. Mantener un estilo de vida activo es clave para nuestra comunidad."
+                ]
             },
             {
                 "categoria": "☀️ Clima y Consejos",
-                "contenido": "El día de hoy en Marcos Juarez se presenta con un cielo mayormente despejado y temperaturas agradables. Se espera una máxima de 26°C y una mínima de 14°C, con vientos leves del noreste. Un día ideal para actividades al aire libre y disfrutar de nuestros espacios verdes.\n\n**Consejo del día:** Con el sol presente, recomendamos mantenerse bien hidratado, especialmente si planea salir. No olvide usar protector solar si va a exponerse por períodos prolongados para cuidar su piel."
+                "contenido": [
+                    "**Pronóstico del Tiempo para Hoy:** Se espera un día con cielo mayormente despejado y temperaturas agradables en Marcos Juárez. La máxima alcanzará los 26°C y la mínima se ubicará en los 15°C. La mañana será fresca, ideal para comenzar el día, y la tarde invitará a disfrutar al aire libre.",
+                    "**Consejo Inteligente:** Con estas condiciones climáticas óptimas, le sugerimos aprovechar para realizar caminatas o actividades recreativas en nuestros espacios verdes. No olvide hidratarse adecuadamente, especialmente si realiza esfuerzos físicos, y aplicar protector solar en las horas de mayor exposición."
+                ]
             },
             {
                 "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Para una Marcos Juarez más conectada y participativa, el equipo digital municipal está trabajando en nuevas herramientas de interacción ciudadana. ¡Esté atento! Próximamente lanzaremos una sección renovada en nuestro sitio web donde podrá proponer ideas, hacer seguimiento a proyectos y participar activamente en la construcción de nuestra ciudad. Su voz es fundamental y estamos creando más canales para escucharla."
+                "contenido": [
+                    "**¡Atención Amantes del Deporte!** Dado el alto índice de interacción positiva en la categoría 'Deportes' de nuestro informe de ayer, estamos preparando una cobertura especial con la agenda deportiva completa para el próximo fin de semana. Espere detalles sobre partidos, encuentros y actividades físicas para todas las edades.",
+                    "**Movilidad Urbana:** Ante la concurrencia al Festival de Cine, recomendamos utilizar el transporte público o, de ser posible, la bicicleta. Si utiliza su vehículo particular, planifique su ruta con antelación y respete las normas de estacionamiento. ¡Disfrutemos de nuestros eventos con responsabilidad!"
+                ]
             }
-        ],
-        "cierre": "Gracias por elegir estar informado con su Asesor Público Digital. ¡Que tenga un excelente día en Marcos Juarez!"
+        ]
     },
-    "last_updated": "2025-12-26T03:25:11.485310-03:00"
+    "last_updated": "2025-12-27T03:23:33.186559-03:00"
 }
