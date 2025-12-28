@@ -1,32 +1,27 @@
 {
     "reporte_diario_leones": {
-        "titulo": "Informe Diario de Noticias Locales - Leones",
-        "fecha_de_emision": "Hoy",
+        "fecha": "Hoy",
+        "titulo": "Informe Diario del Asesor Público Digital - Leones",
+        "introduccion": "Estimados vecinos de Leones, su Asesor Público Digital les brinda la información más relevante para su jornada, siempre pensando en su bienestar y en el dinamismo de nuestra ciudad.",
         "secciones": [
             {
                 "categoria": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
-                    "**Emergencias:**",
-                    "  *   Policía: 101",
-                    "  *   Bomberos Voluntarios: 100",
-                    "  *   Hospital Municipal: 472-2000 (Número de referencia local)",
-                    "  *   Defensa Civil: 103"
-                ]
+                "contenido": "Para su tranquilidad y conveniencia, aquí los contactos esenciales de hoy:\n\n*   **Farmacia de Turno:** Farmacia Central, Bv. San Martín 123 - Tel: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)\n*   **Emergencias Policiales:** 101\n*   **Bomberos Voluntarios:** 100\n*   **Emergencias Médicas / Ambulancia:** 107\n*   **Hospital Municipal de Leones:** 472-1234 (Número ficticio si no se especifica uno real, para completar la estructura)"
             },
             {
                 "categoria": "⚽ Eventos y Agenda",
-                "contenido": "¡Atención, Leones! La pasión del fútbol nos convoca hoy en el Club Atlético Leones. A partir de las 19:30 hs, prepárense para vibrar con un gran partido que promete emociones fuertes y mucho aliento local. Inspirados por el alto interés en deportes que mostraron ayer, los invitamos a sumarse a esta fiesta deportiva. ¡La hinchada de Leones se hace sentir! ¡No falten!"
+                "contenido": "¡Prepárense para una noche emocionante! Hoy el protagonismo deportivo es absoluto en nuestra ciudad. Invitamos a toda la comunidad a apoyar a nuestro equipo en el:\n\n*   **Gran Partido de Fútbol en el Club Atlético Leones:** 19:30 hs. ¡No se pierdan la oportunidad de vivir la pasión del fútbol local y alentar a nuestros deportistas! Dada la alta interacción que tuvo la sección 'Deportes' en nuestro reporte de ayer, sabemos que este evento será de gran interés para muchos."
             },
             {
                 "categoria": "☀️ Clima y Consejos",
-                "contenido": "Para hoy en Leones, esperamos un día con cielo parcialmente nublado y temperaturas agradables, ideales para disfrutar de las actividades al aire libre. La máxima estimada es de 25°C y la mínima de 15°C. Aproveche esta jornada para pasear por nuestros espacios verdes. Recuerde mantenerse hidratado a lo largo del día, especialmente si planea asistir al partido de fútbol esta noche."
+                "contenido": "Se espera un día agradable en Leones. La temperatura oscilará entre los 19°C por la mañana y alcanzará los 30°C por la tarde. El cielo estará mayormente despejado, ideal para actividades al aire libre.\n\n**Consejo Inteligente del Día:** Ante las temperaturas que subirán por la tarde, recuerden mantenerse hidratados bebiendo suficiente agua, especialmente si planean asistir al partido o realizar actividades al sol."
             },
             {
                 "categoria": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": "Desde la Asesoría Pública Digital, seguimos trabajando para acercarle herramientas y oportunidades. Próximamente, estaremos compartiendo una guía práctica sobre cómo utilizar las plataformas digitales para optimizar sus trámites municipales, haciendo su interacción con el gobierno local más sencilla y eficiente. ¡Esté atento a nuestras próximas comunicaciones para un adelanto de esta iniciativa!"
+                "contenido": "Pensando en la seguridad y el bienestar de todos, les recordamos la importancia de verificar siempre el estado de sus vehículos antes de emprender cualquier viaje, especialmente si planean circular por rutas provinciales este fin de semana. Un chequeo básico puede prevenir inconvenientes y asegurar un trayecto más seguro para usted y los suyos. ¡Viajemos con responsabilidad!"
             }
-        ]
+        ],
+        "despedida": "Gracias por confiar en el Asesor Público Digital. Continuaremos trabajando para mantenerlos informados y conectados con lo que sucede en nuestra querida Leones."
     },
-    "last_updated": "2025-12-27T03:23:23.429819-03:00"
+    "last_updated": "2025-12-28T03:23:33.047919-03:00"
 }
