@@ -1,13 +1,30 @@
 {
-    "informe_diario_madryn": {
+    "informe_diario": {
+        "ciudad": "Puerto Madryn",
         "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "contenido": {
-            "☎️ Teléfonos Útiles": "Farmacia de Turno: Farmacia Del Sur, ubicada en Av. Gales 10. Teléfono: 445-1234. [Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)\n\nEmergencias:\n- Policía: 101\n- Bomberos: 100\n- Hospital Zonal: 107 (Emergencias Médicas)\n- Prefectura Naval Argentina: 106\n- Defensa Civil: 103",
-            "⚽ Eventos y Agenda": "¡Hoy es un día trascendental para nuestra ciudad! Damos inicio oficial a la esperada temporada de avistaje de ballenas en Puerto Madryn. Este evento no solo nos consolida como capital mundial del turismo de naturaleza, sino que también es un motor fundamental para nuestra economía local y nuestra identidad. Se invita a todos los madrynenses y visitantes a participar de las actividades programadas para celebrar este hito, siempre recordando la importancia del respeto y la conservación de nuestra fauna marina. Es una oportunidad única para conectar con la majestuosidad de la naturaleza patagónica.",
-            "☀️ Clima y Consejos": "Para este día en Puerto Madryn, se anticipa un cielo mayormente nublado con temperaturas agradables. La mínima será de aproximadamente 8°C y la máxima alcanzará los 15°C. Los vientos serán moderados, predominando del sector oeste. Dada la variabilidad de nuestro clima costero, recomendamos vestirse en capas, especialmente si planea estar al aire libre para el inicio de la temporada de ballenas o en zonas expuestas al viento. Un abrigo impermeable siempre es una buena opción para evitar sorpresas. Hidrátese bien y disfrute de un nuevo día en la ciudad.",
-            "🚨 Recomendación Inteligente (Adelanto)": "Atendiendo al notable interés y la excelente interacción que generaron nuestras publicaciones de 'Deportes' el día de ayer, con un alto índice de 'Likes' en nuestra comunidad, queremos adelantarles que desde el 'Asesor Público Digital' estaremos preparando una serie de reportajes y calendarios sobre las próximas actividades deportivas locales. Estén atentos a nuestras plataformas, ya que buscaremos destacar el esfuerzo de nuestros atletas y la vitalidad de nuestros clubes. ¡Fomentar el deporte es clave para una vida saludable en Madryn!"
+        "titulo": "Inicio Temporada de Ballenas: Madryn se viste de gala para recibir a sus majestuosas visitantes",
+        "categorias": {
+            "☎️ Teléfonos Útiles": {
+                "Farmacia de Turno": "¡Atención! La farmacia de turno para hoy es 'Farmacia Del Sur', ubicada en Av. Gales 10. Puedes contactarlos al 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
+                "Emergencias": {
+                    "Policía": "101",
+                    "Bomberos": "100",
+                    "Emergencias Médicas (Hospital)": "107",
+                    "Defensa Civil": "103"
+                }
+            },
+            "⚽ Eventos y Agenda": {
+                "Evento Principal": "¡El día esperado ha llegado! Hoy se da inicio oficialmente a la **Temporada de Avistaje de Ballenas Francas Australes 2024** en Puerto Madryn. Nuestra ciudad se prepara para recibir a miles de visitantes y a nuestras queridas ballenas. Se espera un gran movimiento turístico y la apertura de diversas actividades y servicios relacionados. ¡Es un momento de orgullo y celebración para todos los madrynenses!",
+                "Actividades Sugeridas": "Aproveche esta jornada histórica para pasear por la costa, visitar el Centro de Interpretación Punta Cuevas y empezar a sentir la magia que trae consigo la llegada de las ballenas. Infórmese sobre los prestadores habilitados para el avistaje."
+            },
+            "☀️ Clima y Consejos": {
+                "Pronóstico": "Para hoy en Puerto Madryn se espera una jornada fresca y parcialmente nublada. La temperatura máxima rondará los 15°C y la mínima los 8°C. Habrá vientos moderados del sector oeste. Condiciones ideales para disfrutar de actividades al aire libre, especialmente en la costa.",
+                "Consejo del Día": "Dado el inicio de la temporada de avistaje y las bajas temperaturas, recomendamos vestirse en capas para adaptarse a los cambios del clima, especialmente si planea permanecer en áreas expuestas al viento. No olvide una buena campera y un gorro si se acerca a la costa. Y, por supuesto, ¡su cámara para capturar los primeros momentos de la temporada!"
+            },
+            "🚨 Recomendación Inteligente (Adelanto)": {
+                "Adelanto Mañana": "Dado el gran interés generado por el reporte de 'Deportes' de ayer, mañana en nuestra 'Recomendación Inteligente' exploraremos cómo mantenernos activos y saludables mientras disfrutamos de las maravillas naturales de nuestra ciudad, incluyendo tips para combinar la actividad física con la observación de la fauna marina. ¡Prepárense para una guía práctica que fusiona deporte y naturaleza local!"
+            }
         }
     },
-    "last_updated": "2025-12-28T03:23:53.226826-03:00"
+    "last_updated": "2025-12-29T03:27:42.870794-03:00"
 }
