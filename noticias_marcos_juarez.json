@@ -1,40 +1,15 @@
 {
-    "informe_diario": {
-        "titulo": "Informe Diario del Asesor Público Digital - Marcos Juarez",
+    "reporte_diario_marcos_juarez": {
+        "titulo": "Informe Diario del Asesor Público Digital - Marcos Juárez",
         "fecha": "Hoy",
-        "introduccion": "Estimados vecinos de Marcos Juarez, su Asesor Público Digital les brinda el reporte diario con la información más relevante y útil para que estén siempre conectados con nuestra ciudad. ¡Que tengan una excelente jornada!",
-        "categorias": {
-            "telefonos_utiles": {
-                "titulo": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:** Farmacia Nueva, ubicada en Av. Belgrano 500. Teléfono: 473-8888. [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
-                    "**Teléfonos de Emergencia:**",
-                    "- Policía: 101",
-                    "- Bomberos: 100",
-                    "- Emergencias Médicas (SAME/Hospital): 107",
-                    "- Defensa Civil: 103"
-                ]
-            },
-            "eventos_y_agenda": {
-                "titulo": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "**¡Cultura en Foco! Festival de Cine Independiente en el Teatro Colón (20:00 hs):** La noche cultural se enciende hoy en el emblemático Teatro Colón. No te pierdas esta gran oportunidad de sumergirte en propuestas cinematográficas innovadoras y de producción independiente. Una cita obligada para los amantes del séptimo arte en Marcos Juarez. ¡Asegurá tu lugar y apoyá la cultura local!"
-                ]
-            },
-            "clima_y_consejos": {
-                "titulo": "☀️ Clima y Consejos",
-                "contenido": [
-                    "**Pronóstico para Hoy en Marcos Juarez:** Se espera un día mayormente soleado con algunas nubes dispersas. La temperatura máxima rondará los 26°C, con vientos leves del noreste. Un día ideal para disfrutar.",
-                    "**Consejo del Día:** Con este clima agradable, es perfecto para realizar actividades al aire libre. Si planeas una caminata o ejercicio, recuerda mantenerte hidratado y usar protección solar, especialmente en las horas centrales del día."
-                ]
-            },
-            "recomendacion_inteligente": {
-                "titulo": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "**Participación Ciudadana Digital: Próximos Espacios:** Pensando en el bienestar de todos, les adelantamos que en los próximos días estaremos habilitando nuevos canales digitales para que puedan hacer llegar sus sugerencias y consultas de manera más directa y eficiente. Su participación es fundamental para construir la Marcos Juarez que queremos. ¡Manténganse conectados para más novedades!"
-                ]
-            }
-        }
+        "saludo": "¡Buenos días, vecinos y vecinas de Marcos Juárez!",
+        "contenido": {
+            "☎️ Teléfonos Útiles": "Estimado vecino, aquí tiene los números esenciales para el día de hoy:\n*   **Farmacia de Turno:** Farmacia Nueva, Av. Belgrano 500. Tel: 473-8888. [Ver en el mapa](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n*   **Emergencias:**\n    *   Policía: 101\n    *   Bomberos: 100\n    *   Emergencias Médicas: 107\n    *   Defensa Civil: 103",
+            "⚽ Eventos y Agenda": "La agenda cultural de Marcos Juárez se ilumina esta noche. Los invitamos a disfrutar del **Festival de Cine Independiente en el Teatro Colón a las 20:00 hs**. Una excelente oportunidad para apreciar producciones innovadoras y apoyar el arte local e independiente. ¡No se lo pierda!",
+            "☀️ Clima y Consejos": "Para hoy, ☀️ se espera un día agradable en Marcos Juárez, con cielos mayormente despejados y temperaturas que rondarán los 25°C. La tarde será ideal para actividades al aire libre.\n**Consejo del día:** Aproveche el buen clima para dar un paseo por nuestros espacios verdes. Recuerde hidratarse bien y usar protector solar, especialmente entre las 10:00 y las 16:00 hs.",
+            "🚨 Recomendación Inteligente (Adelanto)": "Gracias a su valiosa interacción, hemos notado un gran interés en las noticias deportivas. Su entusiasmo nos motiva a seguir generando contenido relevante. ¡Estén atentos! Próximamente, tendremos novedades y un **adelanto exclusivo sobre las actividades deportivas locales** en nuestros próximos reportes. Su opinión es clave para el 'Asesor Público Digital'."
+        },
+        "despedida": "Que tengan un excelente día. ¡Su Asesor Público Digital está siempre para servirles!"
     },
-    "last_updated": "2025-12-29T03:27:33.081615-03:00"
+    "last_updated": "2025-12-30T03:25:29.180110-03:00"
 }

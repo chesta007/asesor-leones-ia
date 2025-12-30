@@ -1,30 +1,63 @@
 {
-    "informe_diario": {
-        "ciudad": "Puerto Madryn",
-        "fecha": "Hoy",
-        "titulo": "Inicio Temporada de Ballenas: Madryn se viste de gala para recibir a sus majestuosas visitantes",
-        "categorias": {
-            "☎️ Teléfonos Útiles": {
-                "Farmacia de Turno": "¡Atención! La farmacia de turno para hoy es 'Farmacia Del Sur', ubicada en Av. Gales 10. Puedes contactarlos al 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
-                "Emergencias": {
-                    "Policía": "101",
-                    "Bomberos": "100",
-                    "Emergencias Médicas (Hospital)": "107",
-                    "Defensa Civil": "103"
-                }
+    "reporte_diario_puerto_madryn": {
+        "fecha": "2023-10-27",
+        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
+        "secciones": [
+            {
+                "categoria": "☎️ Teléfonos Útiles",
+                "contenido": [
+                    {
+                        "tipo": "Farmacia de Turno",
+                        "nombre": "Farmacia Del Sur",
+                        "direccion": "Av. Gales 10",
+                        "telefono": "445-1234",
+                        "mapa": "[Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
+                    },
+                    {
+                        "tipo": "Emergencias Generales",
+                        "policia": "101",
+                        "bomberos": "100",
+                        "defensa_civil": "103",
+                        "hospital_ambulancia": "107"
+                    }
+                ]
             },
-            "⚽ Eventos y Agenda": {
-                "Evento Principal": "¡El día esperado ha llegado! Hoy se da inicio oficialmente a la **Temporada de Avistaje de Ballenas Francas Australes 2024** en Puerto Madryn. Nuestra ciudad se prepara para recibir a miles de visitantes y a nuestras queridas ballenas. Se espera un gran movimiento turístico y la apertura de diversas actividades y servicios relacionados. ¡Es un momento de orgullo y celebración para todos los madrynenses!",
-                "Actividades Sugeridas": "Aproveche esta jornada histórica para pasear por la costa, visitar el Centro de Interpretación Punta Cuevas y empezar a sentir la magia que trae consigo la llegada de las ballenas. Infórmese sobre los prestadores habilitados para el avistaje."
+            {
+                "categoria": "⚽ Eventos y Agenda",
+                "contenido": [
+                    {
+                        "titulo": "¡Hoy Comienza la Temporada de Avistaje de Ballenas!",
+                        "descripcion": "Puerto Madryn se enorgullece de dar inicio a uno de los eventos naturales más esperados del año: la temporada de avistaje de la Ballena Franca Austral. A partir de hoy, nuestros mares se convierten en un escenario privilegiado para observar a estos magníficos cetáceos. Es una oportunidad única para conectar con la naturaleza y la esencia de nuestra Patagonia. Se recomienda a residentes y turistas planificar sus excursiones con anticipación y a través de operadores habilitados, garantizando una experiencia segura y respetuosa con el medio ambiente."
+                    },
+                    {
+                        "titulo": "¡Madryn, Ciudad de Deportistas!",
+                        "descripcion": "Tras el excelente recibimiento de la sección de Deportes en el informe de ayer, que generó un alto índice de 'Like' en la comunidad, queremos reafirmar el espíritu deportivo de Puerto Madryn. Continuaremos destacando y promoviendo las actividades que mantienen a nuestra gente en movimiento y con buena salud. ¡Estén atentos a las próximas novedades y eventos que dinamizan nuestra ciudad!"
+                    }
+                ]
             },
-            "☀️ Clima y Consejos": {
-                "Pronóstico": "Para hoy en Puerto Madryn se espera una jornada fresca y parcialmente nublada. La temperatura máxima rondará los 15°C y la mínima los 8°C. Habrá vientos moderados del sector oeste. Condiciones ideales para disfrutar de actividades al aire libre, especialmente en la costa.",
-                "Consejo del Día": "Dado el inicio de la temporada de avistaje y las bajas temperaturas, recomendamos vestirse en capas para adaptarse a los cambios del clima, especialmente si planea permanecer en áreas expuestas al viento. No olvide una buena campera y un gorro si se acerca a la costa. Y, por supuesto, ¡su cámara para capturar los primeros momentos de la temporada!"
+            {
+                "categoria": "☀️ Clima y Consejos",
+                "contenido": [
+                    {
+                        "titulo": "Pronóstico del Tiempo para Hoy",
+                        "descripcion": "Para este día inaugural de temporada, esperamos un cielo parcialmente nublado con momentos de sol. La temperatura máxima rondará los 18°C y la mínima los 9°C. El viento soplará del sector oeste con intensidad moderada, con algunas ráfagas a lo largo del día. Se aconseja estar prevenido para cambios en las condiciones costeras."
+                    },
+                    {
+                        "titulo": "Consejo Inteligente para el Día",
+                        "descripcion": "Con el inicio de la temporada de avistaje y las típicas condiciones ventosas de la costa, es fundamental vestirse con varias capas de ropa. No olvides llevar un abrigo cortavientos, gorro, lentes de sol y protector solar. Incluso en días nublados, la radiación UV es significativa y el viento puede hacer que la sensación térmica sea menor. ¡Prepararse adecuadamente garantiza un disfrute pleno de nuestras bellezas naturales!"
+                    }
+                ]
             },
-            "🚨 Recomendación Inteligente (Adelanto)": {
-                "Adelanto Mañana": "Dado el gran interés generado por el reporte de 'Deportes' de ayer, mañana en nuestra 'Recomendación Inteligente' exploraremos cómo mantenernos activos y saludables mientras disfrutamos de las maravillas naturales de nuestra ciudad, incluyendo tips para combinar la actividad física con la observación de la fauna marina. ¡Prepárense para una guía práctica que fusiona deporte y naturaleza local!"
+            {
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": [
+                    {
+                        "titulo": "Preparate para un Turismo Sostenible",
+                        "descripcion": "Con la apertura de la temporada de ballenas, te invitamos a reflexionar sobre la importancia de un turismo consciente y sostenible. Al visitar nuestros atractivos naturales, recordá seguir siempre las indicaciones de los guías, no dejar residuos y respetar la distancia con la fauna. Tu compromiso ayuda a preservar la belleza de Puerto Madryn para las futuras generaciones. ¡Sé un embajador de nuestra naturaleza!"
+                    }
+                ]
             }
-        }
+        ]
     },
-    "last_updated": "2025-12-29T03:27:42.870794-03:00"
+    "last_updated": "2025-12-30T03:25:43.120770-03:00"
 }
