@@ -1,63 +1,40 @@
 {
-    "reporte_diario_puerto_madryn": {
+    "reporte_diario_madryn": {
         "fecha": "2023-10-27",
         "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "secciones": [
+        "categorias": [
             {
-                "categoria": "☎️ Teléfonos Útiles",
+                "nombre": "☎️ Teléfonos Útiles",
                 "contenido": [
-                    {
-                        "tipo": "Farmacia de Turno",
-                        "nombre": "Farmacia Del Sur",
-                        "direccion": "Av. Gales 10",
-                        "telefono": "445-1234",
-                        "mapa": "[Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
-                    },
-                    {
-                        "tipo": "Emergencias Generales",
-                        "policia": "101",
-                        "bomberos": "100",
-                        "defensa_civil": "103",
-                        "hospital_ambulancia": "107"
-                    }
+                    "**Farmacia de Turno:** Farmacia Del Sur, en Av. Gales 10. Teléfono: 445-1234. [Ubicación en Google Maps](http://googleusercontent.com/maps.google.com/madryn)",
+                    "**Emergencias (General):** 911",
+                    "**Bomberos Voluntarios:** 100",
+                    "**Policía de la Provincia:** 101",
+                    "**Emergencias Médicas / Ambulancia (SAME):** 107",
+                    "**Protección Civil:** 103",
+                    "**Hospital Zonal 'Dr. Andrés Isola':** 447-1000"
                 ]
             },
             {
-                "categoria": "⚽ Eventos y Agenda",
+                "nombre": "⚽ Eventos y Agenda",
                 "contenido": [
-                    {
-                        "titulo": "¡Hoy Comienza la Temporada de Avistaje de Ballenas!",
-                        "descripcion": "Puerto Madryn se enorgullece de dar inicio a uno de los eventos naturales más esperados del año: la temporada de avistaje de la Ballena Franca Austral. A partir de hoy, nuestros mares se convierten en un escenario privilegiado para observar a estos magníficos cetáceos. Es una oportunidad única para conectar con la naturaleza y la esencia de nuestra Patagonia. Se recomienda a residentes y turistas planificar sus excursiones con anticipación y a través de operadores habilitados, garantizando una experiencia segura y respetuosa con el medio ambiente."
-                    },
-                    {
-                        "titulo": "¡Madryn, Ciudad de Deportistas!",
-                        "descripcion": "Tras el excelente recibimiento de la sección de Deportes en el informe de ayer, que generó un alto índice de 'Like' en la comunidad, queremos reafirmar el espíritu deportivo de Puerto Madryn. Continuaremos destacando y promoviendo las actividades que mantienen a nuestra gente en movimiento y con buena salud. ¡Estén atentos a las próximas novedades y eventos que dinamizan nuestra ciudad!"
-                    }
+                    "**¡Madryn Recibe a las Gigantes del Mar!** Hoy marca el inicio oficial de la tan esperada temporada de avistaje de ballenas en Puerto Madryn. Este hito anual posiciona a nuestra ciudad como referente mundial del ecoturismo, ofreciendo la oportunidad única de presenciar la majestuosidad de las Ballenas Francas Australes en las serenas aguas del Golfo Nuevo. Se invita a residentes y visitantes a disfrutar de este espectáculo natural, tanto desde los puntos costeros como El Doradillo, como a través de las excursiones náuticas habilitadas. Es un momento ideal para conectar con la naturaleza y vivir una experiencia inolvidable."
                 ]
             },
             {
-                "categoria": "☀️ Clima y Consejos",
+                "nombre": "☀️ Clima y Consejos",
                 "contenido": [
-                    {
-                        "titulo": "Pronóstico del Tiempo para Hoy",
-                        "descripcion": "Para este día inaugural de temporada, esperamos un cielo parcialmente nublado con momentos de sol. La temperatura máxima rondará los 18°C y la mínima los 9°C. El viento soplará del sector oeste con intensidad moderada, con algunas ráfagas a lo largo del día. Se aconseja estar prevenido para cambios en las condiciones costeras."
-                    },
-                    {
-                        "titulo": "Consejo Inteligente para el Día",
-                        "descripcion": "Con el inicio de la temporada de avistaje y las típicas condiciones ventosas de la costa, es fundamental vestirse con varias capas de ropa. No olvides llevar un abrigo cortavientos, gorro, lentes de sol y protector solar. Incluso en días nublados, la radiación UV es significativa y el viento puede hacer que la sensación térmica sea menor. ¡Prepararse adecuadamente garantiza un disfrute pleno de nuestras bellezas naturales!"
-                    }
+                    "**Pronóstico para Hoy:** Se anticipa una jornada con cielo mayormente despejado y temperaturas agradables. La mínima esperada es de 10°C, ascendiendo a una máxima de 18°C. El viento soplará del sector oeste con intensidad moderada, con ráfagas ocasionales, característica de nuestra costa. El índice UV se mantendrá en niveles moderados.",
+                    "**Consejo del Día:** Con el inicio de la temporada de avistaje, recomendamos vestirse en capas. Las mañanas y noches pueden ser frescas, y el viento, especialmente cerca del mar o en embarcaciones, puede bajar la sensación térmica. No olvide su protección solar, lentes de sol y un sombrero. Mantenerse hidratado es fundamental. Si planea visitar El Doradillo, consulte siempre los horarios de marea alta para optimizar su experiencia de avistaje costero."
                 ]
             },
             {
-                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
                 "contenido": [
-                    {
-                        "titulo": "Preparate para un Turismo Sostenible",
-                        "descripcion": "Con la apertura de la temporada de ballenas, te invitamos a reflexionar sobre la importancia de un turismo consciente y sostenible. Al visitar nuestros atractivos naturales, recordá seguir siempre las indicaciones de los guías, no dejar residuos y respetar la distancia con la fauna. Tu compromiso ayuda a preservar la belleza de Puerto Madryn para las futuras generaciones. ¡Sé un embajador de nuestra naturaleza!"
-                    }
+                    "**Turismo Responsable y Actividad Local:** Con el lanzamiento oficial de la temporada de ballenas, resaltamos la importancia del turismo consciente y el cuidado de nuestro patrimonio natural. Cada acción, por pequeña que sea, contribuye a la preservación de nuestro entorno. En sintonía con el alto interés que generaron las noticias de 'Deportes' ayer, les adelantamos que el municipio está preparando una serie de iniciativas para fomentar la actividad física al aire libre y la exploración de nuestros espacios verdes y costeros, promoviendo un estilo de vida saludable y el aprecio por la belleza natural que nos rodea. ¡Puerto Madryn se disfruta y se cuida entre todos!"
                 ]
             }
         ]
     },
-    "last_updated": "2025-12-30T03:25:43.120770-03:00"
+    "last_updated": "2025-12-31T03:26:38.259914-03:00"
 }

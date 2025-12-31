@@ -1,15 +1,27 @@
 {
-    "reporte_diario_marcos_juarez": {
-        "titulo": "Informe Diario del Asesor Público Digital - Marcos Juárez",
-        "fecha": "Hoy",
-        "saludo": "¡Buenos días, vecinos y vecinas de Marcos Juárez!",
+    "Informe Diario Marcos Juarez": {
+        "fecha": "YYYY-MM-DD",
+        "saludo": "¡Hola, vecinos de Marcos Juarez! Soy su Asesor Público Digital, aquí para brindarles la información más relevante del día. ¡Comenzamos!",
         "contenido": {
-            "☎️ Teléfonos Útiles": "Estimado vecino, aquí tiene los números esenciales para el día de hoy:\n*   **Farmacia de Turno:** Farmacia Nueva, Av. Belgrano 500. Tel: 473-8888. [Ver en el mapa](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)\n*   **Emergencias:**\n    *   Policía: 101\n    *   Bomberos: 100\n    *   Emergencias Médicas: 107\n    *   Defensa Civil: 103",
-            "⚽ Eventos y Agenda": "La agenda cultural de Marcos Juárez se ilumina esta noche. Los invitamos a disfrutar del **Festival de Cine Independiente en el Teatro Colón a las 20:00 hs**. Una excelente oportunidad para apreciar producciones innovadoras y apoyar el arte local e independiente. ¡No se lo pierda!",
-            "☀️ Clima y Consejos": "Para hoy, ☀️ se espera un día agradable en Marcos Juárez, con cielos mayormente despejados y temperaturas que rondarán los 25°C. La tarde será ideal para actividades al aire libre.\n**Consejo del día:** Aproveche el buen clima para dar un paseo por nuestros espacios verdes. Recuerde hidratarse bien y usar protector solar, especialmente entre las 10:00 y las 16:00 hs.",
-            "🚨 Recomendación Inteligente (Adelanto)": "Gracias a su valiosa interacción, hemos notado un gran interés en las noticias deportivas. Su entusiasmo nos motiva a seguir generando contenido relevante. ¡Estén atentos! Próximamente, tendremos novedades y un **adelanto exclusivo sobre las actividades deportivas locales** en nuestros próximos reportes. Su opinión es clave para el 'Asesor Público Digital'."
+            "☎️ Teléfonos Útiles": {
+                "Farmacia de Turno": "¡Atención! La Farmacia de Turno para hoy en Marcos Juarez es Farmacia Nueva, ubicada en Av. Belgrano 500. Su teléfono es 473-8888. Encuéntrala fácilmente aquí: [Ubicación Farmacia Nueva](https://maps.app.goo.gl/MarcosJuarezFarmaciaNueva)",
+                "Emergencias": [
+                    "Policía: 911",
+                    "Bomberos Voluntarios: 100",
+                    "Emergencias Médicas: 107"
+                ]
+            },
+            "⚽ Eventos y Agenda": {
+                "Evento Principal del Día": "¡Imperdible cita cultural! Esta noche, a las 20:00 hs, el prestigioso Teatro Colón será el escenario de nuestro Festival de Cine Independiente. Una oportunidad única para disfrutar de producciones que invitan a la reflexión y el disfrute. ¡Apoyemos el talento local y nacional!",
+                "Balance Deportivo (Observación)": "Vimos con agrado la gran interacción que generó nuestra sección de Deportes en el reporte de ayer. Esto reafirma el interés de la comunidad en la actividad física y los logros de nuestros atletas. Estén atentos, que pronto tendremos más novedades deportivas locales."
+            },
+            "☀️ Clima y Consejos": {
+                "Pronóstico del Tiempo": "Para hoy en Marcos Juarez, se anticipa un día con cielo mayormente despejado y temperaturas muy agradables. La máxima rondará los 26°C, ideal para actividades al aire libre. Hacia la noche, el termómetro descenderá a unos 14°C, por lo que recomendamos un abrigo ligero si planeas salir.",
+                "Consejo del Día": "Con estas temperaturas tan placenteras, les sugerimos aprovechar el día para pasear por nuestros espacios verdes o realizar caminatas. No olviden mantenerse hidratados y, si se exponen al sol, utilizar protector solar para cuidar su piel."
+            },
+            "🚨 Recomendación Inteligente (Adelanto)": "Como ciudadanos comprometidos, les recordamos la importancia de la separación de residuos en origen. Un pequeño esfuerzo en cada hogar genera un gran impacto en nuestra comunidad y en el medio ambiente. Próximamente, compartiremos más información sobre puntos limpios y campañas de reciclaje en Marcos Juarez. ¡Juntos, por una ciudad más verde!"
         },
-        "despedida": "Que tengan un excelente día. ¡Su Asesor Público Digital está siempre para servirles!"
+        "despedida": "Eso es todo por hoy en su informe diario de Marcos Juarez. ¡Que tengan una excelente jornada!"
     },
-    "last_updated": "2025-12-30T03:25:29.180110-03:00"
+    "last_updated": "2025-12-31T03:26:22.963064-03:00"
 }
