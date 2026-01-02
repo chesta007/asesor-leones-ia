@@ -1,51 +1,80 @@
 {
-    "reporte_diario_puerto_madryn": {
+    "informe_diario": {
+        "ciudad": "Puerto Madryn",
         "fecha": "Hoy",
-        "titulo": "Informe Diario del Asesor Público Digital - Puerto Madryn",
-        "introduccion": "Bienvenidos al reporte diario de su Asesor Público Digital. Aquí encontrará la información más relevante y útil para su día en Puerto Madryn, con un enfoque especial en el tan esperado inicio de la temporada de ballenas.",
-        "categorias": [
+        "titulo": "Informe Diario del Asesor Público Digital: ¡Arranca la Temporada de Ballenas!",
+        "secciones": [
             {
-                "nombre": "☎️ Teléfonos Útiles",
-                "contenido": [
-                    "**Farmacia de Turno:**",
-                    "Farmacia Del Sur",
-                    "Av. Gales 10",
-                    "Teléfono: 445-1234",
-                    "**[Ubicación Farmacia Del Sur en Google Maps](http://googleusercontent.com/maps.google.com/madryn)**",
-                    "",
-                    "**Emergencias:**",
-                    "Policía: 101",
-                    "Bomberos: 100",
-                    "Hospital / Emergencias Médicas: 107",
-                    "Defensa Civil: 103"
-                ]
+                "categoria": "☎️ Teléfonos Útiles",
+                "contenido": {
+                    "farmacia_de_turno": {
+                        "nombre": "Farmacia Del Sur",
+                        "direccion": "Av. Gales 10",
+                        "telefono": "445-1234",
+                        "ubicacion_maps": "[Ubicación Farmacia Del Sur](http://googleusercontent.com/maps.google.com/madryn)"
+                    },
+                    "emergencias_y_servicios": [
+                        {
+                            "servicio": "Policía",
+                            "numero": "101"
+                        },
+                        {
+                            "servicio": "Bomberos",
+                            "numero": "100"
+                        },
+                        {
+                            "servicio": "Emergencias Médicas (SAME/Hospital)",
+                            "numero": "107"
+                        },
+                        {
+                            "servicio": "Defensa Civil",
+                            "numero": "103"
+                        },
+                        {
+                            "servicio": "Prefectura Naval Argentina",
+                            "numero": "106"
+                        }
+                    ]
+                }
             },
             {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "**¡Puerto Madryn Celebra el Inicio de la Temporada de Avistaje de Ballenas!**",
-                    "Hoy es un día trascendental para nuestra querida ciudad: damos la bienvenida oficial a la temporada de avistaje de ballenas. Este evento anual no solo es una maravilla natural que atrae a miles de turistas de todo el mundo, sino que también impulsa significativamente nuestra economía local y refuerza la identidad de Puerto Madryn como capital del turismo de naturaleza y Capital Nacional del Buceo. Prepárese para ser testigo de la majestuosidad de la ballena franca austral y disfrute de las diversas actividades y servicios que la ciudad tiene para ofrecer en torno a esta esperada temporada.",
-                    "**Agenda Complementaria:** Manténgase informado sobre las charlas, exposiciones y tours especializados que se ofrecerán a lo largo de la temporada. Consulte a las agencias de turismo locales para planificar su experiencia inolvidable."
-                ]
+                "categoria": "⚽ Eventos y Agenda",
+                "contenido": {
+                    "evento_principal_hoy": {
+                        "titulo": "Puerto Madryn Da la Bienvenida a la Temporada de Avistaje de Ballenas",
+                        "descripcion": "Hoy es un día trascendental para nuestra ciudad: se declara oficialmente inaugurada la temporada de avistaje de la Ballena Franca Austral. Este hito marca el inicio de uno de los periodos más esperados y vibrantes del año, posicionando a Puerto Madryn una vez más como epicentro mundial para la observación de fauna marina. Las primeras excursiones marítimas ya están listas para ofrecer encuentros inolvidables con estos majestuosos cetáceos en las aguas de Península Valdés. Se espera un gran flujo de turistas y un ambiente festivo en toda la región. ¡Una oportunidad imperdible para vivir la naturaleza en su máxima expresión!",
+                        "actividades_relacionadas": [
+                            "Operativos especiales de información turística en los principales accesos.",
+                            "Preparativos en el Área Natural Protegida El Doradillo para las esperas costeras."
+                        ]
+                    }
+                }
             },
             {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": [
-                    "**Pronóstico para Hoy en Puerto Madryn:**",
-                    "Se prevé una jornada con cielo parcialmente nublado y temperaturas agradables, con una máxima estimada de 16°C y una mínima de 8°C. Los vientos soplarán del sector oeste con intensidad moderada, pudiendo registrar ráfagas, especialmente por la tarde. Es un día ideal para disfrutar de la ciudad y el inicio de la temporada.",
-                    "",
-                    "**Consejos del Día:**",
-                    "Para quienes realicen actividades al aire libre o paseos costeros, se recomienda vestir con varias capas de ropa para adaptarse a los cambios térmicos y protegerse del viento patagónico. No olvide usar protector solar y mantenerse bien hidratado, incluso en días con nubosidad parcial. ¡Disfrute de la brisa marina con precaución y prepare su cámara para las primeras postales de ballenas!"
-                ]
+                "categoria": "☀️ Clima y Consejos",
+                "contenido": {
+                    "pronostico_madryn": {
+                        "temperatura_min": "7°C",
+                        "temperatura_max": "17°C",
+                        "condicion": "Parcialmente nublado con periodos de sol. Nulas probabilidades de precipitaciones.",
+                        "viento": "Moderado del sector oeste, con ráfagas que podrían superar los 45 km/h por la tarde.",
+                        "sensacion_termica": "Fresca por la mañana, templada al mediodía con sol, ventosa por la tarde."
+                    },
+                    "consejos_para_el_ciudadano": [
+                        "**Abrigo y Capas:** Dadas las ráfagas de viento y la variabilidad térmica, es fundamental vestirse en capas. Un abrigo cortavientos y gorro serán sus mejores aliados, especialmente si planea actividades al aire libre o excursiones marítimas.",
+                        "**Hidratación y Protección Solar:** Aunque el sol no sea constante, los rayos UV pueden ser intensos. Manténgase hidratado y utilice protector solar. Las gafas de sol también son recomendables.",
+                        "**En la Ruta:** Si se dirige a Península Valdés, conduzca con precaución debido al viento lateral y a la posible presencia de fauna silvestre en las cercanías de la calzada."
+                    ]
+                }
             },
             {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "**Adelanto: Claves para un Turismo Responsable esta Temporada de Ballenas**",
-                    "Con el entusiasmo del inicio del avistaje de ballenas, desde el Asesor Público Digital queremos adelantar la importancia de practicar un turismo consciente y respetuoso con nuestro invaluable entorno natural. Próximamente, compartiremos una guía con consejos prácticos y sencillos para que su experiencia de avistaje sea inolvidable, y a la vez contribuya activamente a la conservación de nuestras ballenas y el ecosistema marino que nos rodea. ¡Su acción suma para proteger nuestro patrimonio natural y garantizar futuras temporadas de éxito!"
-                ]
+                "categoria": "🚨 Recomendación Inteligente (Adelanto)",
+                "contenido": {
+                    "titulo": "Anticipe su Experiencia de Avistaje para Disfrutar al Máximo",
+                    "recomendacion": "Con el inicio de la temporada de ballenas, la afluencia de visitantes y la demanda de servicios turísticos aumentan considerablemente. Para garantizar una experiencia de avistaje fluida y sin contratiempos, el Asesor Público Digital le recomienda encarecidamente: **reserve sus excursiones marítimas con antelación**. Utilice los sitios web de las agencias de viaje y operadores turísticos habilitados, o la plataforma oficial de la Secretaría de Turismo, para verificar disponibilidad y precios. Planificar su visita ahora le permitirá asegurar su lugar y disfrutar plenamente de la maravilla natural de nuestras ballenas sin esperas. ¡La previsión es clave para una jornada inolvidable!"
+                }
             }
         ]
     },
-    "last_updated": "2026-01-01T03:26:15.238736-03:00"
+    "last_updated": "2026-01-02T03:26:27.876035-03:00"
 }

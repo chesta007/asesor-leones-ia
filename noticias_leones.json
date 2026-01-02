@@ -1,38 +1,30 @@
 {
     "reporte_diario_leones": {
-        "fecha": "Hoy",
-        "titulo": "Asesor Público Digital: Informe Diario para Leones",
-        "categorias": [
-            {
-                "nombre": "☎️ Teléfonos Útiles",
+        "fecha": "HOY",
+        "titulo_general": "Leones Informa: Su Guía Digital para Hoy",
+        "secciones": {
+            "☎️ Teléfonos Útiles": {
+                "titulo": "Sus contactos esenciales para Leones",
                 "contenido": [
-                    "**Farmacia de Turno:** Farmacia Central, ubicada en Bv. San Martín 123. Teléfono: 472-5555. [Ubicación Farmacia Central](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
-                    "**Emergencias:**",
-                    "- Policía: 101",
-                    "- Bomberos Voluntarios: 100",
-                    "- Servicio de Emergencias Médicas: 107"
+                    "**Farmacia de Turno:** Farmacia Central (Bv. San Martín 123) - Tel: 472-5555 - [Ubicación en Google Maps](https://maps.app.goo.gl/LeonesFarmaciaCentral)",
+                    "**Emergencias Policiales:** 101",
+                    "**Bomberos Voluntarios:** 100",
+                    "**Emergencias Médicas / Hospital:** 107"
                 ]
             },
-            {
-                "nombre": "⚽ Eventos y Agenda",
-                "contenido": [
-                    "¡Atención, Leones! La pasión por el fútbol se vive hoy con intensidad. A las **19:30 hs**, el Club Atlético Leones será el epicentro de la emoción con un gran partido. Tras el alto índice de interés en deportes que registramos ayer, invitamos a toda la comunidad a acercarse al estadio, apoyar a nuestros atletas y disfrutar de un encuentro que promete grandes momentos. ¡Vení a alentar a tu equipo y ser parte de la fiesta deportiva!"
-                ]
+            "⚽ Eventos y Agenda": {
+                "titulo": "¡La Pasión del Fútbol Invade Leones Hoy!",
+                "contenido": "¡Atención, Leones! Para todos los amantes del deporte, hoy es un día imperdible. El Club Atlético Leones será el epicentro de la emoción futbolística con un gran partido a partir de las 19:30 hs. Dada la alta interacción que tuvieron las noticias deportivas en ambas ciudades ayer, se espera un gran marco de público. Acérquese a alentar a su equipo, compartir con amigos y disfrutar de una noche de fútbol de primer nivel en nuestra querida ciudad. ¡No se lo pierda!"
             },
-            {
-                "nombre": "☀️ Clima y Consejos",
-                "contenido": [
-                    "Para hoy en Leones, se espera una jornada agradable con cielo parcialmente nublado y temperaturas que rondarán los 25°C de máxima y 14°C de mínima. La tarde será ideal para realizar actividades al aire libre, y la noche se presentará fresca, perfecta para disfrutar del evento deportivo sin mayores inconvenientes.",
-                    "**Consejo del día:** Recuerde hidratarse adecuadamente a lo largo del día, especialmente si planea asistir al partido de fútbol. Un abrigo ligero para la noche será un buen compañero."
-                ]
+            "☀️ Clima y Consejos": {
+                "titulo": "Pronóstico y Recomendaciones para su Día",
+                "contenido": "Para hoy en Leones, esperamos una jornada agradable con cielo parcialmente nublado y temperaturas que rondarán los 25°C. Se recomienda disfrutar de las actividades al aire libre, pero siempre llevando consigo una botella de agua para mantenerse hidratado, especialmente si planea asistir al partido de fútbol esta noche. ¡Aproveche el buen tiempo!"
             },
-            {
-                "nombre": "🚨 Recomendación Inteligente (Adelanto)",
-                "contenido": [
-                    "Dada la notable participación y el interés en la categoría 'Deportes' de ayer, nuestra recomendación inteligente de hoy se centra en seguir impulsando la actividad física en Leones. El deporte es un pilar fundamental para la salud y el bienestar social. Mantenerse activo, ya sea practicando fútbol, caminando o usando los espacios verdes de nuestra ciudad, contribuye a una comunidad más sana y feliz. ¡Anímese a moverse y a participar de las iniciativas locales que promueven un estilo de vida activo!"
-                ]
+            "🚨 Recomendación Inteligente (Adelanto)": {
+                "titulo": "Preparando el Terreno para Mañana...",
+                "contenido": "Mañana, en su reporte diario, estaremos profundizando en la importancia de la 'Movilidad Segura' en nuestra ciudad. Ante la creciente actividad y eventos como el de esta noche, repasaremos consejos clave para peatones, ciclistas y conductores. ¡Un adelanto para que pensemos juntos cómo hacer de Leones un lugar más seguro para todos!"
             }
-        ]
+        }
     },
-    "last_updated": "2026-01-01T03:25:46.965146-03:00"
+    "last_updated": "2026-01-02T03:26:04.156237-03:00"
 }
